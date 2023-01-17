@@ -1,1 +1,37 @@
+1/17/2023 Kevin
+1. Done/not done since last scrum:
+- initialized git repository and trello board
+2. To do until next Scrum:
+- Set up initial project
+
+
+1/17/2023 Matthew
+1. Done/not done since last scrum:
+- Azure Database setup
+2. To do until next Scrum:
+- Database design
+- Part 2 of Project Proposal
+
+
+1/17/2023 Chris
+1. Done/not done since last scrum:
+- Began Proposal
+2. To do until next Scrum:
+- Finish Proposal (mockups)
+3. Need assistance / figure things out:
+-
+
+
+1/17/2023 Seena
+1. Done/not done since last scrum:
+- Began user stories 
+- Add page 5 for proposal (questions)
+2. To do until next Scrum:
+- Write at least 2 user stories and add to trello
+3. Need assistance / figure things out:
+-
+
+
+
+
 
