@@ -12,6 +12,20 @@
     Width="800"
     ResizeMode="NoResize"
     Icon="/book.ico">
+    <Window.Background>
+        <LinearGradientBrush
+            EndPoint="0.5,1"
+            StartPoint="0.5,0">
+            <GradientStop
+                Color="LightBlue" />
+            <GradientStop
+                Color="#FF8A5269"
+                Offset="1" />
+            <GradientStop
+                Color="#FFAAFF"
+                Offset="2" />
+        </LinearGradientBrush>
+    </Window.Background>
     <!--add line 8 (materialDesign) to any new windows/views to enable Material Design Toolkit then maybe do a Rebuild Solution if it throws warnings-->
 
     <Grid>
