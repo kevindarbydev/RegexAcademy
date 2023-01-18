@@ -1,78 +1,83 @@
 ﻿<Window
-    x:Class="RegexAcademy.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:RegexAcademy"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    mc:Ignorable="d"
-    Title="Regex Academy"
-    Height="450"
-    Width="800"
-    ResizeMode="NoResize"
-    Icon="/book.ico">
-    <Window.Background>
-        <LinearGradientBrush
-            EndPoint="0.5,1"
-            StartPoint="0.5,0">
-            <GradientStop
-                Color="LightBlue" />
-            <GradientStop
-                Color="#FF8A5269"
-                Offset="1" />
-            <GradientStop
-                Color="#FFAAFF"
-                Offset="2" />
-        </LinearGradientBrush>
-    </Window.Background>
-    <!--add line 8 (materialDesign) to any new windows/views to enable Material Design Toolkit then maybe do a Rebuild Solution if it throws warnings-->
+  x:Class="RegexAcademy.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:local="clr-namespace:RegexAcademy"
+  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+  mc:Ignorable="d"
+  Title="Regex Academy"
+  Height="450"
+  Width="800"
+  ResizeMode="NoResize"
+  Icon="/book.ico">
+  <Window.Background>
+    <LinearGradientBrush
+      EndPoint="0.5,1"
+      StartPoint="0.5,0">
+      <GradientStop
+        Color="LightBlue" />
+      <GradientStop
+        Color="#FF8A5269"
+        Offset="1" />
+      <GradientStop
+        Color="#FFAAFF"
+        Offset="2" />
+    </LinearGradientBrush>
+  </Window.Background>
+  <!--add line 8 (materialDesign) to any new windows/views to enable Material Design Toolkit then maybe do a Rebuild Solution if it throws warnings-->
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="200" />
-            <ColumnDefinition
-                Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel
-            Name="SpLeftButtons"
-            Grid.Column="0"
-            Orientation="Vertical">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition
+        Width="200" />
+      <ColumnDefinition
+        Width="*" />
+    </Grid.ColumnDefinitions>
 
-            <Button
-                x:Name="Students"
-                Click="StackPanelBtn_Click"
-                Content="Students"
-                Height="47"
-                Width="120"
-                Margin="0,60,0,0" />
-            <Button
-                x:Name="Teachers"
-                Click="StackPanelBtn_Click"
-                Content="Teachers"
-                Height="47"
-                Width="120"
-                Margin="0,40,0,0" />
-            <Button
-                x:Name="Courses"
-                Click="StackPanelBtn_Click"
-                Content="Courses"
-                Height="47"
-                Width="120"
-                Margin="0,40,0,0" />
-            <Button
-                x:Name="StudentCourses"
-                Click="StackPanelBtn_Click"
-                Content="Student Schedules"
-                Height="47"
-                Width="121"
-                Margin="0,40,0,0" />
-           
-        </StackPanel>
-        <Frame
-            Grid.Column="1"
-            Name="ContentFrame"
-            NavigationUIVisibility="Hidden"/>
-    </Grid>
+    <StackPanel
+      Name="SpLeftButtons"
+      Grid.Column="0"
+      Orientation="Vertical">
+
+      <Button
+        x:Name="Students"
+        Click="StackPanelBtn_Click"
+        Content="Students"
+        Height="47"
+        Width="120"
+        Margin="0,60,0,0"
+        Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
+        ToolTip="Access Students"
+        Background='#FF5072FD'
+        BorderBrush='#FFCBEF5F' />
+      <Button
+        x:Name="Teachers"
+        Click="StackPanelBtn_Click"
+        Content="Teachers"
+        Height="47"
+        Width="120"
+        Margin="0,40,0,0" />
+      <Button
+        x:Name="Courses"
+        Click="StackPanelBtn_Click"
+        Content="Courses"
+        Height="47"
+        Width="120"
+        Margin="0,40,0,0" />
+      <Button
+        x:Name="StudentCourses"
+        Click="StackPanelBtn_Click"
+        Content="Student Schedules"
+        Height="47"
+        Width="121"
+        Margin="0,40,0,0" />
+
+    </StackPanel>
+    <Frame
+      Grid.Column="1"
+      Name="ContentFrame"
+      NavigationUIVisibility="Hidden" />
+  </Grid>
 </Window>
