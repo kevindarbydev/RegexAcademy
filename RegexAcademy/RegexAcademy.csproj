@@ -87,6 +87,9 @@
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher.cs" />
+    <Compile Include="TeacherEditDeleteDlg.xaml.cs">
+      <DependentUpon>TeacherEditDeleteDlg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TeacherWindow.xaml.cs">
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StudentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeacherEditDeleteDlg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
