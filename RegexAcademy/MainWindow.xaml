@@ -42,32 +42,37 @@
       Grid.Column="0"
       Orientation="Vertical">
       <HamburgerMenu:HamburgerMenu
-        Background="Blue"
+        Background='LightSlateGray'
         MenuIconColor="White"
         SelectionIndicatorColor="White"
         MenuItemForeground="White"
-        HorizontalAlignment="Left">
+        HorizontalAlignment="Left"
+        Height='434'>
 
         <HamburgerMenu:HamburgerMenuItem
           Text="Students"
           MouseEnter='HbMenuItem_Click'
-          Height='66'>
-        </HamburgerMenu:HamburgerMenuItem>
+          Height='90'
+          Icon="assets/student-hbmenu-icon.png"
+          ToolTip='Students'/>
         <HamburgerMenu:HamburgerMenuItem
           Text="Teachers"
           MouseEnter='HbMenuItem_Click'
-          Height='66'>
-        </HamburgerMenu:HamburgerMenuItem>
+          Height='90'
+          Icon="assets/apple-hbmenu-icon.png"
+          ToolTip='Teachers'/>
         <HamburgerMenu:HamburgerMenuItem
           Text="Courses"
           MouseEnter='HbMenuItem_Click'
-          Height='66'>
-        </HamburgerMenu:HamburgerMenuItem>
+          Height='90'
+          Icon="assets/courses-hbmenu-icon.png"
+          ToolTip='Courses'/>
         <HamburgerMenu:HamburgerMenuItem
-          Text="StudentCourses"
+          Text="Student Courses"
           MouseEnter='HbMenuItem_Click'
-          Height='66'>
-        </HamburgerMenu:HamburgerMenuItem>
+          Height='90'
+          Icon="assets/studentcourses-hbmenu-icon.png"
+          ToolTip='Student Courses'/>
 
       </HamburgerMenu:HamburgerMenu>
 

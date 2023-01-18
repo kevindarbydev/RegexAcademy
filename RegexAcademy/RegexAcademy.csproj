@@ -160,6 +160,21 @@
   <ItemGroup>
     <Resource Include="book.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="teacher-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\student-hbmenu-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\courses-hbmenu-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\studentcourses-hbmenu-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\apple-hbmenu-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
