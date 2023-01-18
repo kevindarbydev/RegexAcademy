@@ -58,6 +58,7 @@
         </StackPanel>
         <Frame
             Grid.Column="1"
-            Name="ContentFrame" />
+            Name="ContentFrame"
+            NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
