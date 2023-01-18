@@ -9,6 +9,7 @@ namespace RegexAcademy
 {
     public class Teacher
     {
+        [Key]
         public int Id { get; set; }
 
         public Teacher() { }
