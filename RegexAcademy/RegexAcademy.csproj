@@ -59,6 +59,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -77,12 +81,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Courses.cs" />
+    <Compile Include="Course.cs" />
     <Compile Include="CoursesWindow.xaml.cs">
       <DependentUpon>CoursesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordEncryptor.cs" />
+    <Compile Include="RegexAcademyDbContext.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs" />
+    <Compile Include="StudentCourse.cs" />
     <Compile Include="StudentCoursesWindow.xaml.cs">
       <DependentUpon>StudentCoursesWindow.xaml</DependentUpon>
     </Compile>
@@ -96,7 +115,7 @@
     <Compile Include="TeacherWindow.xaml.cs">
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs" />
+    <Compile Include="User.cs" />
     <Page Include="CoursesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

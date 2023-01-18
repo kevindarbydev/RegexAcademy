@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RegexAcademy
 {
-    public class Courses
+    public class Course
     {
 
 
@@ -46,6 +46,8 @@ namespace RegexAcademy
 
         [ForeignKey(nameof(TeacherId))]
         public virtual Teacher Teacher { get; set; }
+
+        public virtual List<StudentCourse> StudentCourse { get; set; }
 
     }
 }

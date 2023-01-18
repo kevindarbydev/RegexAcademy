@@ -108,5 +108,7 @@ namespace RegexAcademy
             return $"{FirstName} {LastName}";
         }
 
+        public virtual List<Course> Courses { get; set; }
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Documents;
 
 namespace RegexAcademy
 {
@@ -75,5 +77,7 @@ namespace RegexAcademy
                 _dateOfBirth = value;
             }
         }
+
+        public virtual List<StudentCourse> StudenCourseList { get; set; }
     }
 }

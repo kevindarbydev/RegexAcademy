@@ -1,6 +1,7 @@
 ﻿using HamburgerMenu;
 using System;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Windows;
 
 namespace RegexAcademy
@@ -13,6 +14,16 @@ namespace RegexAcademy
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
         }
 
         private void HbMenuItem_Click(object sender, RoutedEventArgs e)

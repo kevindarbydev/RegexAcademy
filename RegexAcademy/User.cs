@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RegexAcademy
 {
-    public class Users
+    public class User
     {
 
         [Key]
