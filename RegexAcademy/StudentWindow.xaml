@@ -12,44 +12,55 @@
     Title="StudentWindow">
 
     <Grid>
-        <Label
-            Content="Student Page"
-            HorizontalAlignment="Left"
-            Margin="93,46,0,0"
-            VerticalAlignment="Top"
-            Width="163"
-            Height="35" />
         <ListView
-            Margin="24,104,476,52">
+            Name="LvStudents"
+            Margin="0,49,119,106">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
-                        Header="Task"
-                        Width="350"
-                        DisplayMemberBinding="{Binding Task}" />
-                    <GridViewColumn
-                        Header="Difficulty"
-                        Width="60"
-                        DisplayMemberBinding="{Binding Difficulty}" />
-                    <GridViewColumn
-                        Header="Due Date"
+                        Header="Student ID"
                         Width="150"
-                        DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
+                        DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn
-                        Header="Status"
-                        Width="70"
-                        DisplayMemberBinding="{Binding Status}" />
+                        Header="First Name"
+                        Width="150"
+                        DisplayMemberBinding="{Binding FirstName}" /> 
+                    <GridViewColumn
+                        Header="Last Name"
+                        Width="150"
+                        DisplayMemberBinding="{Binding LastName}" />
+                    <GridViewColumn
+                        Header="Date of Birth"
+                        Width="150"
+                        DisplayMemberBinding="{Binding DateOfBirth}" />
+                   
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <materialDesign:Card
-            Content="Testing material UI"
+        <Button
+            Content="Add Student"
             HorizontalAlignment="Left"
-            Margin="329,104,0,0"
+            Margin="10,12,0,0"
+            VerticalAlignment="Top" />
+        <Button
+            Content="Edit Student"
+            HorizontalAlignment="Left"
+            Margin="145,12,0,0"
             VerticalAlignment="Top"
-            Height="127"
-            Width="165" />
+            IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudents}" />
+       
+        <Button
+            Content="Delete Student"
+            HorizontalAlignment="Left"
+            Margin="275,12,0,0"
+            VerticalAlignment="Top"
+            IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudents}" />
+     <!--   <Button
+            Content="View Schedule"
+            HorizontalAlignment="Right"
+            Margin="424,12,0,0"
+            VerticalAlignment="Top"
+            IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudents}" />  -->
 
     </Grid>
 </Page>
