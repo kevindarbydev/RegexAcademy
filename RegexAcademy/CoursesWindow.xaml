@@ -17,8 +17,8 @@
                     <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding CourseId}" />
                     <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding CourseName}" />
                     <GridViewColumn Header="Day of Week" Width="150" DisplayMemberBinding="{Binding DayOfWeek}" />
-                    <GridViewColumn Header="Start Date" Width="150" DisplayMemberBinding="{Binding StartDate}" />
-                    <GridViewColumn Header="End Date" Width="150" DisplayMemberBinding="{Binding EndDate}" />
+                    <GridViewColumn Header="Start Date" Width="150" DisplayMemberBinding="{Binding StartDate, StringFormat='\d'}" />
+                    <GridViewColumn Header="End Date" Width="150" DisplayMemberBinding="{Binding EndDate, StringFormat='\d'}" />
                 </GridView>
             </ListView.View>
         </ListView>
