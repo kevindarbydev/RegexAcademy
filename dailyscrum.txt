@@ -31,6 +31,37 @@
 3. Need assistance / figure things out:
 -
 
+--------------------------------------------------------------------------------------
+1/18/2023 Kevin
+1. Done/not done since last scrum:
+- Finalized proposal and project structure
+2. To do until next Scrum:
+- Create Student model
+- Create Student window
+
+1/18/2023 Matthew
+1. Done/not done since last scrum:
+- Project Proposal
+- Database Design
+2. To do until next Scrum:
+- Create Users and Courses models
+- Start design of windows for Users and Courses 
+
+1/18/2023 Chris
+1. Done/not done since last scrum:
+- Finsihed up my end of propoasl, Material Design research
+2. To do until next Scrum:
+- Home/Dashboard window, connections to model windows
+- populate more of the user stories (Trello)
+
+1/18/2023 Seena
+1. Done/not done since last scrum:
+- Finalized proposal and project structure
+2. To do until next Scrum:
+- Create Teacher model
+- Create Teacher window
+
+
 
 
 
