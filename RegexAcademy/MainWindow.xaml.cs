@@ -1,5 +1,6 @@
 ﻿using HamburgerMenu;
 using System;
+using System.ComponentModel;
 using System.Windows;
 
 namespace RegexAcademy
@@ -36,13 +37,34 @@ namespace RegexAcademy
                     break;
             }
         }
-    }
 
-    public partial class SecondWindow : Window
-    {
-        public SecondWindow()
+        // removed hook so that it's not annoying during development.
+        // to re-enable, add following line to MainWindow.xaml in <Window> element:
+        // Closing='Window_Closing'
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show(this, "Are you sure you wish to exit?", "Exit", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Environment.Exit(0);
+                    break;
+                case MessageBoxResult.No:
+                    e.Cancel = true;
+                    break;
+                case MessageBoxResult.Cancel:
+                    e.Cancel = true;
+                    break;
 
+            }
+        }
+
+        public partial class SecondWindow : Window
+        {
+            public SecondWindow()
+            {
+
+            }
         }
     }
 }

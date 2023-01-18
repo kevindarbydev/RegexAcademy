@@ -12,7 +12,8 @@
   Height="450"
   Width="950"
   ResizeMode="NoResize"
-  Icon="/book.ico">
+  Icon="/book.ico"
+  >
   <Window.Background>
     <LinearGradientBrush
       EndPoint="0.5,1"
