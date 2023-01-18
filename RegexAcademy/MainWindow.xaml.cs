@@ -1,6 +1,6 @@
-﻿using System;
+﻿using HamburgerMenu;
+using System;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace RegexAcademy
 {
@@ -14,10 +14,11 @@ namespace RegexAcademy
             InitializeComponent();
         }
 
-        private void StackPanelBtn_Click(object sender, RoutedEventArgs e)
+        private void HbMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            switch (button.Name)
+
+            HamburgerMenuItem hmi = sender as HamburgerMenuItem;
+            switch (hmi.Text)
             {
                 case "Students":
                     //ContentFrame.Content = new TextBlock { Text = "Button 1 clicked" };

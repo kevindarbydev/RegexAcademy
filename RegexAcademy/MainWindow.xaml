@@ -6,6 +6,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:RegexAcademy"
   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+  xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
   mc:Ignorable="d"
   Title="Regex Academy"
   Height="450"
@@ -40,39 +41,35 @@
       Name="SpLeftButtons"
       Grid.Column="0"
       Orientation="Vertical">
+      <HamburgerMenu:HamburgerMenu
+        Background="Blue"
+        MenuIconColor="White"
+        SelectionIndicatorColor="White"
+        MenuItemForeground="White"
+        HorizontalAlignment="Left">
 
-      <Button
-        x:Name="Students"
-        Click="StackPanelBtn_Click"
-        Content="Students"
-        Height="47"
-        Width="120"
-        Margin="0,60,0,0"
-        Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
-        ToolTip="Access Students"
-        Background='#FF5072FD'
-        BorderBrush='#FFCBEF5F' />
-      <Button
-        x:Name="Teachers"
-        Click="StackPanelBtn_Click"
-        Content="Teachers"
-        Height="47"
-        Width="120"
-        Margin="0,40,0,0" />
-      <Button
-        x:Name="Courses"
-        Click="StackPanelBtn_Click"
-        Content="Courses"
-        Height="47"
-        Width="120"
-        Margin="0,40,0,0" />
-      <Button
-        x:Name="StudentCourses"
-        Click="StackPanelBtn_Click"
-        Content="Student Schedules"
-        Height="47"
-        Width="121"
-        Margin="0,40,0,0" />
+        <HamburgerMenu:HamburgerMenuItem
+          Text="Students"
+          MouseEnter='HbMenuItem_Click'
+          Height='66'>
+        </HamburgerMenu:HamburgerMenuItem>
+        <HamburgerMenu:HamburgerMenuItem
+          Text="Teachers"
+          MouseEnter='HbMenuItem_Click'
+          Height='66'>
+        </HamburgerMenu:HamburgerMenuItem>
+        <HamburgerMenu:HamburgerMenuItem
+          Text="Courses"
+          MouseEnter='HbMenuItem_Click'
+          Height='66'>
+        </HamburgerMenu:HamburgerMenuItem>
+        <HamburgerMenu:HamburgerMenuItem
+          Text="StudentCourses"
+          MouseEnter='HbMenuItem_Click'
+          Height='66'>
+        </HamburgerMenu:HamburgerMenuItem>
+
+      </HamburgerMenu:HamburgerMenu>
 
     </StackPanel>
     <Frame
