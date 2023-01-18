@@ -44,35 +44,39 @@
       <HamburgerMenu:HamburgerMenu
         Background='LightSlateGray'
         MenuIconColor="White"
-        SelectionIndicatorColor="White"
         MenuItemForeground="White"
         HorizontalAlignment="Left"
-        Height='434'>
+        Height='434'
+        Cursor='Hand'>
 
         <HamburgerMenu:HamburgerMenuItem
           Text="Students"
           MouseEnter='HbMenuItem_Click'
           Height='90'
           Icon="assets/student-hbmenu-icon.png"
-          ToolTip='Students'/>
+          ToolTip='Students'
+          SelectionIndicatorColor='#b6995c' />
         <HamburgerMenu:HamburgerMenuItem
           Text="Teachers"
           MouseEnter='HbMenuItem_Click'
           Height='90'
           Icon="assets/apple-hbmenu-icon.png"
-          ToolTip='Teachers'/>
+          SelectionIndicatorColor='#489d88'
+          ToolTip='Teachers' />
         <HamburgerMenu:HamburgerMenuItem
           Text="Courses"
           MouseEnter='HbMenuItem_Click'
           Height='90'
           Icon="assets/courses-hbmenu-icon.png"
-          ToolTip='Courses'/>
+          SelectionIndicatorColor='#a4c1d6'
+          ToolTip='Courses' />
         <HamburgerMenu:HamburgerMenuItem
           Text="Student Courses"
           MouseEnter='HbMenuItem_Click'
           Height='90'
           Icon="assets/studentcourses-hbmenu-icon.png"
-          ToolTip='Student Courses'/>
+          SelectionIndicatorColor='#335965'
+          ToolTip='Student Courses' />
 
       </HamburgerMenu:HamburgerMenu>
 
