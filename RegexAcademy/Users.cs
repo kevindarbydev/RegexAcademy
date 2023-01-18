@@ -11,6 +11,7 @@ namespace RegexAcademy
     public class Users
     {
 
+        [Key]
         public int Id { get; set; }
 
 

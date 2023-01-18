@@ -74,9 +74,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Courses.cs" />
     <Compile Include="CoursesWindow.xaml.cs">
       <DependentUpon>CoursesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PasswordEncryptor.cs" />
+    <Compile Include="Student.cs" />
     <Compile Include="StudentCoursesWindow.xaml.cs">
       <DependentUpon>StudentCoursesWindow.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,7 @@
     <Compile Include="TeacherWindow.xaml.cs">
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Users.cs" />
     <Page Include="CoursesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
