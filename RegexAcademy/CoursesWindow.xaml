@@ -9,22 +9,24 @@
       Title="CoursesWindow">
 
     <Grid>
-        <Label
-            Content="Courses"
-            HorizontalAlignment="Left"
-            Margin="95,29,0,0"
-            VerticalAlignment="Top"
-            Height="38"
-            Width="63" />
         <ListView
-            d:ItemsSource="{d:SampleData ItemCount=5}"
-            Margin="35,67,474,20">
+            Name="LvCourses"
+            Margin="0,49,119,106">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding CourseId}" />
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding CourseName}" />
+                    <GridViewColumn Header="Day of Week" Width="150" DisplayMemberBinding="{Binding DayOfWeek}" />
+                    <GridViewColumn Header="Start Date" Width="150" DisplayMemberBinding="{Binding StartDate}" />
+                    <GridViewColumn Header="End Date" Width="150" DisplayMemberBinding="{Binding EndDate}" />
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Add a Course" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top"/>
+        <Button Content="Edit a Course" HorizontalAlignment="Left" Margin="145,12,0,0" VerticalAlignment="Top" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"/>
+        <Button Content="Assign Students" HorizontalAlignment="Left" Margin="579,12,0,0" VerticalAlignment="Top" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" />
+        <Button Content="Delete a Course" HorizontalAlignment="Left" Margin="275,12,0,0" VerticalAlignment="Top" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" />
+        <Button Content="Assign a Teacher" HorizontalAlignment="Left" Margin="424,12,0,0" VerticalAlignment="Top" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" />
 
     </Grid>
 </Page>
