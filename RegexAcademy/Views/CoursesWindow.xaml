@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:local="clr-namespace:RegexAcademy.Views"
   xmlns:view='clr-namespace:RegexAcademy.Views'
   mc:Ignorable="d"
@@ -40,16 +41,30 @@
       </ListView.View>
     </ListView>
     <Button
-      Content="Add a Course"
+      Content="Add Course"
+      Name="BtnAddCourse"
       HorizontalAlignment="Left"
       Margin="10,12,0,0"
-      VerticalAlignment="Top" />
+      VerticalAlignment="Top"
+      ToolTip="Add a new Course"
+      materialDesign:RippleAssist.Feedback="Yellow"
+      Background='#a1b569'
+      BorderBrush='Black'
+      Cursor='Hand'
+      Click="BtnAddCourse_Click" />
     <Button
-      Content="Edit a Course"
+      Content="Edit Course"
+      Name="BtnEditCourse"
       HorizontalAlignment="Left"
       Margin="145,12,0,0"
       VerticalAlignment="Top"
-      IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" />
+      IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"
+      ToolTip="Edit selected Course(s)"
+      materialDesign:RippleAssist.Feedback="Yellow"
+      Background='#a1b569'
+      BorderBrush='Black'
+      Cursor='Hand' />
+
     <Button
       Content="Assign Students"
       HorizontalAlignment="Left"
@@ -57,10 +72,16 @@
       VerticalAlignment="Top"
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" />
     <Button
-      Content="Delete a Course"
+      Content="Delete Course"
+      Name="BtnDeleteCourse"
       HorizontalAlignment="Left"
       Margin="275,12,0,0"
       VerticalAlignment="Top"
+      materialDesign:RippleAssist.Feedback="Red"
+      ToolTip="Delete selected Courses(s)"
+      Background='#a1b569'
+      BorderBrush='Black'
+      Cursor='Hand'
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" />
     <Button
       Content="Assign a Teacher"
