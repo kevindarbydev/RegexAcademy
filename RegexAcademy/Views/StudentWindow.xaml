@@ -14,8 +14,7 @@
     <Grid>
         <ListView
             Name="LvStudents"
-            Margin="0,49,119,106"
-            SelectionMode="Multiple"
+            Margin="0,49,119,106"            
             SelectionChanged="LvStudents_SelectionChanged">
             <ListView.View>
                 <GridView>
