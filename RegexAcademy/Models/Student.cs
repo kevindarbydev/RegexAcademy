@@ -82,7 +82,7 @@ namespace RegexAcademy.Models
                 {
                     throw new ArgumentException("Please make sure to select a date.");
                 }
-                if (value.Year < 1900 || value.Year > 2024)
+                if (value.Year < 1900 || value.Year > 2023)
                 {
                     throw new ArgumentException("Please enter a valid date of birth.");
                 }

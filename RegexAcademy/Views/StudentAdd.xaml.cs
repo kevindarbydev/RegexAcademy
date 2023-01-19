@@ -75,6 +75,7 @@ namespace RegexAcademy.Views
                 Globals.dbContext.SaveChanges();
                 MessageBox.Show(this, "Student saved successfully!", "Student added", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 ResetFields();
+
             }
             catch (ArgumentException ex)
             {
@@ -121,6 +122,7 @@ namespace RegexAcademy.Views
                 toBeUpdated.LastName = TbxLastName.Text;
                 toBeUpdated.DateOfBirth = (DateTime)DpAddStudent.SelectedDate;
                 updateMsg += $"{toBeUpdated}";
+                Globals.dbContext.SaveChanges();
                 MessageBox.Show(this, updateMsg, "Update success",
                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
