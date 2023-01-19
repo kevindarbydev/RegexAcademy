@@ -1,8 +1,8 @@
 ﻿using HamburgerMenu;
+using RegexAcademy.Views;
 using System;
 using System.ComponentModel;
 using System.Windows;
-using RegexAcademy.Views;
 
 namespace RegexAcademy
 {

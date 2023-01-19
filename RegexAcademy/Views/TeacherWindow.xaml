@@ -42,7 +42,6 @@
         </Style>
       </ListView.Resources>
 
-
       <ListView.View>
         <GridView>
           <GridViewColumn
@@ -96,7 +95,6 @@
       Background='#a1b569'
       BorderBrush='Black'
       Cursor='Hand' />
-
 
     <Button
       Content="Delete Teacher"

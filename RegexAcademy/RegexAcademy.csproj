@@ -89,6 +89,10 @@
     <Compile Include="Migrations\202301191759154_Update.designer.cs">
       <DependentUpon>202301191759154_Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301192054186_Stev.cs" />
+    <Compile Include="Migrations\202301192054186_Stev.designer.cs">
+      <DependentUpon>202301192054186_Stev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Views\CourseAdd.xaml.cs">
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301191759154_Update.resx">
       <DependentUpon>202301191759154_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301192054186_Stev.resx">
+      <DependentUpon>202301192054186_Stev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

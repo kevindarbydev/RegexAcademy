@@ -40,7 +40,7 @@
         </GridView>
       </ListView.View>
     </ListView>
-    <Button
+    <Button 
       Content="Add Course"
       Name="BtnAddCourse"
       HorizontalAlignment="Left"
