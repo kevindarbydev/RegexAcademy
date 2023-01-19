@@ -55,8 +55,8 @@
 
                 <PasswordBox Margin="0 20 0 0" Name="TbxConfirmPassword" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Confirm Password" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
 
-                <Button Margin="0 20 0 0" Name="BtnRegister" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Register" />
-                <Button Margin="0 20 0 0" Name="BtnLogInPage" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Log in Here" />
+                <Button Margin="0 20 0 0" Name="BtnRegister" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Register" Click="BtnRegister_Click" />
+                <Button Margin="0 20 0 0" Name="BtnLogInPage" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Log in Here" Click="BtnLogInPage_Click" />
             </StackPanel>
         </materialDesign:DialogHost>
     </materialDesign:Card>

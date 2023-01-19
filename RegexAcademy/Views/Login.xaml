@@ -37,7 +37,7 @@ ResizeMode="NoResize"
 
                     <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
 
-                        <Button Name="BtnExit" ToolTip="Close Application" Content="Exit Application"/>
+                        <Button Name="BtnExit" ToolTip="Close Application" Content="Exit Application" Click="BtnExit_Click"/>
 
                     </StackPanel>
 
@@ -47,14 +47,14 @@ ResizeMode="NoResize"
 
                 <TextBlock Margin="10 10 0 5" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="Regex Academy" />
 
-                <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Register a new account" />
+                <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Log in to an existing account" />
 
-                <TextBox Margin="0 50 0 0" Name="TbxUsername" Width="300" FontSize="18" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" materialDesign:HintAssist.Hint="Create a Username" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                <TextBox Margin="0 50 0 0" Name="TbxUsername" Width="300" FontSize="18" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" materialDesign:HintAssist.Hint="Enter Username" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
-                <PasswordBox Margin="0 20 0 0" Name="TbxPasword" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Create a Password" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
+                <PasswordBox Margin="0 20 0 0" Name="TbxPasword" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Password" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
 
-                <Button Margin="0 20 0 0" Name="BtnLogin" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Log In" />
-                <Button Margin="0 20 0 0" Name="BtnRegisterWindow" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Sign up Here" />
+                <Button Margin="0 20 0 0" Name="BtnLogin" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Log In" Click="BtnLogin_Click" />
+                <Button Margin="0 20 0 0" Name="BtnRegisterWindow" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Sign up Here" Click="BtnRegisterWindow_Click" />
             </StackPanel>
         </materialDesign:DialogHost>
     </materialDesign:Card>
