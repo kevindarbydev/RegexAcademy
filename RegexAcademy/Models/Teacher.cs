@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RegexAcademy
+namespace RegexAcademy.Models
 {
     public class Teacher
     {
@@ -87,7 +84,7 @@ namespace RegexAcademy
 
         private bool _availability;
 
-        public bool Availability 
+        public bool Availability
         {
             get
             {

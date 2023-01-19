@@ -1,7 +1,6 @@
 ﻿using HamburgerMenu;
 using System;
 using System.ComponentModel;
-using System.Data.Entity;
 using System.Windows;
 
 namespace RegexAcademy
@@ -34,17 +33,17 @@ namespace RegexAcademy
             {
                 case "Students":
                     //ContentFrame.Content = new TextBlock { Text = "Button 1 clicked" };
-                    ContentFrame.Source = new Uri("StudentWindow.xaml", UriKind.Relative);
+                    ContentFrame.Source = new Uri("Views/StudentWindow.xaml", UriKind.Relative);
 
                     break;
                 case "Teachers":
-                    ContentFrame.Source = new Uri("TeacherWindow.xaml", UriKind.Relative);
+                    ContentFrame.Source = new Uri("Views/TeacherWindow.xaml", UriKind.Relative);
                     break;
                 case "Courses":
-                    ContentFrame.Source = new Uri("CoursesWindow.xaml", UriKind.Relative);
+                    ContentFrame.Source = new Uri("Views/CoursesWindow.xaml", UriKind.Relative);
                     break;
                 case "StudentCourses":
-                    ContentFrame.Source = new Uri("StudentCoursesWindow.xaml", UriKind.Relative);
+                    ContentFrame.Source = new Uri("Views/StudentCoursesWindow.xaml", UriKind.Relative);
                     break;
             }
         }
@@ -70,12 +69,6 @@ namespace RegexAcademy
             }
         }
 
-        public partial class SecondWindow : Window
-        {
-            public SecondWindow()
-            {
 
-            }
-        }
     }
 }

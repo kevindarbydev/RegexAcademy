@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RegexAcademy
+namespace RegexAcademy.Models
 {
     public class Course
     {
@@ -30,7 +27,7 @@ namespace RegexAcademy
         [DataType(DataType.DateTime)]
         public DateTime EndDate { get; set; }
 
-        public enum Weekdays { M = 1, Tu = 2, W = 3, Th = 4, F = 5, Sa = 6, Su = 7};
+        public enum Weekdays { M = 1, Tu = 2, W = 3, Th = 4, F = 5, Sa = 6, Su = 7 };
 
         [Required]
         [EnumDataType(typeof(Weekdays))]

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Windows.Documents;
 
-namespace RegexAcademy
+namespace RegexAcademy.Models
 {
     public class Student
     {

@@ -1,6 +1,5 @@
-using System;
+using RegexAcademy.Models;
 using System.Data.Entity;
-using System.Linq;
 
 namespace RegexAcademy
 {

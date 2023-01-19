@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RegexAcademy
+namespace RegexAcademy.Models
 {
     public class User
     {
@@ -24,13 +19,13 @@ namespace RegexAcademy
 
 
         [NotMapped]
-        public string Password 
-        { 
-            get { return PasswordStored; } 
+        public string Password
+        {
+            get { return PasswordStored; }
             set
             {
                 PasswordStored = PasswordEncryptor.EncryptPassword(value);
-            } 
+            }
         }
 
     }
