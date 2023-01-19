@@ -54,7 +54,7 @@
 
         <HamburgerMenu:HamburgerMenuItem
           Text="Students"
-          MouseEnter='HbMenuItem_Click'
+          MouseLeftButtonDown='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/student-hbmenu-icon.png"
           ToolTip='Students'
@@ -62,21 +62,21 @@
 
         <HamburgerMenu:HamburgerMenuItem
           Text="Teachers"
-          MouseEnter='HbMenuItem_Click'
+          MouseLeftButtonDown='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/apple-hbmenu-icon.png"
           SelectionIndicatorColor='#489d88'
           ToolTip='Teachers' />
         <HamburgerMenu:HamburgerMenuItem
           Text="Courses"
-          MouseEnter='HbMenuItem_Click'
+          MouseLeftButtonDown='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/courses-hbmenu-icon.png"
           SelectionIndicatorColor='#a4c1d6'
           ToolTip='Courses' />
         <HamburgerMenu:HamburgerMenuItem
           Text="Student Courses"
-          MouseEnter='HbMenuItem_Click'
+          MouseLeftButtonDown='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/studentcourses-hbmenu-icon.png"
           SelectionIndicatorColor='#335965'
