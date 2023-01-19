@@ -1,5 +1,4 @@
 ﻿using HamburgerMenu;
-using RegexAcademy.Views;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -26,11 +25,11 @@ namespace RegexAcademy
                 Environment.Exit(1);
             }
 
-            if (Globals.isLoggedIn == false)
-            {
-                Register RegDlg = new Register();
-                RegDlg.ShowDialog();
-            }
+            //if (Globals.isLoggedIn == false)
+            //{
+            //    Register RegDlg = new Register();
+            //    RegDlg.ShowDialog();
+            //}
         }
 
         private void HbMenuItem_Click(object sender, RoutedEventArgs e)
