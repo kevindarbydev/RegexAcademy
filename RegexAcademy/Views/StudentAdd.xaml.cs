@@ -9,8 +9,28 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class StudentAdd : Window
     {
+        //this will stay null unless secondary constructor is called
         public Models.Student currentlySelected = null;
 
+
+        //primary constructory
+        public StudentAdd()
+        {
+            InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+        }
+
+        //secondary constructor
         public StudentAdd(Models.Student currentlySelected)
         {
             InitializeComponent();
@@ -36,22 +56,6 @@ namespace RegexAcademy.Views
             }
         }
 
-        public StudentAdd()
-        {
-            InitializeComponent();
-            try
-            {
-                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
-            }
-            catch (SystemException ex)
-            {
-                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                // Close();
-                Environment.Exit(1);
-            }
-        }
-
         private void BtnCancelAdd_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -61,15 +65,23 @@ namespace RegexAcademy.Views
         {
             try
             {
+                if (DpAddStudent.SelectedDate == null)
+                {
+                    MessageBox.Show("Please select a date from the date picker before continuing.");
+                    return;
+                }
                 Models.Student newStudent = new Models.Student { FirstName = TbxFirstName.Text, LastName = TbxLastName.Text, DateOfBirth = (DateTime)DpAddStudent.SelectedDate };
                 Globals.dbContext.Students.Add(newStudent);
                 Globals.dbContext.SaveChanges();
                 MessageBox.Show(this, "Student saved successfully!", "Student added", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 ResetFields();
-
-
             }
-            catch (Exception ex) when (ex is ArgumentException || ex is SystemException || ex is InvalidOperationException)
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(this, "Bad data received:\n" + ex.Message, "Invalid input",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex) when (ex is SystemException || ex is InvalidOperationException)
             {
                 MessageBox.Show(this, "Error saving to DB\n" + ex.Message, "Saving failed",
                     MessageBoxButton.OK, MessageBoxImage.Error);

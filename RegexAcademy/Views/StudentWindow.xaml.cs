@@ -41,7 +41,7 @@ namespace RegexAcademy.Views
             {
                 if (LvStudents.SelectedItem != null)
                 {
-                    StudentAdd newStudent = new StudentAdd((Models.Student)LvStudents.SelectedItem);
+                    StudentAdd newStudent = new StudentAdd((Models.Student)LvStudents.SelectedItem); //calling secondary constructor, which loads slightly different XAML to facilitate editing rather than adding
 
                     if (newStudent.ShowDialog() == false)
                     {
@@ -50,9 +50,9 @@ namespace RegexAcademy.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is InvalidOperationException || ex is SystemException)
             {
-                MessageBox.Show(ex.Message + "..." + ex.GetType());
+                MessageBox.Show("Something went wrong: " + ex.Message + "..." + ex.GetType());
             }
         }
 

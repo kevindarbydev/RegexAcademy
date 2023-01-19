@@ -31,11 +31,16 @@ namespace RegexAcademy.Models
             }
             set
             {
-                if (value.Length < 1 || value.Length > 40) // needs more validation, ie. check for special characters
+                if (value.Length < 1 || value.Length > 40)
                 {
                     throw new ArgumentException("First name length should be 1-40 characters long");
                 }
-                _firstName = value;
+                if (Globals.HasSpecialChars(value))
+                {
+                    throw new ArgumentException("First name cannot contain special chars.");
+                }
+                string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
+                _firstName = CapitalizeName;
             }
         }
 
@@ -51,11 +56,16 @@ namespace RegexAcademy.Models
             }
             set
             {
-                if (value.Length < 1 || value.Length > 40) // needs more validation, ie. check for special characters
+                if (value.Length < 1 || value.Length > 40)
                 {
                     throw new ArgumentException("Last name length should be 1-40 characters long");
                 }
-                _lastName = value;
+                if (Globals.HasSpecialChars(value))
+                {
+                    throw new ArgumentException("Last name cannot contain special chars.");
+                }
+                string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower()); //capitalize first letter, could be redundant
+                _lastName = CapitalizeName;
             }
         }
 
@@ -68,9 +78,13 @@ namespace RegexAcademy.Models
             get { return _dateOfBirth; }
             set
             {
-                if (value.Year > 2023)//placeholder, will change
+                if (value == null)//this should never occur
                 {
-                    throw new ArgumentException("You've entered an invalid date. Try again");
+                    throw new ArgumentException("Please make sure to select a date.");
+                }
+                if (value.Year < 1900 || value.Year > 2024)
+                {
+                    throw new ArgumentException("Please enter a valid date of birth.");
                 }
                 _dateOfBirth = value;
             }

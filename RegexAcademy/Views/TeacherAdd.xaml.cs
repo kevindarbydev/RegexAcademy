@@ -2,6 +2,7 @@
 using RegexAcademy.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Windows.Forms.AxHost;
 
 namespace RegexAcademy.Views
 {
@@ -21,6 +23,8 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class TeacherAdd : Window
     {
+        private string imagePath;
+
         public TeacherAdd()
         {
             InitializeComponent();
@@ -41,20 +45,10 @@ namespace RegexAcademy.Views
         {
             try
             {
-                bool availability = true;
-                if (RbnYes.IsChecked == true)
-                {
-                    availability = true;
-                } else if (RbnNo.IsChecked == true)
-                {
-                    availability = false;
-                }
-                else
-                { // internal error
-                    MessageBox.Show(this, "Error reading radio buttons state", "Internal error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-                Teacher t1 = new Teacher(TbxFirstName.Text, TbxLastName.Text, TbxEmail.Text, null, availability);
+                bool availability = RetrieveRbnValue();
+                byte[] profileImage = File.ReadAllBytes(imagePath); // imagePath defined when image uploaded
+
+                Teacher t1 = new Teacher(TbxFirstName.Text, TbxLastName.Text, TbxEmail.Text, profileImage, availability); //, null);
 
                 Globals.dbContext.Teachers.Add(t1);
                 Globals.dbContext.SaveChanges(); // ex SystemException
@@ -69,10 +63,28 @@ namespace RegexAcademy.Views
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            this.DialogResult = true;
+            this.DialogResult = true; // will close dialog window
         }
 
-        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        private bool RetrieveRbnValue()
+        {
+
+            if (RbnYes.IsChecked == true)
+            {
+                return true;
+            }
+            else if (RbnNo.IsChecked == true)
+            {
+                return false;
+            }
+            else
+            { // internal error
+                MessageBox.Show(this, "Error reading radio buttons state", "Internal error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
+        private void BtnUploadImg_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Select a picture";
@@ -81,9 +93,10 @@ namespace RegexAcademy.Views
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
-                ImgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+                var profileImage = new BitmapImage(new Uri(op.FileName)); // cropping image
+                ImgProfileImage.Source = new CroppedBitmap(profileImage, new Int32Rect(0, 0, 120, 120));
+                imagePath = op.FileName;
             }
-
         }
     }
 }

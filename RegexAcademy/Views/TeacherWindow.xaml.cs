@@ -2,6 +2,8 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace RegexAcademy.Views
 {
@@ -38,6 +40,7 @@ namespace RegexAcademy.Views
             if (inputDialog.ShowDialog() == true)
             {
                 MessageBox.Show("Add Teacher Window was closed");
+                LvTeachers.ItemsSource = Globals.dbContext.Teachers.ToList();
             }
         }
     }

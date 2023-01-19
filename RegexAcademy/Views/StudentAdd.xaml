@@ -60,14 +60,20 @@
         <Label
             Content="Date of Birth:"
             HorizontalAlignment="Left"
-            Margin="10,120,0,0"
+            Margin="10,142,0,0"
             VerticalAlignment="Top"
             Width="78" />
         <DatePicker
             Name="DpAddStudent"
+            Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+            Margin="124,131,44,0"
+            VerticalAlignment="Top"
+            Height="46" />
+        <!--  <DatePicker
+            Name="DpAddStudent"
             Height="36"
             Margin="124,120,51,0"
-            VerticalAlignment="Top" />
+            VerticalAlignment="Top" /> -->
         <Button
             Name="BtnSaveStudent"
             Content="Save Student"
@@ -75,7 +81,7 @@
             Margin="0,284,0,0"
             VerticalAlignment="Top"
             Width="124"
-            Background='#a1b569'
+            Background='#546E7A'
             Height="50"
             Click="BtnSaveStudent_Click" />
         <Button
@@ -85,7 +91,7 @@
             Margin="0,366,0,0"
             VerticalAlignment="Top"
             Width="124"
-            Background='#a1b569'
+            Background='#546E7A'
             Height="50"
             Click="BtnCancelAdd_Click" />
         <Button

@@ -16,7 +16,7 @@ namespace RegexAcademy.Models
         public int StudentId { get; set; }
 
         [Index]
-        public int Grade { get; set; }
+        public int? Grade { get; set; }
 
         [ForeignKey(nameof(CourseId))]
         public virtual Course Course { get; set; }

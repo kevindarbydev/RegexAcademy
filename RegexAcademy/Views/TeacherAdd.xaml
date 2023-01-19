@@ -93,34 +93,35 @@
       Margin="211,163,0,0"
       VerticalAlignment="Top" />
 
-    <Button
-      Height="22"
-      HorizontalAlignment="Left"
-      Margin="10,0,0,294"
-      Name="btnOpen"
-      VerticalAlignment="Bottom"
-      Width="101"
-      Background='#99A1B569'
-      Click="btnOpen_Click"
-      FontSize="10">Upload Image
-    </Button>
-    <Image
-      Name="ImgPhoto"
-      Stretch="Fill"
-      Margin="137,208,64,207" />
+        <Button Height="22"
+                HorizontalAlignment="Left"
+                Margin="10,0,0,294"
+                Name="BtnUploadImg"
+                VerticalAlignment="Bottom"
+                Width="101"
+                Background='#99A1B569'
+                Click="BtnUploadImg_Click"
+                FontSize="10">Upload Image
+        </Button>
+        <Image Name="ImgProfileImage"
+               Margin="137,208,64,207"
+               Width="120"
+               Height="120"
+               Stretch="UniformToFill"
+               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                />
 
-    <Button
-      IsDefault="True"
-      Name="btnDialogOk"
-      Click="btnDialogOk_Click"
-      Width="100"
-      Background='#a1b569'
-      Margin="150,317,50,105">_Save</Button>
-    <Button
-      IsCancel="True"
-      Width="100"
-      Background='#a1b569'
-      Margin="28,317,172,105">_Cancel</Button>
+        <Button IsDefault="True"
+                Name="btnDialogOk"
+                Click="btnDialogOk_Click"
+                Width="100"
+                Background='#a1b569'
+                Margin="150,317,50,105">_Save</Button>
+        <Button IsCancel="True"
+                Width="100"
+                Background='#a1b569'
+                Margin="28,317,172,105">_Cancel</Button>
+        
 
-  </Grid>
+    </Grid>
 </Window>

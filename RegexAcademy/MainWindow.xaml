@@ -13,7 +13,8 @@
   Height="450"
   Width="950"
   ResizeMode="NoResize"
-  Icon="Assets/Images/book.ico">
+  Icon="Assets/Images/book.ico"
+  Closing='Window_Closing'>
   <Window.Background>
     <LinearGradientBrush
       EndPoint="0.5,1"

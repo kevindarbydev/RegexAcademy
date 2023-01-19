@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
+using RegexAcademy.Views;
 
 namespace RegexAcademy
 {
@@ -26,11 +27,11 @@ namespace RegexAcademy
             }
 
             // Comment this out to see the Main window by itself. Didn't have time to finish
-            //Register RegDlg = new Register();
-            //if (RegDlg.ShowDialog() == true)
-            //{
-            //    MessageBox.Show("Register Window was closed");
-            //}
+            if (Globals.isLoggedIn == false)
+            {
+                Register RegDlg = new Register();
+                RegDlg.ShowDialog();
+            }
         }
 
         private void HbMenuItem_Click(object sender, RoutedEventArgs e)
