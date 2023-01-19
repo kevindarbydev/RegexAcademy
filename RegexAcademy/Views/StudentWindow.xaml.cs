@@ -61,8 +61,8 @@ namespace RegexAcademy.Views
             try
             {
                 var student = LvStudents.SelectedItem as Models.Student;
+                if (student == null) return;
                 Models.Student toBeDeleted = Globals.dbContext.Students.Where(s => s.Id == student.Id).FirstOrDefault();
-                MessageBox.Show(student.ToString() + "\n SECOND:\n" + toBeDeleted.ToString());
                 Globals.dbContext.Students.Remove(toBeDeleted);
                 Globals.dbContext.SaveChanges();
                 LvStudents.ItemsSource = Globals.dbContext.Students.ToList();
