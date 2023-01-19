@@ -31,27 +31,27 @@ namespace RegexAcademy
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            TeacherEditDeleteDlg inputDialog = new TeacherEditDeleteDlg();
-            if (inputDialog.ShowDialog() == true)
-            {
-                MessageBox.Show("Hello World");
-            }
-        }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    TeacherEditDeleteDlg inputDialog = new TeacherEditDeleteDlg();
+        //    if (inputDialog.ShowDialog() == true)
+        //    {
+        //        MessageBox.Show("Hello World");
+        //    }
+        //}
 
-        private void btnOpen_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
-            {
-                imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
-            }
+        //private void btnOpen_Click(object sender, RoutedEventArgs e)
+        //{
+        //    OpenFileDialog op = new OpenFileDialog();
+        //    op.Title = "Select a picture";
+        //    op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+        //      "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+        //      "Portable Network Graphic (*.png)|*.png";
+        //    if (op.ShowDialog() == true)
+        //    {
+        //        imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+        //    }
 
-        }
+        //}
     }
 }
