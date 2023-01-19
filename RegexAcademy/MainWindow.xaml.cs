@@ -26,7 +26,6 @@ namespace RegexAcademy
                 Environment.Exit(1);
             }
 
-            // Comment this out to see the Main window by itself. Didn't have time to finish
             if (Globals.isLoggedIn == false)
             {
                 Register RegDlg = new Register();
