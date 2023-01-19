@@ -28,7 +28,7 @@ namespace RegexAcademy
 
             // Comment this out to see the Main window by itself. Didn't have time to finish
             Register RegDlg = new Register();
-            if(RegDlg.ShowDialog() == true)
+            if (RegDlg.ShowDialog() == true)
             {
                 MessageBox.Show("Register Window was closed");
             }

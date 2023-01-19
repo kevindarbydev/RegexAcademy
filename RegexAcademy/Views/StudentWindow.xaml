@@ -40,6 +40,7 @@
       </ListView.View>
     </ListView>
     <Button
+        Name="BtnAddStudent"
       Content="Add Student"
       HorizontalAlignment="Left"
       Margin="10,12,0,0"
@@ -49,7 +50,7 @@
       Background='#546E7A'
       BorderBrush='Black'
       Cursor='Hand'
-      />
+            Click="BtnAddStudent_Click"/>
     <Button
       Content="Edit Student"
       HorizontalAlignment="Left"
