@@ -77,7 +77,9 @@ namespace RegexAcademy
                 case MessageBoxResult.Cancel:
                     e.Cancel = true;
                     break;
-
+                default:
+                    Console.WriteLine("Internal Error - Window_Closing() has failed");
+                    break;
             }
         }
 
