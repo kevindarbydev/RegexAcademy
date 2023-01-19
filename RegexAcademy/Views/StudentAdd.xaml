@@ -68,7 +68,7 @@
             Style="{StaticResource MaterialDesignOutlinedDatePicker}"
             Margin="124,131,44,0"
             VerticalAlignment="Top"
-            Height="46" />
+            Height="50" />
         <!--  <DatePicker
             Name="DpAddStudent"
             Height="36"
@@ -86,7 +86,7 @@
             Click="BtnSaveStudent_Click" />
         <Button
             Name="BtnCancelAdd"
-            Content="Cancel"
+            Content="Close"
             HorizontalAlignment="Center"
             Margin="0,366,0,0"
             VerticalAlignment="Top"
