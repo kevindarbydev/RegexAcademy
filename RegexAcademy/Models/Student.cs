@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RegexAcademy.Models
@@ -77,6 +76,11 @@ namespace RegexAcademy.Models
             }
         }
 
-        public virtual List<StudentCourse> StudenCourseList { get; set; }
+        public override string ToString()
+        {
+            return $"Student ID:{Id}, First name: {_firstName}, Last name: {_lastName}, Date of birth: {_dateOfBirth}";
+        }
+
+        //public virtual List<StudentCourse> StudenCourseList { get; set; }
     }
 }

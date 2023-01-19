@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace RegexAcademy.Views
 {
@@ -19,9 +9,115 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class StudentAdd : Window
     {
+        public Models.Student currentlySelected = null;
+
+        public StudentAdd(Models.Student currentlySelected)
+        {
+            InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                BtnUpdateStudent.Visibility = Visibility.Visible;
+                BtnSaveStudent.Visibility = Visibility.Hidden;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+            if (currentlySelected != null)
+            {
+                this.currentlySelected = currentlySelected;
+                TbxFirstName.Text = currentlySelected.FirstName;
+                TbxLastName.Text = currentlySelected.LastName;
+                DpAddStudent.SelectedDate = currentlySelected.DateOfBirth;
+            }
+        }
+
         public StudentAdd()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+        }
+
+        private void BtnCancelAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnSaveStudent_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Models.Student newStudent = new Models.Student { FirstName = TbxFirstName.Text, LastName = TbxLastName.Text, DateOfBirth = (DateTime)DpAddStudent.SelectedDate };
+                Globals.dbContext.Students.Add(newStudent);
+                Globals.dbContext.SaveChanges();
+                MessageBox.Show(this, "Student saved successfully!", "Student added", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                ResetFields();
+
+
+            }
+            catch (Exception ex) when (ex is ArgumentException || ex is SystemException || ex is InvalidOperationException)
+            {
+                MessageBox.Show(this, "Error saving to DB\n" + ex.Message, "Saving failed",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            //if (TbxFirstName.Text == "")
+            //{
+            //    LblFirstNameError.Content = "Error on first name";
+            //}
+            //if (TbxLastName.Text == "")
+            //{
+            //    LblLastNameError.Content = "Error on last name";
+            //}
+            //if (DpAddStudent.SelectedDate == null)
+            //{
+            //    LblDobError.Content = "Error on dob";
+            //}
+
+            //MessageBox.Show("here");
+        }
+
+        private void ResetFields()
+        {
+            TbxFirstName.Text = "";
+            TbxLastName.Text = "";
+            DpAddStudent.SelectedDate = null;
+        }
+
+        private void BtnUpdateStudent_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (currentlySelected == null) return;
+                string updateMsg = $"Original: {currentlySelected}\n-------------\nUpdated: ";
+                Models.Student toBeUpdated = Globals.dbContext.Students.Where(s => s.Id == currentlySelected.Id).FirstOrDefault();
+                toBeUpdated.FirstName = TbxFirstName.Text;
+                toBeUpdated.LastName = TbxLastName.Text;
+                toBeUpdated.DateOfBirth = (DateTime)DpAddStudent.SelectedDate;
+                updateMsg += $"{toBeUpdated}";
+                MessageBox.Show(this, updateMsg, "Update success",
+                   MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Error saving to DB\n" + ex.Message, "Update failed",
+                   MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 }
