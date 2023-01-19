@@ -9,12 +9,12 @@ namespace RegexAcademy.Models
     {
         public Course(string CourseName, DateTime StartDate, DateTime EndDate, Enum Weekdays, DateTime StartTime, DateTime EndTime)
         {
-            CourseName = courseName;
-            StartDate = startDate;
-            EndDate = endDate;
-            Weekdays = weekdays;
-            StartTime = startTime;
-            EndTime = endTime;
+            CourseName = _courseName;
+            StartDate = _startDate;
+            EndDate = _endDate;
+            Weekdays = _weekdays;
+            StartTime = _startTime;
+            EndTime = _endTime;
         }
         public Course()
         {
@@ -95,7 +95,7 @@ namespace RegexAcademy.Models
                 _endDate = value;
             }
         }
-
+        private Enum _weekdays;
         public enum Weekdays { M = 1, Tu = 2, W = 3, Th = 4, F = 5, Sa = 6, Su = 7 };
 
         [Required]
