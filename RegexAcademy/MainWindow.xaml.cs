@@ -1,5 +1,4 @@
 ﻿using HamburgerMenu;
-using RegexAcademy.Views;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -27,11 +26,11 @@ namespace RegexAcademy
             }
 
             // Comment this out to see the Main window by itself. Didn't have time to finish
-            Register RegDlg = new Register();
-            if (RegDlg.ShowDialog() == true)
-            {
-                MessageBox.Show("Register Window was closed");
-            }
+            //Register RegDlg = new Register();
+            //if (RegDlg.ShowDialog() == true)
+            //{
+            //    MessageBox.Show("Register Window was closed");
+            //}
         }
 
         private void HbMenuItem_Click(object sender, RoutedEventArgs e)
@@ -53,6 +52,10 @@ namespace RegexAcademy
                     break;
                 case "StudentCourses":
                     ContentFrame.Source = new Uri("Views/StudentCoursesWindow.xaml", UriKind.Relative);
+                    break;
+
+                default:
+                    Console.WriteLine("Internal Error - HbMenuItem_Click has failed");
                     break;
             }
         }
