@@ -11,23 +11,43 @@
       Title="TeacherWindow">
     <Grid>
         <ListView Name="LvTeachers"
-                  Margin="0,49,119,106">
+                  Margin="0,49,10,0">
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Left" />
+                    <Setter Property="Background"
+                            Value="Transparent" />
+                    <Setter Property="BorderBrush"
+                            Value="Transparent" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           Padding="5"
+                                           Width="{TemplateBinding Width}"
+                                           TextAlignment="Left" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Teacher ID"
-                                    Width="150"
+                                    Width="70"
                                     DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="First Name"
-                                    Width="150"
+                                    Width="100"
                                     DisplayMemberBinding="{Binding FirstName}" />
                     <GridViewColumn Header="Last Name"
-                                    Width="150"
+                                    Width="100"
                                     DisplayMemberBinding="{Binding LastName}" />
                     <GridViewColumn Header="Email"
-                                    Width="150"
+                                    Width="130"
                                     DisplayMemberBinding="{Binding Email}" />
                     <GridViewColumn Header="Availability"
-                                    Width="150"
+                                    Width="70"
                                     DisplayMemberBinding="{Binding Availability}" />
                     <GridViewColumn Header="Profile Image"
                                     Width="150"
@@ -36,6 +56,7 @@
             </ListView.View>
         </ListView>
         <Button Content="Add Teacher"
+                Name="BtnAddTeacher"
                 HorizontalAlignment="Left"
                 Margin="10,12,0,0"
                 VerticalAlignment="Top"
@@ -43,8 +64,11 @@
                 materialDesign:RippleAssist.Feedback="Yellow"
                 Background='#a1b569'
                 BorderBrush='Black'
-                Cursor='Hand' />
+                Cursor='Hand'
+                Click="BtnAddTeacher_Click" />
+
         <Button Content="Edit Teacher"
+                Name="BtnEditTeacher"
                 HorizontalAlignment="Left"
                 Margin="145,12,0,0"
                 VerticalAlignment="Top"
@@ -53,9 +77,11 @@
                 materialDesign:RippleAssist.Feedback="Yellow"
                 Background='#a1b569'
                 BorderBrush='Black'
-                Cursor='Hand' />
+                Cursor='Hand'
+                Click="BtnEditTeacher_Click" />
 
         <Button Content="Delete Teacher"
+                Name="BtnDeleteTeacher"
                 HorizontalAlignment="Left"
                 Margin="275,12,0,0"
                 VerticalAlignment="Top"
@@ -64,20 +90,9 @@
                 Background='#a1b569'
                 BorderBrush='Black'
                 Cursor='Hand'
-                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}" />
+                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}"
+                Click="BtnDeleteTeacher_Click" />
     </Grid>
 </Page>
 
-<!-- IMPLEMENT NEW WINDOW DIALOG FOR SOMETHING? -->
-<!--<Button Height="35"
-                HorizontalAlignment="Left"
-                Margin="124,0,0,190"
-                Name="btnOpen"
-                VerticalAlignment="Bottom"
-                Width="75"
-                Background='#a1b569'
-                Click="btnOpen_Click">Open
-    </Button>
-    <Image Name="imgPhoto"
-           Stretch="Fill"
-           Margin="273,52,72,200" /> -->
+<!-- IMAGE UPLOAD IMPLEMENTATION -->
