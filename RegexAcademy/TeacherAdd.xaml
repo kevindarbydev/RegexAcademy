@@ -65,6 +65,18 @@
                Margin="10,160,0,0"
                VerticalAlignment="Top"
                Width="78" />
+        <RadioButton Content="Yes"
+                     Name="RbnYes"
+                     GroupName="RbnAvailability"
+                     HorizontalAlignment="Left"
+                     Margin="124,163,0,0"
+                     VerticalAlignment="Top" />
+        <RadioButton Content="No"
+                     Name="RbnNo"
+                     GroupName="RbnAvailability"
+                     HorizontalAlignment="Left"
+                     Margin="211,163,0,0"
+                     VerticalAlignment="Top" />
 
         <Button Height="22"
                 HorizontalAlignment="Left"
@@ -76,7 +88,7 @@
                 Click="btnOpen_Click"
                 FontSize="10">Upload Image
         </Button>
-        <Image Name="imgPhoto"
+        <Image Name="ImgPhoto"
                Stretch="Fill"
                Margin="137,208,64,207" />
 
@@ -90,14 +102,7 @@
                 Width="100"
                 Background='#a1b569'
                 Margin="28,317,172,105">_Cancel</Button>
-        <RadioButton Content="Yes"
-                     HorizontalAlignment="Left"
-                     Margin="124,163,0,0"
-                     VerticalAlignment="Top" />
-        <RadioButton Content="No"
-                     HorizontalAlignment="Left"
-                     Margin="211,163,0,0"
-                     VerticalAlignment="Top" />
+        
 
     </Grid>
 </Window>

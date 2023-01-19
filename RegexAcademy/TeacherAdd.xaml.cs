@@ -23,10 +23,51 @@ namespace RegexAcademy
         public TeacherAdd()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
         }
 
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                bool availability = true;
+                if (RbnYes.IsChecked == true)
+                {
+                    availability = true;
+                } else if (RbnNo.IsChecked == true)
+                {
+                    availability = false;
+                }
+                else
+                { // internal error
+                    MessageBox.Show(this, "Error reading radio buttons state", "Internal error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                Teacher t1 = new Teacher(TbxFirstName.Text, TbxLastName.Text, TbxEmail.Text, null, availability);
+
+                Globals.dbContext.Teachers.Add(t1);
+                Globals.dbContext.SaveChanges(); // ex SystemException
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             this.DialogResult = true;
         }
 
@@ -39,7 +80,7 @@ namespace RegexAcademy
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
-                imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+                ImgPhoto.Source = new BitmapImage(new Uri(op.FileName));
             }
 
         }

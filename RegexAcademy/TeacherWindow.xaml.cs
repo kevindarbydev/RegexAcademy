@@ -24,6 +24,19 @@ namespace RegexAcademy
         public TeacherWindow()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                LvTeachers.ItemsSource = Globals.dbContext.Teachers.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+
         }
 
         private void LvTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,7 +49,7 @@ namespace RegexAcademy
             TeacherAdd inputDialog = new TeacherAdd();
             if (inputDialog.ShowDialog() == true)
             {
-                MessageBox.Show("Hello World");
+                MessageBox.Show("Add Teacher Window was closed");
             }
         }
 
