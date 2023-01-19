@@ -1,99 +1,114 @@
-﻿<Page x:Class="RegexAcademy.Views.TeacherWindow"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:local="clr-namespace:RegexAcademy.Views"
-      xmlns:view='clr-namespace:RegexAcademy.Views'
-      mc:Ignorable="d"
-      d:DesignHeight="450"
-      d:DesignWidth="800">
-    <Grid>
-        <ListView Name="LvTeachers"
-                  Margin="0,49,10,0">
-            <ListView.Resources>
-                <Style TargetType="{x:Type GridViewColumnHeader}">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Left" />
-                    <Setter Property="Background"
-                            Value="Transparent" />
-                    <Setter Property="BorderBrush"
-                            Value="Transparent" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
-                                <TextBlock Text="{TemplateBinding Content}"
-                                           Padding="5"
-                                           Width="{TemplateBinding Width}"
-                                           TextAlignment="Left" />
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.Resources>
+﻿<Page
+  x:Class="RegexAcademy.Views.TeacherWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+  xmlns:local="clr-namespace:RegexAcademy.Views"
+  xmlns:view='clr-namespace:RegexAcademy.Views'
+  mc:Ignorable="d"
+  d:DesignHeight="450"
+  d:DesignWidth="800">
+  <Grid>
+    <ListView
+      Name="LvTeachers"
+      Margin="0,49,10,0">
+      <ListView.Resources>
+        <Style
+          TargetType="{x:Type GridViewColumnHeader}">
+          <Setter
+            Property="HorizontalContentAlignment"
+            Value="Left" />
+          <Setter
+            Property="Background"
+            Value="Transparent" />
+          <Setter
+            Property="BorderBrush"
+            Value="Transparent" />
+          <Setter
+            Property="Template">
+            <Setter.Value>
+              <ControlTemplate
+                TargetType="{x:Type GridViewColumnHeader}">
+                <TextBlock
+                  Text="{TemplateBinding Content}"
+                  Padding="5"
+                  Width="{TemplateBinding Width}"
+                  TextAlignment="Left" />
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
+        </Style>
+      </ListView.Resources>
 
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Teacher ID"
-                                    Width="70"
-                                    DisplayMemberBinding="{Binding Id}" />
-                    <GridViewColumn Header="First Name"
-                                    Width="100"
-                                    DisplayMemberBinding="{Binding FirstName}" />
-                    <GridViewColumn Header="Last Name"
-                                    Width="100"
-                                    DisplayMemberBinding="{Binding LastName}" />
-                    <GridViewColumn Header="Email"
-                                    Width="150"
-                                    DisplayMemberBinding="{Binding Email}" />
-                    <GridViewColumn Header="Availability"
-                                    Width="70"
-                                    DisplayMemberBinding="{Binding Availability}" />
-                    <GridViewColumn Header="Profile Image"
-                                    Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding ProfileImageToShow}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Add Teacher"
-                Name="BtnAddTeacher"
-                HorizontalAlignment="Left"
-                Margin="10,12,0,0"
-                VerticalAlignment="Top"
-                ToolTip="Add a new Teacher"
-                materialDesign:RippleAssist.Feedback="Yellow"
-                Background='#a1b569'
-                BorderBrush='Black'
-                Cursor='Hand'
-                Click="BtnAddTeacher_Click" />
-        <Button Content="Edit Teacher"
-                Name="BtnEditTeacher"
-                HorizontalAlignment="Left"
-                Margin="145,12,0,0"
-                VerticalAlignment="Top"
-                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}"
-                ToolTip="Edit selected Teacher(s)"
-                materialDesign:RippleAssist.Feedback="Yellow"
-                Background='#a1b569'
-                BorderBrush='Black'
-                Cursor='Hand' />
 
-        <Button Content="Delete Teacher"
-                Name="BtnDeleteTeacher"
-                HorizontalAlignment="Left"
-                Margin="275,12,0,0"
-                VerticalAlignment="Top"
-                materialDesign:RippleAssist.Feedback="Red"
-                ToolTip="Delete selected Teacher(s)"
-                Background='#a1b569'
-                BorderBrush='Black'
-                Cursor='Hand'
-                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}" />
-    </Grid>
+      <ListView.View>
+        <GridView>
+          <GridViewColumn
+            Header="Teacher ID"
+            Width="70"
+            DisplayMemberBinding="{Binding Id}" />
+          <GridViewColumn
+            Header="First Name"
+            Width="100"
+            DisplayMemberBinding="{Binding FirstName}" />
+          <GridViewColumn
+            Header="Last Name"
+            Width="100"
+            DisplayMemberBinding="{Binding LastName}" />
+          <GridViewColumn
+            Header="Email"
+            Width="130"
+            DisplayMemberBinding="{Binding Email}" />
+          <GridViewColumn
+            Header="Availability"
+            Width="70"
+            DisplayMemberBinding="{Binding Availability}" />
+          <GridViewColumn
+            Header="Profile Image"
+            Width="150"
+            DisplayMemberBinding="{Binding ProfileImage}" />
+        </GridView>
+      </ListView.View>
+    </ListView>
+    <Button
+      Content="Add Teacher"
+      Name="BtnAddTeacher"
+      HorizontalAlignment="Left"
+      Margin="10,12,0,0"
+      VerticalAlignment="Top"
+      ToolTip="Add a new Teacher"
+      materialDesign:RippleAssist.Feedback="Yellow"
+      Background='#a1b569'
+      BorderBrush='Black'
+      Cursor='Hand'
+      Click="BtnAddTeacher_Click" />
+    <Button
+      Content="Edit Teacher"
+      Name="BtnEditTeacher"
+      HorizontalAlignment="Left"
+      Margin="145,12,0,0"
+      VerticalAlignment="Top"
+      IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}"
+      ToolTip="Edit selected Teacher(s)"
+      materialDesign:RippleAssist.Feedback="Yellow"
+      Background='#a1b569'
+      BorderBrush='Black'
+      Cursor='Hand' />
+
+
+    <Button
+      Content="Delete Teacher"
+      Name="BtnDeleteTeacher"
+      HorizontalAlignment="Left"
+      Margin="275,12,0,0"
+      VerticalAlignment="Top"
+      materialDesign:RippleAssist.Feedback="Red"
+      ToolTip="Delete selected Teacher(s)"
+      Background='#a1b569'
+      BorderBrush='Black'
+      Cursor='Hand'
+      IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}" />
+  </Grid>
 </Page>

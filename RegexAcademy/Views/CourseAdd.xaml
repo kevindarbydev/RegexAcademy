@@ -8,8 +8,165 @@
   xmlns:materialDesign='http://materialdesigninxaml.net/winfx/xaml/themes'
   mc:Ignorable="d"
   Title="Add a new Course"
-  Height="600"
-  Width="300">
-  
+  Height="750"
+  Width="500"
+  ResizeMode='NoResize'>
 
+  <Window.Background>
+    <LinearGradientBrush
+      EndPoint="0.5,1"
+      StartPoint="0.5,0">
+      <GradientStop
+        Color="LightBlue" />
+      <GradientStop
+        Color="#FF8A5269"
+        Offset="1" />
+      <GradientStop
+        Color="#FFAAFF"
+        Offset="2" />
+    </LinearGradientBrush>
+  </Window.Background>
+  <Grid
+    Margin='10,10,-25,-6'>
+    <Label
+      Content="Course Name:"
+      HorizontalAlignment="Left"
+      Margin="37,15,0,0"
+      VerticalAlignment="Top"
+      Width="90" />
+    <TextBox
+      Name="TbxCourseName"
+      HorizontalAlignment="Left"
+      Height="23"
+      Margin="170,16,0,0"
+      TextWrapping="Wrap"
+      VerticalAlignment="Top"
+      Width="250" />
+    <Label
+      Content="Start Date:"
+      HorizontalAlignment="Left"
+      Margin="37,72,0,0"
+      VerticalAlignment="Top"
+      Width="78" />
+    <DatePicker
+      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+      materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="2"
+      materialDesign:HintAssist.FloatingOffset="0,-22"
+      materialDesign:HintAssist.Hint="Pick a date"
+      Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+      Margin='170,58,54,0'
+      VerticalAlignment='Top'
+      Height='51' />
+    <Button
+      IsDefault="True"
+      Name="BtnCourseDialogSave"
+      Click="BtnCourseDialogSave_Click"
+      Width="100"
+      Background='#a1b569'
+      Margin="226,472,54,61"
+      Content='Save'></Button>
+    <Button
+      IsCancel="True"
+      Width="100"
+      Background='#a1b569'
+      Margin="37,472,243,61"
+      Content='Cancel'></Button>
+    <Label
+      Content="End Date:"
+      HorizontalAlignment="Left"
+      Margin="37,142,0,0"
+      VerticalAlignment="Top"
+      Width="78" />
+    <DatePicker
+      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+      materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="2"
+      materialDesign:HintAssist.FloatingOffset="0,-22"
+      materialDesign:HintAssist.Hint="Pick a date"
+      Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+      Margin='170,129,54,0'
+      VerticalAlignment='Top'
+      Height='50' />
+    <Label
+      Content="Weekdays:"
+      HorizontalAlignment="Left"
+      Margin="37,211,0,0"
+      VerticalAlignment="Top"
+      Width="78" />
+    <ToggleButton
+      Content="M"
+      IsChecked="False"
+      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+      ToolTip="Monday"
+      Margin='170,207,311,491' />
+    <ToggleButton
+      Content="Tu"
+      IsChecked="False"
+      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+      ToolTip="Tuesday"
+      Margin='258,207,225,491' />
+    <ToggleButton
+      Content="W"
+      IsChecked="False"
+      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+      ToolTip="Wednesday"
+      Margin='344,207,139,491'
+      RenderTransformOrigin='0.531,0.563' />
+    <ToggleButton
+      Content="Th"
+      IsChecked="False"
+      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+      ToolTip="Thursday"
+      Margin='429,207,54,491' />
+    <ToggleButton
+      Content="F"
+      IsChecked="False"
+      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+      ToolTip="Friday"
+      Margin='213,254,270,444' />
+    <ToggleButton
+      Content="Sa"
+      IsChecked="False"
+      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+      ToolTip="Saturday"
+      Margin='300,254,183,444'
+      RenderTransformOrigin='0.484,0.532' />
+    <ToggleButton
+      Content="Su"
+      IsChecked="False"
+      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+      ToolTip="Sunday"
+      Margin='388,254,95,444' />
+    <Label
+      Content="Start Time:"
+      HorizontalAlignment="Left"
+      Margin="37,322,0,0"
+      VerticalAlignment="Top"
+      Width="78" />
+    <materialDesign:TimePicker
+      materialDesign:HintAssist.FloatingOffset="0,-23"
+      materialDesign:HintAssist.Hint="Pick a time"
+      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+      materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="2"
+      Is24Hours="True"
+      Style="{StaticResource MaterialDesignOutlinedTimePicker}"
+      Margin='170,381,54,0'
+      VerticalAlignment='Top'
+      Height='50' />
+    <Label
+      Content="End Time:"
+      HorizontalAlignment="Left"
+      Margin="37,394,0,0"
+      VerticalAlignment="Top"
+      Width="78" />
+    <materialDesign:TimePicker
+      materialDesign:HintAssist.FloatingOffset="0,-23"
+      materialDesign:HintAssist.Hint="Pick a time"
+      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+      materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="2"
+      Is24Hours="True"
+      Style="{StaticResource MaterialDesignOutlinedTimePicker}"
+      Margin='170,309,54,0'
+      Height='50'
+      VerticalAlignment='Top' />
+  </Grid>
 </Window>

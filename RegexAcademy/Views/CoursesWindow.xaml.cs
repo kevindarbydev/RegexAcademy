@@ -1,4 +1,8 @@
-﻿using System.Windows.Controls;
+﻿using System.Linq;
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using RegexAcademy.Models;
 
 namespace RegexAcademy.Views
 {
@@ -10,6 +14,27 @@ namespace RegexAcademy.Views
         public CoursesWindow()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+        }
+    
+        private void BtnAddCourse_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            CourseAdd inputDialog = new CourseAdd();
+            if (inputDialog.ShowDialog() == true)
+            {
+                MessageBox.Show("Add Course Window was closed");
+            }
         }
     }
 }

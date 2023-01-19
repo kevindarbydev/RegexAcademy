@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RegexAcademy.Models;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace RegexAcademy.Views
 {
@@ -22,6 +12,40 @@ namespace RegexAcademy.Views
         public CourseAdd()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
         }
+        private void BtnCourseDialogSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                Course c1 = new Course();
+
+                Globals.dbContext.Courses.Add(c1);
+                Globals.dbContext.SaveChanges(); // ex SystemException
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            this.DialogResult = true;
+        }
+
     }
 }
