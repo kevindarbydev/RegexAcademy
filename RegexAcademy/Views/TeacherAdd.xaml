@@ -81,16 +81,20 @@
         <Button Height="22"
                 HorizontalAlignment="Left"
                 Margin="10,0,0,294"
-                Name="btnOpen"
+                Name="BtnUploadImg"
                 VerticalAlignment="Bottom"
                 Width="101"
                 Background='#99A1B569'
-                Click="btnOpen_Click"
+                Click="BtnUploadImg_Click"
                 FontSize="10">Upload Image
         </Button>
-        <Image Name="ImgPhoto"
-               Stretch="Fill"
-               Margin="137,208,64,207" />
+        <Image Name="ImgProfileImage"
+               Margin="137,208,64,207"
+               Width="120"
+               Height="120"
+               Stretch="UniformToFill"
+               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                />
 
         <Button IsDefault="True"
                 Name="btnDialogOk"
@@ -102,7 +106,5 @@
                 Width="100"
                 Background='#a1b569'
                 Margin="28,317,172,105">_Cancel</Button>
-        
-
     </Grid>
 </Window>

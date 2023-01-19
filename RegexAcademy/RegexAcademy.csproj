@@ -81,6 +81,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202301190206191_InitialCreate.cs" />
+    <Compile Include="Migrations\202301190206191_InitialCreate.designer.cs">
+      <DependentUpon>202301190206191_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301191759154_Update.cs" />
+    <Compile Include="Migrations\202301191759154_Update.designer.cs">
+      <DependentUpon>202301191759154_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Views\CourseAdd.xaml.cs">
       <DependentUpon>CourseAdd.xaml</DependentUpon>
@@ -179,6 +188,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202301190206191_InitialCreate.resx">
+      <DependentUpon>202301190206191_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301191759154_Update.resx">
+      <DependentUpon>202301191759154_Update.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

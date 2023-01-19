@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace RegexAcademy.Models
 {
@@ -11,7 +14,7 @@ namespace RegexAcademy.Models
 
         public Teacher() { }
 
-        public Teacher(string firstName, string lastName, string email, byte[] profileImage, bool availability)
+        public Teacher(string firstName, string lastName, string email, byte[] profileImage,  bool availability)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -81,6 +84,28 @@ namespace RegexAcademy.Models
         }
 
         public byte[] ProfileImage { get; set; }
+
+        [NotMapped]
+        public BitmapImage ProfileImageToShow
+        {
+            get
+            {
+                if (ProfileImage == null || ProfileImage.Length == 0) return null;
+                var image = new BitmapImage();
+                using (var mem = new MemoryStream(ProfileImage))
+                {
+                    mem.Position = 0;
+                    image.BeginInit();
+                    image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = null;
+                    image.StreamSource = mem;
+                    image.EndInit();
+                }
+                image.Freeze();
+                return image;
+            }
+        }
 
         private bool _availability;
 

@@ -45,14 +45,19 @@
                                     Width="100"
                                     DisplayMemberBinding="{Binding LastName}" />
                     <GridViewColumn Header="Email"
-                                    Width="130"
+                                    Width="150"
                                     DisplayMemberBinding="{Binding Email}" />
                     <GridViewColumn Header="Availability"
                                     Width="70"
                                     DisplayMemberBinding="{Binding Availability}" />
                     <GridViewColumn Header="Profile Image"
-                                    Width="150"
-                                    DisplayMemberBinding="{Binding ProfileImage}" />
+                                    Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding ProfileImageToShow}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
