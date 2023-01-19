@@ -62,6 +62,46 @@
 - Create Teacher window
 
 
+--------------------------------------------------------------------------------------
+1/19/2023 Kevin
+1. Done/not done since last scrum:
+- Completed basic project structure
+ (Interface buttons + changing content)
+- Student model + window
+2. To do until next Scrum:
+- Implement Add,Edit on Students
+- Implement DB operations
+
+1/19/2023 Matthew
+1. Done/not done since last scrum:
+- Creation of Courses, Users and StudentCourses Models
+- Creation of Register and Log In Windows
+- Creation of Db Context
+2. To do until next Scrum:
+- Implement Register and Login code-behind
+- Implement Db operations for Users
+- Start Db operations for Courses 
+
+1/19/2023 Chris
+1. Done/not done since last scrum:
+- implemented MVVM structure, hamburger menu>connections to pages, styling, OnClosing dialog/user verif
+2. To do until next Scrum:
+- Students>Add, Edit, Delete custom dialogs, connection to db for each, validation/constraints
+- populate more of the user stories (Trello)
+3. 3. Need assistance / figure things out:
+-  cross-table interactions so as to show up on same dialog
+
+1/19/2023 Seena
+1. Done/not done since last scrum:
+- Teacher model done
+- Teacher Add 90% done
+- Teacher Edit Delete not started
+2. To do until next Scrum:
+- Finish Teacher Add and figure out img to DB
+- Finish Edit/Delete Teacher
+
+
+
 
 
 

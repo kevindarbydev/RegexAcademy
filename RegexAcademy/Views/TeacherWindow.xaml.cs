@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RegexAcademy.Views
@@ -11,6 +13,18 @@ namespace RegexAcademy.Views
         public TeacherWindow()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                LvTeachers.ItemsSource = Globals.dbContext.Teachers.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
         }
 
         private void LvTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -26,28 +40,5 @@ namespace RegexAcademy.Views
                 MessageBox.Show("Add Teacher Window was closed");
             }
         }
-
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    TeacherEditDeleteDlg inputDialog = new TeacherEditDeleteDlg();
-        //    if (inputDialog.ShowDialog() == true)
-        //    {
-        //        MessageBox.Show("Hello World");
-        //    }
-        //}
-
-        //private void btnOpen_Click(object sender, RoutedEventArgs e)
-        //{
-        //    OpenFileDialog op = new OpenFileDialog();
-        //    op.Title = "Select a picture";
-        //    op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-        //      "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-        //      "Portable Network Graphic (*.png)|*.png";
-        //    if (op.ShowDialog() == true)
-        //    {
-        //        imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
-        //    }
-
-        //}
     }
 }
