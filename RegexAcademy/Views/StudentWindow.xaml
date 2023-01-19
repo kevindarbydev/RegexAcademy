@@ -22,10 +22,12 @@
                     <GridViewColumn
                         Header="Student ID"
                         Width="150"
-                        DisplayMemberBinding="{Binding Id}" />
+                        DisplayMemberBinding="{Binding Id}"
+                        />
                     <GridViewColumn
                         Header="First Name"
                         Width="150"
+                         
                         DisplayMemberBinding="{Binding FirstName}" />
                     <GridViewColumn
                         Header="Last Name"
