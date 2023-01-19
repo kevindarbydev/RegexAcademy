@@ -1,5 +1,4 @@
-﻿using RegexAcademy.Models;
-using System;
+﻿using System;
 using System.Windows;
 
 namespace RegexAcademy.Views
@@ -28,11 +27,17 @@ namespace RegexAcademy.Views
         {
             try
             {
+                if (DpCoursesStartDate.SelectedDate == null || DpCoursesEndDate.SelectedDate == null || TpCoursesStartTime == null || TpCoursesEndTime == null)
+                {
+                    MessageBox.Show("Please ensure all dates and times are picked.");
+                    return;
+                }
+                Models.Course newCourse = new Models.Course { CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
+                Globals.dbContext.Courses.Add(newCourse);
+                Globals.dbContext.SaveChanges();
+                MessageBox.Show(this, "Course saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                //ResetFields();
 
-                Course c1 = new Course();
-
-                Globals.dbContext.Courses.Add(c1);
-                Globals.dbContext.SaveChanges(); // ex SystemException
             }
             catch (ArgumentException ex)
             {
@@ -46,6 +51,7 @@ namespace RegexAcademy.Views
 
             this.DialogResult = true;
         }
+
 
     }
 }
