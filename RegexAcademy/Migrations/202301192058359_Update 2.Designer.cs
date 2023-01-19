@@ -7,13 +7,13 @@ namespace RegexAcademy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Stev : IMigrationMetadata
+    public sealed partial class Update2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Stev));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Update2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202301192054186_Stev"; }
+            get { return "202301192058359_Update 2"; }
         }
         
         string IMigrationMetadata.Source
