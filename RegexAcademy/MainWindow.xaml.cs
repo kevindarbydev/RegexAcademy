@@ -1,4 +1,5 @@
 ﻿using HamburgerMenu;
+using RegexAcademy.Views;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -13,6 +14,7 @@ namespace RegexAcademy
         public MainWindow()
         {
             InitializeComponent();
+
             try
             {
                 Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
@@ -22,6 +24,13 @@ namespace RegexAcademy
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(1);
+            }
+
+            // Comment this out to see the Main window by itself. Didn't have time to finish
+            Register RegDlg = new Register();
+            if(RegDlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Register Window was closed");
             }
         }
 

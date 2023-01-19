@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace RegexAcademy.Views
 {
@@ -15,6 +16,15 @@ namespace RegexAcademy.Views
         private void LvTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void BtnAddTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherAdd inputDialog = new TeacherAdd();
+            if (inputDialog.ShowDialog() == true)
+            {
+                MessageBox.Show("Add Teacher Window was closed");
+            }
         }
 
         //private void Button_Click(object sender, RoutedEventArgs e)

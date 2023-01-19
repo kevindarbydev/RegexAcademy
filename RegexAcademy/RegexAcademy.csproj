@@ -82,24 +82,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherAdd.xaml.cs">
+      <DependentUpon>TeacherAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CoursesWindow.xaml.cs">
       <DependentUpon>CoursesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="PasswordEncryptor.cs" />
     <Compile Include="RegexAcademyDbContext.cs" />
-    <Compile Include="Register.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentCourse.cs" />
     <Compile Include="Views\StudentCoursesWindow.xaml.cs">
@@ -109,13 +106,22 @@
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher.cs" />
-    <Compile Include="Views\TeacherEditDeleteDlg.xaml.cs">
-      <DependentUpon>TeacherEditDeleteDlg.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\TeacherWindow.xaml.cs">
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
+    <Page Include="Views\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TeacherAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CoursesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,10 +143,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StudentWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TeacherEditDeleteDlg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

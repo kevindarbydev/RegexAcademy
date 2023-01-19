@@ -53,7 +53,8 @@
       materialDesign:RippleAssist.Feedback="Yellow"
       Background='#a1b569'
       BorderBrush='Black'
-      Cursor='Hand' />
+      Cursor='Hand' 
+      Click="BtnAddTeacher_Click" />
     <Button
       Content="Edit Teacher"
       HorizontalAlignment="Left"
