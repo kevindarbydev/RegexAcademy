@@ -100,7 +100,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Width="124"
-            Background='#a1b569'
+            Background='#546E7A'
             Height="50"
             Visibility="Hidden"
             Click="BtnUpdateStudent_Click"
