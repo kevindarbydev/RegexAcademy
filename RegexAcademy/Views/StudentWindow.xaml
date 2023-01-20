@@ -14,19 +14,41 @@
     <Grid>
         <ListView
             Name="LvStudents"
-            Margin="0,49,119,106"            
+            Margin="0,49,119,106"
             SelectionChanged="LvStudents_SelectionChanged">
+            <ListView.ContextMenu>
+
+                <ContextMenu>
+                    
+                    <MenuItem
+                        Name="MiSortId"
+                        Header="Sort By Id"
+                        Click="MiSortId_Click" />
+                    <MenuItem
+                        Name="MiSortFName"
+                        Header="Sort By First Name"
+                        Click="MiSortFName_Click" />
+                    <MenuItem
+                        Name="MiSortLName"
+                        Header="Sort By Last Name"
+                        Click="MiSortLName_Click" />
+                    <MenuItem
+                        Name="MiSortDob"
+                        Header="Sort By Date Of Birth"
+                        Click="MiSortDob_Click" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+            
+           
             <ListView.View>
                 <GridView>
                     <GridViewColumn
                         Header="Student ID"
                         Width="150"
-                        DisplayMemberBinding="{Binding Id}"
-                        />
+                        DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn
                         Header="First Name"
                         Width="150"
-                         
                         DisplayMemberBinding="{Binding FirstName}" />
                     <GridViewColumn
                         Header="Last Name"

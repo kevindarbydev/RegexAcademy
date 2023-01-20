@@ -78,5 +78,30 @@ namespace RegexAcademy.Views
             }
 
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MiSortId_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MiSortFName_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MiSortLName_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MiSortDob_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
