@@ -26,9 +26,9 @@
             Width="100"
             DisplayMemberBinding="{Binding CourseName}" />
           <GridViewColumn
-            Header="Day of Week"
+            Header="Day(s)"
             Width="150"
-            DisplayMemberBinding="{Binding DayOfWeek}" />
+            DisplayMemberBinding="{Binding Weekday}" />
           <GridViewColumn
             Header="Start Date"
             Width="150"

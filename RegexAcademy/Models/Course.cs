@@ -7,18 +7,19 @@ namespace RegexAcademy.Models
 {
     public class Course
     {
-        public Course(string CourseName, DateTime StartDate, DateTime EndDate, Enum Weekdays, DateTime StartTime, DateTime EndTime)
-        {
-            CourseName = _courseName;
-            StartDate = _startDate;
-            EndDate = _endDate;
-            Weekdays = _weekdays;
-            StartTime = _startTime;
-            EndTime = _endTime;
-        }
         public Course()
         {
 
+        }
+        public Course(string courseName, DateTime startDate, DateTime endDate, WeekdayEnum weekday, DateTime startTime, DateTime endTime)
+        {
+            CourseName = courseName;
+            StartDate = startDate;
+            EndDate = endDate;
+            Weekday = weekday;
+            //Weekday = (WeekdayEnum)Enum.Parse(typeof(WeekdayEnum), weekday);
+            StartTime = startTime;
+            EndTime = endTime;
         }
 
 
@@ -31,7 +32,7 @@ namespace RegexAcademy.Models
 
         private string _courseName;
         [Required]
-        [StringLength(50)]
+        [StringLength(30)]
         public string CourseName
         {
             get
@@ -42,14 +43,15 @@ namespace RegexAcademy.Models
             {
                 if (value.Length < 3 || value.Length > 30)
                 {
-                    throw new ArgumentException("Course name length should be 3-30 characters long");
+                    throw new ArgumentException("Course name length must be 3-30 characters long");
                 }
                 if (Globals.HasSpecialChars(value))
+                // or Regex.IsMatch(value, @"^([a-zA-Z0-9./,;\-+()*!'""\s])+$")
                 {
                     throw new ArgumentException("Course name cannot contain special characters.");
                 }
-                string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
-                _courseName = CapitalizeName;
+                string CapitalizeFirstCharCourseName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
+                _courseName = CapitalizeFirstCharCourseName;
             }
         }
 
@@ -95,12 +97,21 @@ namespace RegexAcademy.Models
                 _endDate = value;
             }
         }
-        private Enum _weekdays;
-        public enum Weekdays { M = 1, Tu = 2, W = 3, Th = 4, F = 5, Sa = 6, Su = 7 };
+
+        public enum WeekdayEnum
+        {
+            M = 0,
+            Tu = 1,
+            W = 2,
+            Th = 3,
+            F = 4,
+            Sa = 5,
+            Su = 6
+        }
 
         [Required]
-        [EnumDataType(typeof(Weekdays))]
-        public Weekdays DayOfWeek { get; set; }
+        [EnumDataType(typeof(WeekdayEnum))]
+        public WeekdayEnum Weekday { get; set; }
 
         private DateTime _startTime;
         [Required]
@@ -151,3 +162,4 @@ namespace RegexAcademy.Models
 
     }
 }
+// missing tostring
