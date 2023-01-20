@@ -12,15 +12,15 @@ namespace RegexAcademy.Models
         {
 
         }
-        public Course(string courseName, DateTime startDate, DateTime endDate, string weekday, datetime starttime, datetime endtime)
+        public Course(string courseName, DateTime startDate, DateTime endDate, string weekday, DateTime starttime, DateTime endtime)
         {
             CourseName = courseName;
             StartDate = startDate;
             EndDate = endDate;
             Weekday = weekday;
             //Weekday = (WeekdayEnum)Enum.Parse(typeof(WeekdayEnum), weekday);
-            StartTime= starttime;
-            EndTime= endtime;
+            StartTime = starttime;
+            EndTime = endtime;
         }
 
 
