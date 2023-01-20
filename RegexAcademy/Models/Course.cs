@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace RegexAcademy.Models
 {
@@ -27,7 +28,7 @@ namespace RegexAcademy.Models
         [StringLength(4)]
         public string CourseId { get; set; }
 
-        public int TeacherId { get; set; }
+        public int? TeacherId { get; set; } // should be nullable as teachers can be assigned after course creation
 
 
         private string _courseName;
@@ -45,10 +46,10 @@ namespace RegexAcademy.Models
                 {
                     throw new ArgumentException("Course name length must be 3-30 characters long");
                 }
-                if (Globals.HasSpecialChars(value))
-                // or Regex.IsMatch(value, @"^([a-zA-Z0-9./,;\-+()*!'""\s])+$")
+
+                if (!Regex.IsMatch(value, @"^[a-zA-Z0-9 ]{3,30}$")) // this regex should only allow letters and numbers, and spaces
                 {
-                    throw new ArgumentException("Course name cannot contain special characters.");
+                    throw new ArgumentException("Course name cannot contain special characters. ");
                 }
                 string CapitalizeFirstCharCourseName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
                 _courseName = CapitalizeFirstCharCourseName;

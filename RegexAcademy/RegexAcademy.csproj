@@ -97,6 +97,10 @@
     <Compile Include="Migrations\202301200306544_Chris.designer.cs">
       <DependentUpon>202301200306544_Chris.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301201414031_Kevin.cs" />
+    <Compile Include="Migrations\202301201414031_Kevin.designer.cs">
+      <DependentUpon>202301201414031_Kevin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Views\CourseAdd.xaml.cs">
@@ -207,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301200306544_Chris.resx">
       <DependentUpon>202301200306544_Chris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301201414031_Kevin.resx">
+      <DependentUpon>202301201414031_Kevin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

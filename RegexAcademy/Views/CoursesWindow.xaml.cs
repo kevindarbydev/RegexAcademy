@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using System;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using RegexAcademy.Models;
 
 namespace RegexAcademy.Views
 {
@@ -27,13 +26,13 @@ namespace RegexAcademy.Views
                 Environment.Exit(1);
             }
         }
-    
+
         private void BtnAddCourse_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             CourseAdd inputDialog = new CourseAdd();
             if (inputDialog.ShowDialog() == true)
             {
-                MessageBox.Show("Add Course Window was closed");
+                LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
             }
         }
     }
