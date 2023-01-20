@@ -117,6 +117,14 @@
     <Compile Include="Migrations\202301201421328_Update6Matt.designer.cs">
       <DependentUpon>202301201421328_Update6Matt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301201813312_Fixing Course.cs" />
+    <Compile Include="Migrations\202301201813312_Fixing Course.designer.cs">
+      <DependentUpon>202301201813312_Fixing Course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301201815026_FixCoursesFinal.cs" />
+    <Compile Include="Migrations\202301201815026_FixCoursesFinal.designer.cs">
+      <DependentUpon>202301201815026_FixCoursesFinal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Views\AssignStudens.xaml.cs">
@@ -246,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301201421328_Update6Matt.resx">
       <DependentUpon>202301201421328_Update6Matt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301201813312_Fixing Course.resx">
+      <DependentUpon>202301201813312_Fixing Course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301201815026_FixCoursesFinal.resx">
+      <DependentUpon>202301201815026_FixCoursesFinal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace RegexAcademy.Views
 {
     /// <summary>
-    /// Interaction logic for AssignStudens.xaml
+    /// Interaction logic for AssignStudents.xaml
     /// </summary>
-    public partial class AssignStudens : Window
+    public partial class AssignStudents : Window
     {
-        public AssignStudens()
+        public AssignStudents()
         {
             InitializeComponent();
         }
-
     }
 }
