@@ -1,6 +1,5 @@
 ﻿using RegexAcademy.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -60,35 +59,29 @@ namespace RegexAcademy.Views
                 //    MessageBox.Show("Error reading inputs", "Internal Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 //    Console.WriteLine("Error reading course inputs - Internal Error");
                 //}
-                //------------------------------------------------------
-                //- RIGHT HERE IS WHERE I'M STUCK AND IT SUCKS - CHRIS -
-                //------------------------------------------------------
-                ///           .-""""""-.
-                ///         .'          '.
-                ///        /   O      O   \
-                ///       :           `    :
-                ///       |                | sad
-                ///       :    .------.    :
-                ///        \  '        '  /
-                ///         '.          .'
-                ///           '-......-'
-                ///           
+
 
                 var cb = this.grid.Children.OfType<CheckBox>();
                 StringBuilder sb = new StringBuilder();
 
-                foreach(CheckBox chk in cb)
+                foreach (CheckBox chk in cb)
                 {
-                    if(chk.IsChecked == true)
+                    if (chk.IsChecked == true)
                     {
                         sb.Append(chk.Content.ToString() + " ");
                     }
                 }
 
-                Course newCourse = new Course { CourseId = TbxCourseCode.Text, CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = sb.ToString() , StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
+                Course newCourse = new Course { CourseId = TbxCourseCode.Text, CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = sb.ToString(), StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
 
                 Globals.dbContext.Courses.Add(newCourse);
-                Globals.dbContext.SaveChanges();
+                int results = Globals.dbContext.SaveChanges();
+
+                if (results > 0)
+                {
+                    MessageBox.Show(this, "Course added successfully!", "Update success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    this.DialogResult = true;
+                }
 
 
                 MessageBox.Show(this, "Course saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -105,7 +98,7 @@ namespace RegexAcademy.Views
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            this.DialogResult = true;
+            //this.DialogResult = true;
         }
 
         public void ResetFields()
