@@ -18,6 +18,7 @@ namespace RegexAcademy.Views
             InitializeComponent();
             try
             {
+                // I should add the other inputs here
                 Globals.dbContext = new RegexAcademyDbContext();
                 CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
                 CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
@@ -84,7 +85,6 @@ namespace RegexAcademy.Views
                 }
 
 
-                MessageBox.Show(this, "Course saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 ResetFields();
 
             }
