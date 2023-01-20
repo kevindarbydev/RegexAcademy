@@ -10,16 +10,17 @@
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800">
+  
 
     <Grid>
         <TextBox
             Name="TbxSearchBar"
             HorizontalAlignment="Left"
-            Margin="105,43,0,0"
+            Margin="104,62,0,0"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
             Width="160"
-            Height="58" />
+            Height="39" />
         <Button
             Name="BtnSearch"
             Content="Search"
@@ -37,12 +38,13 @@
             Height="38" />
         <ListView  
             Name="LvSearchResults"
-            Margin="10,225,442,71">
+            Margin="10,185,442,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
-                        Header="Teacher/Student"
-                        Width="90" />
+                        Header="T/S"
+                        Width="90"
+                        DisplayMemberBinding="{Binding DisplayFirstLetter}"/>
                     <GridViewColumn
                         Header="First Name"
                         Width="120"

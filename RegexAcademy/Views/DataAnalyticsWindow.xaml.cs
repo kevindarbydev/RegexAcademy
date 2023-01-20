@@ -24,6 +24,7 @@ namespace RegexAcademy.Views
 
             //iterate through Students and Teachers, only matching first name for now
             //TODO: match by first name, last name, AND combination (All 3). some helper methods in Student class will help
+            // bool searchByName (if FirstName.contains(search) OR LastName.contains(search) OR FirstName + " " + LastName.contains(search)
             List<Student> studentsMatched = Globals.dbContext.Students.Where(s => s.FirstName.Contains(searchString)).ToList();
             List<Teacher> teachersMatched = Globals.dbContext.Teachers.Where(t => t.FirstName.Contains(searchString)).ToList();
 

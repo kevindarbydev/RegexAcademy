@@ -14,7 +14,7 @@ namespace RegexAcademy.Models
 
         public Teacher() { }
 
-        public Teacher(string firstName, string lastName, string email, byte[] profileImage,  bool availability)
+        public Teacher(string firstName, string lastName, string email, byte[] profileImage, bool availability)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -126,6 +126,9 @@ namespace RegexAcademy.Models
                 _availability = value;
             }
         }
+        //this is to help display Student/Teacher status in search result as duplicate names may occur
+        [NotMapped]
+        public char DisplayFirstLetter => this.GetType().Name[0];
 
         public override string ToString()
         {

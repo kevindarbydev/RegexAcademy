@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RegexAcademy.Models
 {
@@ -89,6 +90,9 @@ namespace RegexAcademy.Models
                 _dateOfBirth = value;
             }
         }
+        //this is to help display Student/Teacher status in search result as duplicate names may occur
+        [NotMapped]
+        public char DisplayFirstLetter => this.GetType().Name[0];
 
         public override string ToString()
         {
@@ -96,5 +100,6 @@ namespace RegexAcademy.Models
         }
 
         //public virtual List<StudentCourse> StudenCourseList { get; set; }
+
     }
 }
