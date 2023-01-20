@@ -39,7 +39,6 @@ namespace RegexAcademy.Views
             TeacherAdd inputDialog = new TeacherAdd();
             if (inputDialog.ShowDialog() == true)
             {
-                MessageBox.Show("Add Teacher Window was closed");
                 LvTeachers.ItemsSource = Globals.dbContext.Teachers.ToList();
             }
         }

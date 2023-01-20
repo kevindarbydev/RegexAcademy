@@ -23,7 +23,7 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class TeacherAdd : Window
     {
-        private string imagePath;
+        private string imagePath = null;
 
         public TeacherAdd()
         {
@@ -41,17 +41,21 @@ namespace RegexAcademy.Views
             }
         }
 
-        private void btnDialogOk_Click(object sender, RoutedEventArgs e)
+        private void BtnAddTeacher_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 bool availability = RetrieveRbnValue();
-                byte[] profileImage = File.ReadAllBytes(imagePath); // imagePath defined when image uploaded
+                byte[] profileImage = ValidateProfileImage(); 
 
-                Teacher t1 = new Teacher(TbxFirstName.Text, TbxLastName.Text, TbxEmail.Text, profileImage, availability); //, null);
+                Teacher t1 = new Teacher(TbxFirstName.Text, TbxLastName.Text, TbxEmail.Text, profileImage, availability); 
 
                 Globals.dbContext.Teachers.Add(t1);
-                Globals.dbContext.SaveChanges(); // ex SystemException
+                int results = Globals.dbContext.SaveChanges(); // ex SystemException
+                if (results > 0)
+                {
+                    this.DialogResult = true;
+                }
             }
             catch (ArgumentException ex)
             {
@@ -62,8 +66,20 @@ namespace RegexAcademy.Views
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
 
-            this.DialogResult = true; // will close dialog window
+        private byte[] ValidateProfileImage()
+        {
+            byte[] profileImage = null;
+            if(imagePath == null)
+            {
+                return profileImage;
+            } else
+            {
+                profileImage = File.ReadAllBytes(imagePath); // ex SystemException
+                return profileImage;
+            }
+           
         }
 
         private bool RetrieveRbnValue()
