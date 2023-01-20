@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,8 +23,11 @@ namespace RegexAcademy.Views
     public partial class AssignStudents : Window
     {
         private Course selectedCourse = null;
-        private List<Student> allStudents = new List<Student>();
-        private List<Student> studentsInCourse = new List<Student>();
+
+        List<Student> allStudents = new List<Student>();
+        List<Student> studentsInCourse = new List<Student>();
+
+        List<object> genericMatched = new List<object>(); // List used to show which students match the search bar
 
         public AssignStudents()
         {
@@ -195,6 +199,22 @@ namespace RegexAcademy.Views
                     Console.WriteLine("Internal Error - Window_Closing() has failed");
                     break;
             }
+        }
+
+        private void TbxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(TbxSearchBar.Text == "")
+            {
+                LvAllStudents.ItemsSource = allStudents;
+                return;
+            }
+
+            List<Student> studentsMatched = Globals.dbContext.Students.Where(s => s.FirstName.StartsWith(TbxSearchBar.Text)).ToList();
+
+            genericMatched.Clear();
+            genericMatched.AddRange(studentsMatched);
+
+            LvAllStudents.ItemsSource = genericMatched;
         }
     }
 }
