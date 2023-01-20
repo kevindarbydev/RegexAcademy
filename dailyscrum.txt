@@ -100,6 +100,40 @@
 - Finish Teacher Add and figure out img to DB
 - Finish Edit/Delete Teacher
 
+--------------------------------------------------------------------------------------
+1/20/2023 Kevin
+1. Done/not done since last scrum:
+- All CRUD operations complete
+  on students
+- Input validation on Add/Edit
+2. To do until next Scrum:
+- Try to connect project to cloud DB
+- Help other members with their tasks
+
+1/20/2023 Matthew
+1. Done/not done since last scrum:
+- User register implemented  
+- User Log in implemented
+2. To do until next Scrum:
+- Work on adding courses
+- Assign/remove students to course
+
+1/20/2023 Chris
+1. Done/not done since last scrum:
+- courses add 90%, course add dialog, many minor fixes
+2. To do until next Scrum:
+- finish up add course, update, delete courses
+- home page
+- reports and data analytics
+3. 3. Need assistance / figure things out:
+-
+
+1/20/2023 Seena
+1. Done/not done since last scrum:
+- Teacher Add, Edit, Delete done
+2. To do until next Scrum:
+- Implement Data Modeling and Data Export 
+- Implement Search bar
 
 
 
