@@ -75,9 +75,9 @@ namespace RegexAcademy.Models
             }
             set
             {
-                if (value.Length < 2 || value.Length > 50)
+                if (value.Length > 50)
                 {
-                    throw new ArgumentException("Email length must be 2-50 characters long");
+                    throw new ArgumentException("Email length must be at most 50 characters long");
                 }
                 _email = value;
             }
