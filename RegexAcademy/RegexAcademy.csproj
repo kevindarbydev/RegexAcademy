@@ -107,8 +107,8 @@
     <Compile Include="Views\StudentAdd.xaml.cs">
       <DependentUpon>StudentAdd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TeacherAdd.xaml.cs">
-      <DependentUpon>TeacherAdd.xaml</DependentUpon>
+    <Compile Include="Views\TeacherAddEdit.xaml.cs">
+      <DependentUpon>TeacherAddEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CoursesWindow.xaml.cs">
       <DependentUpon>CoursesWindow.xaml</DependentUpon>
@@ -145,7 +145,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TeacherAdd.xaml">
+    <Page Include="Views\TeacherAddEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

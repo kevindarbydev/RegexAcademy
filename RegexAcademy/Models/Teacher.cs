@@ -117,17 +117,18 @@ namespace RegexAcademy.Models
             }
             set
             {
-                if (value == false)
-                {
-                    throw new ArgumentException("Sorry, this teacher is unavailable");
-                }
+                //FIXME: not sure if this is necessary since availability can be false
+                //if (value == false)
+                //{
+                //    throw new ArgumentException("Sorry, this teacher is unavailable");
+                //}
                 _availability = value;
             }
         }
 
         public override string ToString()
         {
-            return $"{FirstName} {LastName}";
+            return $"{FirstName} {LastName} with ID: {Id}";
         }
 
         public virtual List<Course> Courses { get; set; }

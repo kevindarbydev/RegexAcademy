@@ -82,7 +82,8 @@
                 materialDesign:RippleAssist.Feedback="Yellow"
                 Background='#a1b569'
                 BorderBrush='Black'
-                Cursor='Hand' />
+                Cursor='Hand' 
+                Click="BtnEditTeacher_Click"/>
 
         <Button Content="Delete Teacher"
                 Name="BtnDeleteTeacher"
@@ -94,6 +95,7 @@
                 Background='#a1b569'
                 BorderBrush='Black'
                 Cursor='Hand'
-                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}" />
+                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}" 
+                Click="BtnDeleteTeacher_Click"/>
     </Grid>
 </Page>
