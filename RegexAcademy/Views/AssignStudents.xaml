@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegexAcademy.Views"
-        mc:Ignorable="d"
-        Title="AssignStudents" Height="450" Width="900">
+        mc:Ignorable="d" ResizeMode="NoResize"
+        Title="AssignStudents" Height="450" Width="950">
     <Window.Background>
         <LinearGradientBrush
       EndPoint="0.5,1"
@@ -24,7 +24,7 @@
     <Grid>
         <ListView
       Name="LvStudentsNotInCourse"
-      Margin="10,79,517,24" SelectionMode="Multiple">
+      Margin="10,79,532,24" SelectionMode="Multiple">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
@@ -42,11 +42,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="409,185,0,0" VerticalAlignment="Top"/>
-        <Button Content="Remove" HorizontalAlignment="Left" Margin="397,261,0,0" VerticalAlignment="Top"/>
+        <Button Content="Add" IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudentsNotInCourse}" HorizontalAlignment="Left" Margin="435,185,0,0" VerticalAlignment="Top"/>
+        <Button Content="Remove" IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudentsInCourse}" HorizontalAlignment="Left" Margin="423,260,0,0" VerticalAlignment="Top"/>
         <ListView
-            x:Name="LvStudentsNotInCourse_Copy"
-            Margin="500,79,33,24" SelectionMode="Multiple">
+            x:Name="LvStudentsInCourse"
+            Margin="519,79,39,24" SelectionMode="Multiple">
             <ListView.View>
                 <GridView>
                     <GridViewColumn

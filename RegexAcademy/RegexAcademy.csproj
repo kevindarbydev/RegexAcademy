@@ -127,8 +127,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
-    <Compile Include="Views\AssignStudens.xaml.cs">
-      <DependentUpon>AssignStudens.xaml</DependentUpon>
+    <Compile Include="Views\AssignStudents.xaml.cs">
+      <DependentUpon>AssignStudents.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CourseAdd.xaml.cs">
       <DependentUpon>CourseAdd.xaml</DependentUpon>
@@ -164,7 +164,7 @@
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
-    <Page Include="Views\AssignStudens.xaml">
+    <Page Include="Views\AssignStudents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

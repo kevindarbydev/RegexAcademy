@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegexAcademy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,52 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class AssignStudents : Window
     {
+        private Course selectedCourse = null;
+
         public AssignStudents()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext();
+                List<Student> allStudents = Globals.dbContext.Students.ToList();
+                List<Student> studentsInCourse = new List<Student>();
+                LvStudentsNotInCourse.ItemsSource = allStudents;
+                LvStudentsInCourse.ItemsSource = studentsInCourse;
+
+            }
+            catch(SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+        }
+
+        public AssignStudents(Course selectedCourse)
+        {
+            InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext();
+                List<Student> allStudents = Globals.dbContext.Students.ToList();
+                List<Student> studentsInCourse = new List<Student>();
+                LvStudentsNotInCourse.ItemsSource = allStudents;
+                LvStudentsInCourse.ItemsSource = studentsInCourse;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+            if(selectedCourse != null )
+            {
+                this.selectedCourse = selectedCourse;
+                LblCourseCode.Content = selectedCourse.CourseId;
+            }
         }
     }
 }
