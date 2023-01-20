@@ -1,6 +1,10 @@
 ﻿using RegexAcademy.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace RegexAcademy.Views
 {
@@ -16,6 +20,13 @@ namespace RegexAcademy.Views
             try
             {
                 Globals.dbContext = new RegexAcademyDbContext();
+                CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
+                CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
+                CbxCoursesWeekdaysWednesday.Content = Course.WeekdayEnum.Wednesday;
+                CbxCoursesWeekdaysThursday.Content = Course.WeekdayEnum.Thursday;
+                CbxCoursesWeekdaysFriday.Content = Course.WeekdayEnum.Friday;
+                CbxCoursesWeekdaysSaturday.Content = Course.WeekdayEnum.Saturday;
+                CbxCoursesWeekdaysSunday.Content = Course.WeekdayEnum.Sunday;
             }
             catch (SystemException ex)
             {
@@ -44,11 +55,11 @@ namespace RegexAcademy.Views
                 {
                     MessageBox.Show("Please pick at least one weekday", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                 }
-                else
-                {
-                    MessageBox.Show("Error reading inputs", "Internal Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Console.WriteLine("Error reading course inputs - Internal Error");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Error reading inputs", "Internal Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //    Console.WriteLine("Error reading course inputs - Internal Error");
+                //}
                 //------------------------------------------------------
                 //- RIGHT HERE IS WHERE I'M STUCK AND IT SUCKS - CHRIS -
                 //------------------------------------------------------
@@ -63,8 +74,18 @@ namespace RegexAcademy.Views
                 ///           '-......-'
                 ///           
 
+                var cb = this.grid.Children.OfType<CheckBox>();
+                StringBuilder sb = new StringBuilder();
 
-                Course newCourse = new Course { CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = Course.WeekdayEnum.M, StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
+                foreach(CheckBox chk in cb)
+                {
+                    if(chk.IsChecked == true)
+                    {
+                        sb.Append(chk.Content.ToString() + " ");
+                    }
+                }
+
+                Course newCourse = new Course { CourseId = TbxCourseCode.Text, CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = sb.ToString() , StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
 
                 Globals.dbContext.Courses.Add(newCourse);
                 Globals.dbContext.SaveChanges();

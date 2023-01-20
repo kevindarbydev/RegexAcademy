@@ -100,6 +100,25 @@
     <Compile Include="Migrations\202301201414031_Kevin.cs" />
     <Compile Include="Migrations\202301201414031_Kevin.designer.cs">
       <DependentUpon>202301201414031_Kevin.cs</DependentUpon>
+    <Compile Include="Migrations\202301201338338_Update3Matt.cs" />
+    <Compile Include="Migrations\202301201338338_Update3Matt.designer.cs">
+      <DependentUpon>202301201338338_Update3Matt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301201348130_Update4Matt.cs" />
+    <Compile Include="Migrations\202301201348130_Update4Matt.designer.cs">
+      <DependentUpon>202301201348130_Update4Matt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301201418130_Update5Matt.cs" />
+    <Compile Include="Migrations\202301201418130_Update5Matt.designer.cs">
+      <DependentUpon>202301201418130_Update5Matt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301201421328_Update6Matt.cs" />
+    <Compile Include="Migrations\202301201421328_Update6Matt.designer.cs">
+      <DependentUpon>202301201421328_Update6Matt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301201440544_Update7Matt.cs" />
+    <Compile Include="Migrations\202301201440544_Update7Matt.designer.cs">
+      <DependentUpon>202301201440544_Update7Matt.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -214,6 +233,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301201414031_Kevin.resx">
       <DependentUpon>202301201414031_Kevin.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202301201338338_Update3Matt.resx">
+      <DependentUpon>202301201338338_Update3Matt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301201348130_Update4Matt.resx">
+      <DependentUpon>202301201348130_Update4Matt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301201418130_Update5Matt.resx">
+      <DependentUpon>202301201418130_Update5Matt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301201421328_Update6Matt.resx">
+      <DependentUpon>202301201421328_Update6Matt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301201440544_Update7Matt.resx">
+      <DependentUpon>202301201440544_Update7Matt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

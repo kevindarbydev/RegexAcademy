@@ -13,18 +13,7 @@ namespace RegexAcademy.Views
         public CoursesWindow()
         {
             InitializeComponent();
-            try
-            {
-                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
-                LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
-            }
-            catch (SystemException ex)
-            {
-                MessageBox.Show("Error reading from database\n" + ex.Message, "Fatal error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                // Close();
-                Environment.Exit(1);
-            }
+            LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
         }
 
         private void BtnAddCourse_Click(object sender, System.Windows.RoutedEventArgs e)

@@ -12,15 +12,15 @@ namespace RegexAcademy.Models
         {
 
         }
-        public Course(string courseName, DateTime startDate, DateTime endDate, WeekdayEnum weekday, DateTime startTime, DateTime endTime)
+        public Course(string courseName, DateTime startDate, DateTime endDate, string weekday, datetime starttime, datetime endtime)
         {
             CourseName = courseName;
             StartDate = startDate;
             EndDate = endDate;
             Weekday = weekday;
             //Weekday = (WeekdayEnum)Enum.Parse(typeof(WeekdayEnum), weekday);
-            StartTime = startTime;
-            EndTime = endTime;
+            StartTime= starttime;
+            EndTime= endtime;
         }
 
 
@@ -29,7 +29,6 @@ namespace RegexAcademy.Models
         public string CourseId { get; set; }
 
         public int? TeacherId { get; set; } // should be nullable as teachers can be assigned after course creation
-
 
         private string _courseName;
         [Required]
@@ -101,18 +100,17 @@ namespace RegexAcademy.Models
 
         public enum WeekdayEnum
         {
-            M = 0,
-            Tu = 1,
-            W = 2,
-            Th = 3,
-            F = 4,
-            Sa = 5,
-            Su = 6
+            Monday = 0,
+            Tuesday = 1,
+            Wednesday = 2,
+            Thursday = 3,
+            Friday = 4,
+            Saturday = 5,
+            Sunday = 6
         }
 
         [Required]
-        [EnumDataType(typeof(WeekdayEnum))]
-        public WeekdayEnum Weekday { get; set; }
+        public string Weekday { get; set; }
 
         private DateTime _startTime;
         [Required]
