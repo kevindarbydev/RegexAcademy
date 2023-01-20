@@ -75,6 +75,7 @@ namespace RegexAcademy.Models
             }
             set
             {
+                //FIXME: add email format validation with REGEX
                 if (value.Length > 50)
                 {
                     throw new ArgumentException("Email length must be at most 50 characters long");

@@ -20,6 +20,7 @@
                             Value="Transparent" />
                     <Setter Property="BorderBrush"
                             Value="Transparent" />
+                    <!-- FIXME: Add proper formatting for the Listview (center-align rows and columns) -->
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
