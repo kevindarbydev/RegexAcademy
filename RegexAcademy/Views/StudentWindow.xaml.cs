@@ -78,30 +78,52 @@ namespace RegexAcademy.Views
             }
 
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void MiSortId_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                LvStudents.ItemsSource = Globals.dbContext.Students.OrderBy(s => s.Id).ToList();
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex.Message);
+            }
         }
 
         private void MiSortFName_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                LvStudents.ItemsSource = Globals.dbContext.Students.OrderBy(s => s.FirstName).ToList();
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex.Message);
+            }
         }
 
         private void MiSortLName_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                LvStudents.ItemsSource = Globals.dbContext.Students.OrderBy(s => s.LastName).ToList();
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex.Message);
+            }
         }
 
         private void MiSortDob_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                LvStudents.ItemsSource = Globals.dbContext.Students.OrderBy(s => s.DateOfBirth).ToList();
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex.Message);
+            }
         }
     }
 }
