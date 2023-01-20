@@ -75,6 +75,7 @@ namespace RegexAcademy.Models
             }
             set
             {
+                //FIXME: add email format validation with REGEX
                 if (value.Length > 50)
                 {
                     throw new ArgumentException("Email length must be at most 50 characters long");
@@ -117,17 +118,18 @@ namespace RegexAcademy.Models
             }
             set
             {
-                if (value == false)
-                {
-                    throw new ArgumentException("Sorry, this teacher is unavailable");
-                }
+                //FIXME: not sure if this is necessary since availability can be false
+                //if (value == false)
+                //{
+                //    throw new ArgumentException("Sorry, this teacher is unavailable");
+                //}
                 _availability = value;
             }
         }
 
         public override string ToString()
         {
-            return $"{FirstName} {LastName}";
+            return $"{FirstName} {LastName} with ID: {Id}";
         }
 
         public virtual List<Course> Courses { get; set; }
