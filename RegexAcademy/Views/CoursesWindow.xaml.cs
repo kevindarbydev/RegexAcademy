@@ -24,5 +24,14 @@ namespace RegexAcademy.Views
                 LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
             }
         }
+
+        private void BtnAssignStudents_Click(object sender, RoutedEventArgs e)
+        {
+            AssignStudens assignDialog = new AssignStudens();
+            if(assignDialog.ShowDialog() == true)
+            {
+                Globals.dbContext.SaveChanges();
+            }
+        }
     }
 }

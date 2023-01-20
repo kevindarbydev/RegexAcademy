@@ -31,11 +31,11 @@
             DisplayMemberBinding="{Binding Weekday}" />
           <GridViewColumn
             Header="Start Date"
-            Width="150"
+            Width="130"
             DisplayMemberBinding="{Binding StartDate, StringFormat='\d'}" />
           <GridViewColumn
             Header="End Date"
-            Width="150"
+            Width="130"
             DisplayMemberBinding="{Binding EndDate, StringFormat='\d'}" />
         </GridView>
       </ListView.View>
@@ -67,10 +67,11 @@
 
     <Button
       Content="Assign Students"
+      Name="BtnAssignStudents"
       HorizontalAlignment="Left"
       Margin="579,12,0,0"
       VerticalAlignment="Top"
-      IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" />
+      IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}" Click="BtnAssignStudents_Click" />
     <Button
       Content="Delete Course"
       Name="BtnDeleteCourse"
