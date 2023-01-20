@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegexAcademy.Views"
         mc:Ignorable="d" ResizeMode="NoResize"
-        Title="AssignStudents" Height="450" Width="950">
+        Title="AssignStudents" Height="450" Width="950"
+        Icon="../Assets/Images/book.ico">
     <Window.Background>
         <LinearGradientBrush
       EndPoint="0.5,1"
@@ -23,8 +24,8 @@
 
     <Grid>
         <ListView
-      Name="LvStudentsNotInCourse"
-      Margin="10,79,532,24" SelectionMode="Multiple">
+      Name="LvAllStudents"
+      Margin="19,114,532,61" SelectionMode="Multiple">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
@@ -42,11 +43,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Add" IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudentsNotInCourse}" HorizontalAlignment="Left" Margin="435,185,0,0" VerticalAlignment="Top"/>
-        <Button Content="Remove" IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudentsInCourse}" HorizontalAlignment="Left" Margin="423,260,0,0" VerticalAlignment="Top"/>
+        <Button Content="Add" Name="BtnAddToCourse" IsEnabled="{Binding SelectedItems.Count, ElementName=LvAllStudents}" HorizontalAlignment="Left" Margin="435,185,0,0" VerticalAlignment="Top" Click="BtnAddToCourse_Click"/>
+        <Button Content="Remove" Name="BtnRemoveFromCourse" IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudentsInCourse}" HorizontalAlignment="Left" Margin="423,260,0,0" VerticalAlignment="Top" Click="BtnRemoveFromCourse_Click"/>
         <ListView
             x:Name="LvStudentsInCourse"
-            Margin="519,79,39,24" SelectionMode="Multiple">
+            Margin="511,114,47,61" SelectionMode="Multiple">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
@@ -64,8 +65,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="665,19,0,0" VerticalAlignment="Top"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="753,19,0,0" VerticalAlignment="Top"/>
+        <Button Name="BtnSaveChanges" Content="Save" HorizontalAlignment="Left" Margin="699,19,0,0" VerticalAlignment="Top" Click="BtnSaveChanges_Click"/>
+        <Button Name="BtnCancelChanges" Content="Cancel" HorizontalAlignment="Left" Margin="785,19,0,0" VerticalAlignment="Top" Click="BtnCancelChanges_Click"/>
         <Label Name="LblCourseCode" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="All Students:" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="19,78,0,0" VerticalAlignment="Top"/>
+        <Label Name="LblStudentsInCourse" Content="" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="511,78,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
