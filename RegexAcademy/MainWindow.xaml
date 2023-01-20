@@ -14,7 +14,7 @@
   Width="950"
   ResizeMode="NoResize"
   Icon="Assets/Images/book.ico"
-  Closing='Window_Closing'>
+  >
   <Window.Background>
     <LinearGradientBrush
       EndPoint="0.5,1"
@@ -29,10 +29,8 @@
         Offset="2" />
     </LinearGradientBrush>
   </Window.Background>
-  <!--add line 8 (materialDesign) to any new windows/views to enable Material Design Toolkit then maybe do a Rebuild Solution if it throws warnings-->
 
   <Grid>
-
     <Grid.ColumnDefinitions>
       <ColumnDefinition
         Width="200" />

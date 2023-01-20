@@ -10,6 +10,7 @@
   Title="Add a new Course"
   Height="750"
   Width="500"
+  Icon="/Assets/Images/book.ico"
   ResizeMode='NoResize'>
 
   <Window.Background>
@@ -26,8 +27,7 @@
         Offset="2" />
     </LinearGradientBrush>
   </Window.Background>
-  <Grid
-    Margin='10,10,-25,-6'>
+  <Grid>
     <Label
       Content="Course Name:"
       HorizontalAlignment="Left"
@@ -41,7 +41,7 @@
       Margin="170,16,0,0"
       TextWrapping="Wrap"
       VerticalAlignment="Top"
-      Width="250" />
+      Width="260" />
     <Label
       Content="Start Date:"
       HorizontalAlignment="Left"
@@ -93,64 +93,55 @@
     <Label
       Content="Weekdays:"
       HorizontalAlignment="Left"
-      Margin="37,211,0,0"
+      Margin="37,218,0,0"
       VerticalAlignment="Top"
       Width="78" />
-    <ToggleButton
-      Name='TbtnCoursesMonday'
-      Content="M"
-      IsChecked="False"
-      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
-      ToolTip="Monday"
-      Margin='158,204,323,494' />
-    <ToggleButton
-      Name='TbtnCoursesTuesday'
-      Content="Tu"
-      IsChecked="False"
-      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
-      ToolTip="Tuesday"
-      Margin='255,204,226,494' />
-    <ToggleButton
-      Name='TbtnCoursesWednesday'
-      Content="W"
-      IsChecked="False"
-      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
-      ToolTip="Wednesday"
-      Margin='350,204,131,494'
-      RenderTransformOrigin='0.531,0.563' />
-    <ToggleButton
-      Name='TbtnCoursesThursday'
-      Content="Th"
-      IsChecked="False"
-      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
-      ToolTip="Thursday"
-      Margin='443,204,38,494' />
-    <ToggleButton
-      Name='TbtnCoursesFriday'
-      Content="F"
-      IsChecked="False"
-      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
-      ToolTip="Friday"
-      Margin='204,256,277,442' />
-    <ToggleButton
-      Name='TbtnCoursesSaturday'
-      Content="Sa"
-      IsChecked="False"
-      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
-      ToolTip="Saturday"
-      Margin='302,256,180,442'
-      RenderTransformOrigin='0.484,0.532' />
-    <ToggleButton
-      Name='TbtnCoursesSunday'
-      Content="Su"
-      IsChecked="False"
-      Style="{StaticResource MaterialDesignActionAccentToggleButton}"
-      ToolTip="Sunday"
-      Margin='399,256,82,442' />
+    <CheckBox
+      Name='CbxCoursesWeekdaysMonday'
+      IsChecked='False'
+      Content="Monday"
+      Style="{StaticResource MaterialDesignCheckBox}"
+      Margin='170,196,240,495' />
+    <CheckBox
+      Name='CbxCoursesWeekdaysTuesday'
+      IsChecked='False'
+      Content="Tuesday"
+      Style="{StaticResource MaterialDesignCheckBox}"
+      Margin='170,218,240,472' />
+    <CheckBox
+      Name='CbxCoursesWeekdaysSunday'
+      IsChecked='False'
+      Content="Sunday"
+      Style="{StaticResource MaterialDesignCheckBox}"
+      Margin='365,218,45,473' />
+    <CheckBox
+      Name='CbxCoursesWeekdaysSaturday'
+      IsChecked='False'
+      Content="Saturday"
+      Style="{StaticResource MaterialDesignCheckBox}"
+      Margin='365,196,45,495' />
+    <CheckBox
+      Name='CbxCoursesWeekdaysFriday'
+      IsChecked='False'
+      Content="Friday"
+      Style="{StaticResource MaterialDesignCheckBox}"
+      Margin='245,218,165,472' />
+    <CheckBox
+      Name='CbxCoursesWeekdaysThursday'
+      IsChecked='False'
+      Content="Thursday"
+      Style="{StaticResource MaterialDesignCheckBox}"
+      Margin='245,196,165,495' />
+    <CheckBox
+      Name='CbxCoursesWeekdaysWednesday'
+      IsChecked='False'
+      Content="Wednesday"
+      Style="{StaticResource MaterialDesignCheckBox}"
+      Margin='170,240,225,451' />
     <Label
       Content="Start Time:"
       HorizontalAlignment="Left"
-      Margin="37,322,0,0"
+      Margin="37,292,0,0"
       VerticalAlignment="Top"
       Width="78" />
     <materialDesign:TimePicker
@@ -161,13 +152,13 @@
       materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="2"
       Is24Hours="True"
       Style="{StaticResource MaterialDesignOutlinedTimePicker}"
-      Margin='170,381,54,0'
+      Margin='170,349,54,0'
       VerticalAlignment='Top'
       Height='50' />
     <Label
       Content="End Time:"
       HorizontalAlignment="Left"
-      Margin="37,394,0,0"
+      Margin="37,362,0,0"
       VerticalAlignment="Top"
       Width="78" />
     <materialDesign:TimePicker
@@ -178,8 +169,9 @@
       materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="2"
       Is24Hours="True"
       Style="{StaticResource MaterialDesignOutlinedTimePicker}"
-      Margin='170,309,54,0'
+      Margin='170,279,54,0'
       Height='50'
       VerticalAlignment='Top' />
+
   </Grid>
 </Window>
