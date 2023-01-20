@@ -74,7 +74,7 @@
           SelectionIndicatorColor='#a4c1d6'
           ToolTip='Courses' />
         <HamburgerMenu:HamburgerMenuItem
-          Text="Student Courses"
+          Text="Data Analytics"
           MouseDoubleClick='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/studentcourses-hbmenu-icon.png"

@@ -3,11 +3,11 @@
 namespace RegexAcademy.Views
 {
     /// <summary>
-    /// Interaction logic for StudentCoursesWindow.xaml
+    /// Interaction logic for DataAnalyticsWindow.xaml
     /// </summary>
-    public partial class StudentCoursesWindow : Page
+    public partial class DataAnalyticsWindow : Page
     {
-        public StudentCoursesWindow()
+        public DataAnalyticsWindow()
         {
             InitializeComponent();
         }

@@ -49,8 +49,8 @@ namespace RegexAcademy
                 case "Courses":
                     ContentFrame.Source = new Uri("Views/CoursesWindow.xaml", UriKind.Relative);
                     break;
-                case "StudentCourses":
-                    ContentFrame.Source = new Uri("Views/StudentCoursesWindow.xaml", UriKind.Relative);
+                case "Data Analytics":
+                    ContentFrame.Source = new Uri("Views/DataAnalytics.xaml", UriKind.Relative);
                     break;
 
                 default:
