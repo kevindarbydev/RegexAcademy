@@ -145,8 +145,8 @@
     <Compile Include="RegexAcademyDbContext.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentCourse.cs" />
-    <Compile Include="Views\StudentCoursesWindow.xaml.cs">
-      <DependentUpon>StudentCoursesWindow.xaml</DependentUpon>
+    <Compile Include="Views\DataAnalyticsWindow.xaml.cs">
+      <DependentUpon>DataAnalyticsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
@@ -196,7 +196,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\StudentCoursesWindow.xaml">
+    <Page Include="Views\DataAnalyticsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

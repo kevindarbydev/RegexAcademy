@@ -50,7 +50,7 @@ namespace RegexAcademy
                     ContentFrame.Source = new Uri("Views/CoursesWindow.xaml", UriKind.Relative);
                     break;
                 case "Data Analytics":
-                    ContentFrame.Source = new Uri("Views/DataAnalytics.xaml", UriKind.Relative);
+                    ContentFrame.Source = new Uri("Views/DataAnalyticsWindow.xaml", UriKind.Relative);
                     break;
 
                 default:
