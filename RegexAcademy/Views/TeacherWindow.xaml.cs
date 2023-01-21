@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.IO;
 using System.Windows.Media.Imaging;
 using RegexAcademy.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace RegexAcademy.Views
 {
@@ -67,6 +68,11 @@ namespace RegexAcademy.Views
                 Globals.dbContext.SaveChanges(); // ex SystemException
                 LvTeachers.ItemsSource = Globals.dbContext.Teachers.ToList();
                 LvTeachers.SelectedIndex = -1;
+            }
+            catch (DbUpdateException)
+            {
+                MessageBox.Show("Cannot delete a teacher that is currently assigned to a course", "Deletion error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (SystemException ex)
             {
