@@ -94,8 +94,8 @@
                Margin="137,208,64,207"
                Width="120"
                Height="120"
-               Stretch="UniformToFill"
-               RenderOptions.BitmapScalingMode="NearestNeighbor" />
+               Stretch="Fill"
+               RenderOptions.BitmapScalingMode="Fant" />
         <Button Content="Save"
                 Name="BtnAddTeacher"
                 Click="BtnAddTeacher_Click"

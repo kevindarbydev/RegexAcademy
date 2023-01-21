@@ -107,10 +107,14 @@
                            Name="LblFirstAndLastName"
                            FontSize="12"
                            FontWeight="SemiBold"
-                           Margin="15,34,15,194" />
+                           Margin="15,34,15,194"
+                           HorizontalAlignment="Center"/>
                     <Image Name="ImgProfileImage"
+                           Width="120"
+                           Height="120"
                            Margin="46,111,47,24"
-                           Stretch="UniformToFill"/>
+                           Stretch="Fill"
+                           RenderOptions.BitmapScalingMode="Fant" />
                 </Grid>
             </materialDesign:DialogHost>
         </materialDesign:Card>

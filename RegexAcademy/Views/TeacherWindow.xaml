@@ -55,7 +55,12 @@
                                     Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding ProfileImageToShow}" />
+                                <Image Name="ImgInListView"
+                                       Width="120"
+                                       Height="120"
+                                       Stretch="Fill"
+                                       RenderOptions.BitmapScalingMode="Fant"
+                                       Source="{Binding ProfileImageToShow}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -83,8 +88,8 @@
                 materialDesign:RippleAssist.Feedback="Yellow"
                 Background='#a1b569'
                 BorderBrush='Black'
-                Cursor='Hand' 
-                Click="BtnEditTeacher_Click"/>
+                Cursor='Hand'
+                Click="BtnEditTeacher_Click" />
 
         <Button Content="Delete Teacher"
                 Name="BtnDeleteTeacher"
@@ -96,7 +101,7 @@
                 Background='#a1b569'
                 BorderBrush='Black'
                 Cursor='Hand'
-                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}" 
-                Click="BtnDeleteTeacher_Click"/>
+                IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}"
+                Click="BtnDeleteTeacher_Click" />
     </Grid>
 </Page>

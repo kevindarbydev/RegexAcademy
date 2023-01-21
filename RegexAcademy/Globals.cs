@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Windows.Media.Imaging;
+using System.Windows;
 
 namespace RegexAcademy
 {
@@ -9,6 +11,17 @@ namespace RegexAcademy
         public static bool HasSpecialChars(string toBeValidated)
         {
             return toBeValidated.Any(ch => !char.IsLetterOrDigit(ch)); //iterates through a string and returns true if any char is a special char. placing this in Globals as I expect this will be useful in several places
+        }
+
+        public static CroppedBitmap CropsImage(BitmapImage profileImage)
+        {
+            if (profileImage.PixelHeight > 400 || profileImage.PixelWidth > 400)
+            {
+                var croppedProfileImage = new CroppedBitmap(profileImage, new Int32Rect(60, 60, 120, 120));
+                return croppedProfileImage;
+            }
+            return null;
+            
         }
 
         public static bool isLoggedIn = false;

@@ -42,7 +42,7 @@ namespace RegexAcademy.Views
                 Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
                 BtnUpdateTeacher.Visibility = Visibility.Visible;
                 BtnAddTeacher.Visibility = Visibility.Hidden;
-                
+
             }
             catch (SystemException ex)
             {
@@ -190,14 +190,27 @@ namespace RegexAcademy.Views
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
+                imagePath = op.FileName;
                 //FIXME: image cropping is not really working well
                 //var profileImage = new BitmapImage(new Uri(op.FileName)); 
-                //ImgProfileImage.Source = new CroppedBitmap(profileImage, new Int32Rect(0, 0, 120, 120));
-                ImgProfileImage.Source = new BitmapImage(new Uri(op.FileName));
-                imagePath = op.FileName;
+                //ImgProfileImage.Source = new CroppedBitmap(profileImage, new Int32Rect(120, 120, 240, 240));
+
+                var profileImage = new BitmapImage(new Uri(op.FileName));
+                var croppedProfileImage = Globals.CropsImage(profileImage);
+                if (croppedProfileImage != null)
+                {
+                    MessageBox.Show("Image was cropped because it is too large. \n 400px by 400px is the cutoff! \n Select another if you don't like it!", "Image Cropped",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                    ImgProfileImage.Source = croppedProfileImage;
+                }
+                else
+                {
+                    ImgProfileImage.Source = profileImage;
+                }
+
             }
         }
 
-  
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace RegexAcademy.Models
@@ -87,7 +88,7 @@ namespace RegexAcademy.Models
         public byte[] ProfileImage { get; set; }
 
         [NotMapped]
-        public BitmapImage ProfileImageToShow
+        public BitmapSource ProfileImageToShow
         {
             get
             {
@@ -104,7 +105,17 @@ namespace RegexAcademy.Models
                     image.EndInit();
                 }
                 image.Freeze();
-                return image;
+
+                var croppedProfileImage = Globals.CropsImage(image);
+                if (croppedProfileImage != null)
+                {
+                    return croppedProfileImage;
+                }
+                else
+                {
+                    return image;
+                }
+                
             }
         }
 
