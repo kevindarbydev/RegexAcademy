@@ -111,7 +111,7 @@ namespace RegexAcademy.Views
                 {
                     CbxCoursesWeekdaysSunday.IsChecked = true;
                 }
-              
+
             }
         }
 
@@ -304,7 +304,6 @@ namespace RegexAcademy.Views
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            //this.DialogResult = true;
         }
 
         private void BtnUpdateCourse_Click(object sender, RoutedEventArgs e)
@@ -334,7 +333,7 @@ namespace RegexAcademy.Views
                     courseToUpdate.EndDate = (DateTime)DpCoursesEndDate.SelectedDate;
                     courseToUpdate.Weekday = sb.ToString();
                     courseToUpdate.StartTime = (DateTime)TpCoursesStartTime.SelectedTime;
-                    courseToUpdate.StartTime = (DateTime)TpCoursesEndTime.SelectedTime;
+                    courseToUpdate.EndTime = (DateTime)TpCoursesEndTime.SelectedTime;
 
                     Globals.dbContext.SaveChanges();
 
