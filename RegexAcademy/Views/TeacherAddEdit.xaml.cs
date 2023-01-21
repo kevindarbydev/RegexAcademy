@@ -198,7 +198,6 @@ namespace RegexAcademy.Views
             }
         }
 
-
-
+  
     }
 }

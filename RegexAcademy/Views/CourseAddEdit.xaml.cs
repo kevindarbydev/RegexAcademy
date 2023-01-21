@@ -15,12 +15,14 @@ namespace RegexAcademy.Views
     {
         private Course selectedCourse = null;
 
+
         public CourseAddEdit()
         {
             InitializeComponent();
 
             try
             {
+
                 // sets the content of checkboxes
                 Globals.dbContext = new RegexAcademyDbContext();
                 CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
@@ -49,13 +51,22 @@ namespace RegexAcademy.Views
             try
             {
                 Globals.dbContext = new RegexAcademyDbContext();
-                //BtnEditCourse.Visibility = Visibility.Visible;
-                //BtnAddCourse.Visibility = Visibility.Hidden;
+
+                BtnUpdateCourse.Visibility = Visibility.Visible;
+                BtnCourseDialogSave.Visibility = Visibility.Hidden;
+
+                CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
+                CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
+                CbxCoursesWeekdaysWednesday.Content = Course.WeekdayEnum.Wednesday;
+                CbxCoursesWeekdaysThursday.Content = Course.WeekdayEnum.Thursday;
+                CbxCoursesWeekdaysFriday.Content = Course.WeekdayEnum.Friday;
+                CbxCoursesWeekdaysSaturday.Content = Course.WeekdayEnum.Saturday;
+                CbxCoursesWeekdaysSunday.Content = Course.WeekdayEnum.Sunday;
 
             }
             catch (SystemException ex)
             {
-                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                MessageBox.Show(this, "Error reading from database (2)\n" + ex.Message, "Fatal error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 // Close();
                 Environment.Exit(1);
@@ -68,11 +79,82 @@ namespace RegexAcademy.Views
                 TbxCourseName.Text = selectedCourse.CourseName;
                 DpCoursesStartDate.SelectedDate = selectedCourse.StartDate;
                 DpCoursesEndDate.SelectedDate = selectedCourse.EndDate;
-                //weekdays - how to update here?
-                // try to get the selected record to actually check the boxes
                 TpCoursesStartTime.SelectedTime = selectedCourse.StartTime;
                 TpCoursesEndTime.SelectedTime = selectedCourse.EndTime;
+                string weekday = selectedCourse.Weekday;
 
+                if (weekday.Contains("Monday"))
+                {
+                    CbxCoursesWeekdaysMonday.IsChecked = true;
+                }
+                if (weekday.Contains("Tuesday") || weekday.Contains(" Tuesday"))
+                {
+                    CbxCoursesWeekdaysTuesday.IsChecked = true;
+                }
+                if (weekday.Contains("Wednesay") || weekday.Contains(" Wednesday"))
+                {
+                    CbxCoursesWeekdaysWednesday.IsChecked = true;
+                }
+                if (weekday.Contains("Thursday") || weekday.Contains(" Thursday"))
+                {
+                    CbxCoursesWeekdaysThursday.IsChecked = true;
+                }
+                if (weekday.Contains("Friday") || weekday.Contains(" Friday"))
+                {
+                    CbxCoursesWeekdaysFriday.IsChecked = true;
+                }
+                if (weekday.Contains("Saturday") || weekday.Contains(" Saturday"))
+                {
+                    CbxCoursesWeekdaysSaturday.IsChecked = true;
+                }
+                if (weekday.Contains("Sunday") || weekday.Contains(" Sunday"))
+                {
+                    CbxCoursesWeekdaysSunday.IsChecked = true;
+                }
+                //if (CbxCoursesWeekdaysMonday.IsChecked == true)
+                //{
+                //    //selectedCourse.Weekday = selectedWeekday.ToString();
+                //    CbxCoursesWeekdaysMonday.Content = selectedCourse.Weekday;
+                //}
+                //else if (CbxCoursesWeekdaysTuesday.IsChecked == true)
+                //{
+                //    selectedCourse.Weekday = selectedWeekday.ToString();
+
+                //}
+                //else if (CbxCoursesWeekdaysWednesday.IsChecked == true)
+                //{
+                //    selectedCourse.Weekday = selectedWeekday.ToString();
+
+                //}
+                //else if (CbxCoursesWeekdaysThursday.IsChecked == true)
+                //{
+                //    selectedCourse.Weekday = selectedWeekday.ToString();
+
+                //}
+                //else if (CbxCoursesWeekdaysFriday.IsChecked == true)
+                //{
+                //    selectedCourse.Weekday = selectedWeekday.ToString();
+
+                //}
+                //else if (CbxCoursesWeekdaysSaturday.IsChecked == true)
+                //{
+                //    selectedCourse.Weekday = selectedWeekday.ToString();
+
+                //}
+                //else if (CbxCoursesWeekdaysSunday.IsChecked == true)
+                //{
+                //    selectedCourse.Weekday = selectedWeekday.ToString();
+
+                //}
+                //else
+                //{
+                //    Console.WriteLine("wtf");
+                //}
+
+
+
+
+                //|| CbxCoursesWeekdaysTuesday != null || CbxCoursesWeekdaysWednesday != null || CbxCoursesWeekdaysThursday != null || CbxCoursesWeekdaysFriday != null || CbxCoursesWeekdaysSaturday != null || CbxCoursesWeekdaysSunday != null ||) { }
             }
         }
 
@@ -239,7 +321,7 @@ namespace RegexAcademy.Views
                         }
                     }
 
-                    // new entry 
+                    // new updated entry 
                     Course newCourse = new Course { CourseId = TbxCourseCode.Text, CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = sb.ToString(), StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
 
                     Globals.dbContext.Courses.Add(newCourse);
@@ -261,12 +343,59 @@ namespace RegexAcademy.Views
             }
             catch (SystemException ex)
             {
-                MessageBox.Show(this, "Error reading from database (2)\n" + ex.Message, "Database error",
+                MessageBox.Show(this, "Error reading from database (3)\n" + ex.Message, "Database error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             //this.DialogResult = true;
         }
+
+        private void BtnUpdateCourse_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bool isValid = ValidateCourses();
+                // if validation passes, entry to database commences 
+                if (isValid)
+                {
+                    // takes content value of checkboxes and appends as strings
+                    var cb = this.grid.Children.OfType<CheckBox>();
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (CheckBox chk in cb)
+                    {
+                        if (chk.IsChecked == true)
+                        {
+                            sb.Append(chk.Content.ToString() + " ");
+                        }
+                    }
+                    Course courseToUpdate = Globals.dbContext.Courses.Where(c => c.CourseId == selectedCourse.CourseId).FirstOrDefault();
+
+                    courseToUpdate.CourseId = TbxCourseCode.Text;
+                    courseToUpdate.CourseName = TbxCourseName.Text;
+                    courseToUpdate.StartDate = (DateTime)DpCoursesStartDate.SelectedDate;
+                    courseToUpdate.EndDate = (DateTime)DpCoursesEndDate.SelectedDate;
+                    courseToUpdate.Weekday = sb.ToString();
+                    courseToUpdate.StartTime = (DateTime)TpCoursesStartTime.SelectedTime;
+                    courseToUpdate.StartTime = (DateTime)TpCoursesEndTime.SelectedTime;
+
+                    Globals.dbContext.SaveChanges();
+
+                    MessageBox.Show(this, "Course updated successfully!", "Update success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    this.DialogResult = true;
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database (4)\n" + ex.Message, "Database error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
         // just in case, since successful Add or Edit should close the form
         public void ResetFields()
@@ -285,8 +414,6 @@ namespace RegexAcademy.Views
             CbxCoursesWeekdaysSaturday.IsChecked = false;
             CbxCoursesWeekdaysSunday.IsChecked = false;
         }
-
-
 
     }
 }

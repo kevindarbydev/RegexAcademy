@@ -11,8 +11,9 @@ namespace RegexAcademy.Models
         {
 
         }
-        public Course(string courseName, DateTime startDate, DateTime endDate, string weekday, DateTime starttime, DateTime endtime)
+        public Course(string courseId, string courseName, DateTime startDate, DateTime endDate, string weekday, DateTime starttime, DateTime endtime)
         {
+            CourseId = courseId;
             CourseName = courseName;
             StartDate = startDate;
             EndDate = endDate;
