@@ -23,53 +23,57 @@ namespace RegexAcademy.Views
         private Course selectedCourse = null;
 
         List<Teacher> allTeachers = new List<Teacher>();
-        List<Teacher> teacherTeachingCourse = new List<Teacher>(); // may not have to be a list since only one teacher can teach a course
+        private Teacher assignedTeacher = null;
 
         List<object> genericMatched = new List<object>(); // List used to show which students match the search bar
 
-        public AssignTeacher(Course selectedTeacher)
+        public AssignTeacher(Course selectedCourse)
         {
             InitializeComponent();
-            //try
-            //{
-            //    Globals.dbContext = new RegexAcademyDbContext();
-            //    allTeachers = Globals.dbContext.Teachers.ToList();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext();
 
-            //    var studentCourseList = Globals.dbContext.StudentCourses.Where(sc => sc.CourseId == selectedCourse.CourseId).ToList();
-
-            //    foreach (StudentCourse studentCourse in studentCourseList)
-            //    {
-            //        Student student = Globals.dbContext.Students.Find(studentCourse.StudentId);
-            //        studentsInCourse.Add(student);
-
-            //        allStudents.Remove(student);
-            //    }
-
-            //    LvAllStudents.ItemsSource = allStudents;
-            //    LvStudentsInCourse.ItemsSource = studentsInCourse;
-            //}
-            //catch (SystemException ex)
-            //{
-            //    MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
-            //        MessageBoxButton.OK, MessageBoxImage.Error);
-            //    this.Close();
-            //}
-            //if (selectedCourse != null)
-            //{
-            //    this.selectedCourse = selectedCourse;
-            //    LblCourseCode.Content = selectedCourse.CourseId;
-            //    LblStudentsInCourse.Content = $"Students in Course {selectedCourse.CourseId}:";
-            //}
+                allTeachers = Globals.dbContext.Teachers.ToList();
+                LvAllTeachers.ItemsSource = allTeachers;
+                if (selectedCourse.TeacherId != null)
+                {
+                    assignedTeacher = Globals.dbContext.Teachers.Where(t => t.Id == selectedCourse.TeacherId).FirstOrDefault();
+                    LblFirstAndLastName.Content = $"First Name: {assignedTeacher.FirstName} Last Name: {assignedTeacher.LastName}";
+                    ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
+                }
+               
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+            }
+            if (selectedCourse != null)
+            {
+                this.selectedCourse = selectedCourse;
+                LblCourseCode.Content = selectedCourse.CourseId;
+            }
         }
 
         private void BtnAddToCourse_Click(object sender, RoutedEventArgs e)
         {
+            assignedTeacher = LvAllTeachers.SelectedItem as Teacher;
+            Globals.dbContext.Courses.Where(t => t.CourseId == selectedCourse.CourseId).FirstOrDefault().TeacherId = assignedTeacher.Id; // setting TeacherId in course entity
 
+            if (assignedTeacher == null) { return; }
+
+            LblFirstAndLastName.Content = $"First Name: {assignedTeacher.FirstName} Last Name: {assignedTeacher.LastName}";
+            ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
+
+            selectedCourse.TeacherId = assignedTeacher.Id;
+            Globals.dbContext.SaveChanges(); // SystemException
         }
 
         private void BtnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void BtnCancelChanges_Click(object sender, RoutedEventArgs e)
@@ -87,10 +91,10 @@ namespace RegexAcademy.Views
 
         }
 
-      
 
-       
 
-       
+
+
+
     }
 }
