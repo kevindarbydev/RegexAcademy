@@ -14,6 +14,7 @@ namespace RegexAcademy.Views
     public partial class CourseAddEdit : Window
     {
         private Course selectedCourse = null;
+
         public CourseAddEdit()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace RegexAcademy.Views
                 CbxCoursesWeekdaysFriday.Content = Course.WeekdayEnum.Friday;
                 CbxCoursesWeekdaysSaturday.Content = Course.WeekdayEnum.Saturday;
                 CbxCoursesWeekdaysSunday.Content = Course.WeekdayEnum.Sunday;
+
             }
             catch (SystemException ex)
             {
@@ -37,16 +39,19 @@ namespace RegexAcademy.Views
                 // Close();
                 Environment.Exit(1);
             }
+
         }
         // Constructor for EditCourse Window
         public CourseAddEdit(Course selectedCourse)
         {
             InitializeComponent();
+
             try
             {
-                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                Globals.dbContext = new RegexAcademyDbContext();
                 //BtnEditCourse.Visibility = Visibility.Visible;
                 //BtnAddCourse.Visibility = Visibility.Hidden;
+
             }
             catch (SystemException ex)
             {
@@ -57,6 +62,7 @@ namespace RegexAcademy.Views
             }
             if (selectedCourse != null)
             {
+
                 this.selectedCourse = selectedCourse;
                 TbxCourseCode.Text = selectedCourse.CourseId;
                 TbxCourseName.Text = selectedCourse.CourseName;

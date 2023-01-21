@@ -42,6 +42,7 @@ namespace RegexAcademy.Views
                 Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
                 BtnUpdateTeacher.Visibility = Visibility.Visible;
                 BtnAddTeacher.Visibility = Visibility.Hidden;
+                
             }
             catch (SystemException ex)
             {

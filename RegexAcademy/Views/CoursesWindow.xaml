@@ -43,9 +43,11 @@
                 Background='#a1b569'
                 BorderBrush='Black'
                 Cursor='Hand'
+                Visibility='Visible'
                 Click="BtnAddCourse_Click" />
         <Button Content="Edit Course"
                 Name="BtnEditCourse"
+                Click='BtnEditCourse_Click'
                 HorizontalAlignment="Left"
                 Margin="145,12,0,0"
                 VerticalAlignment="Top"

@@ -11,14 +11,19 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class CoursesWindow : Page
     {
+
+
         public CoursesWindow()
         {
+
             InitializeComponent();
+
             LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
         }
 
         private void BtnAddCourse_Click(object sender, RoutedEventArgs e)
         {
+
             CourseAddEdit inputDialog = new CourseAddEdit();
             if (inputDialog.ShowDialog() == true)
             {
@@ -68,5 +73,16 @@ namespace RegexAcademy.Views
             }
         }
 
+        private void BtnEditCourse_Click(object sender, RoutedEventArgs e)
+        {
+
+            Course selectedCourse = LvCourses.SelectedItem as Course;
+            CourseAddEdit inputDialog = new CourseAddEdit(selectedCourse);
+
+            if (inputDialog.ShowDialog() == true)
+            {
+                LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
+            }
+        }
     }
 }
