@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,9 +17,10 @@ namespace RegexAcademy.Views
         public CourseAdd()
         {
             InitializeComponent();
+
             try
             {
-
+                // sets the content of checkboxes
                 Globals.dbContext = new RegexAcademyDbContext();
                 CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
                 CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
@@ -30,7 +32,7 @@ namespace RegexAcademy.Views
             }
             catch (SystemException ex)
             {
-                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                MessageBox.Show(this, "Error reading from database (1)\n" + ex.Message, "Fatal error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 // Close();
                 Environment.Exit(1);
@@ -41,51 +43,108 @@ namespace RegexAcademy.Views
         {
             try
             {
-                // needed for conditional preventing courses from exceeding 6 hours
+                // needed in date and time checks to ensure proper time length constraints
                 DateTime courseExceedsTime = TpCoursesStartTime.SelectedTime.Value.AddHours(6.0);
-                // needed for conditional preventing courses from being shorter than 1 hour
                 DateTime courseTimeTooShort = TpCoursesStartTime.SelectedTime.Value.AddHours(1.0);
 
-                // datepickers & timepickers validation
-                if (DpCoursesStartDate.SelectedDate == null || DpCoursesEndDate.SelectedDate == null || TpCoursesStartTime.SelectedTime == null || TpCoursesEndTime.SelectedTime == null)
+                //!! just missing course code validation, confused about code vs id
+
+                // course name validation:
+
+                // checks that course name and course code begin with same character
+                if (!TbxCourseName.Text.StartsWith(TbxCourseCode.Text.Substring(0, 1)))
                 {
-                    MessageBox.Show("Please ensure all dates and times are picked.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    MessageBox.Show("Course name and course code must share the same starting character.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
                 }
+
+                // checks course name length
+                else if (TbxCourseName.Text.Length < 3 || TbxCourseName.Text.Length > 30)
+                {
+                    MessageBox.Show("Course name must be between 3 and 30 characters", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
+                // checks for no special chars (whitespace ok)
+                else if (!Regex.IsMatch(TbxCourseName.Text, @"^[a-zA-Z0-9 ]{3,30}$"))
+                {
+                    MessageBox.Show("Course name must not contain special characters", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
+
+                // datepickers validation:
+
+                // checks if dates are the same
                 else if (DpCoursesStartDate.SelectedDate.Equals(DpCoursesEndDate.SelectedDate))
                 {
                     MessageBox.Show("Start and end dates cannot match", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
                 }
-                else if (TpCoursesStartTime.SelectedTime.Equals(TpCoursesEndTime.SelectedTime))
-                {
-                    MessageBox.Show("Start and end times cannot match", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return false;
-                }
+
+                // checks if end date was set before start date
                 else if (DpCoursesEndDate.SelectedDate.Value.Date < DpCoursesStartDate.SelectedDate.Value.Date)
                 {
                     MessageBox.Show("End date cannot precede the start date.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
                 }
 
+                // checks if user brute-forced dates beyond date ranges set in CourseAdd.xaml DatePicker properties
+                else if (DpCoursesStartDate.SelectedDate.Value.Year < 2023 || DpCoursesStartDate.SelectedDate.Value.Year > 2025 || DpCoursesEndDate.SelectedDate.Value.Year < 2023 || DpCoursesEndDate.SelectedDate.Value.Year > 2025)
+                {
+                    MessageBox.Show("Dates must fall between 2023-01-01 and 2025-12-31.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
+
+                // time picker validation:
+
+                // checks if times are the same
+                else if (TpCoursesStartTime.SelectedTime.Equals(TpCoursesEndTime.SelectedTime))
+                {
+                    MessageBox.Show("Start and end times cannot match", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
+                //checks if end time was set before start time
                 else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay < TpCoursesStartTime.SelectedTime.Value.TimeOfDay)
                 {
                     MessageBox.Show("End time cannot precede the start time.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
                 }
-                else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay > courseExceedsTime.TimeOfDay)
+
+                // checks if course time is longer than 6 hours
+                else if (TpCoursesEndTime.SelectedTime.Value > courseExceedsTime)
                 {
                     MessageBox.Show("Course duration cannot exceed 6 hours.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
-
                 }
-                else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay < courseTimeTooShort.TimeOfDay)
+
+                // checks if course time is shorter than 1 hour
+                else if (TpCoursesEndTime.SelectedTime.Value < courseTimeTooShort)
                 {
                     MessageBox.Show("Course duration cannot be under an hour", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
                 }
 
-                // checkboxes: if all are empty, throw error 
+                // checks if time is between 9am-9pm, accounting for 1 hour course time minimum
+                else if (TpCoursesStartTime.SelectedTime.Value.Hour < 9 || TpCoursesStartTime.SelectedTime.Value.Hour > 20 || TpCoursesEndTime.SelectedTime.Value.Hour > 21)
+                {
+                    MessageBox.Show("Course cannot run outside 9am or 9pm", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
+                // checks if any of the pickers are empty (date and time)
+                else if (DpCoursesStartDate.SelectedDate == null || DpCoursesEndDate.SelectedDate == null || TpCoursesStartTime.SelectedTime == null || TpCoursesEndTime.SelectedTime == null)
+                {
+                    MessageBox.Show("Please ensure all dates and times are picked.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
+
+                //  checkbox validation:
+
+                //  if all are empty
                 else if (CbxCoursesWeekdaysMonday.IsChecked == false &&
                     CbxCoursesWeekdaysTuesday.IsChecked == false &&
                     CbxCoursesWeekdaysWednesday.IsChecked == false &&
@@ -96,9 +155,9 @@ namespace RegexAcademy.Views
                 {
                     MessageBox.Show("Please pick at least one weekday.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
-
-                    // checkboxes: if all are checked, throw error
                 }
+
+                // if all are checked
                 else if (CbxCoursesWeekdaysMonday.IsChecked == true &&
                     CbxCoursesWeekdaysTuesday.IsChecked == true &&
                     CbxCoursesWeekdaysWednesday.IsChecked == true &&
@@ -112,6 +171,7 @@ namespace RegexAcademy.Views
                 }
                 else
                 {
+                    // all validations passed
                     return true;
                 }
             }
@@ -127,9 +187,10 @@ namespace RegexAcademy.Views
             try
             {
                 bool isValid = ValidateCourses();
+                // if validation passes, entry to database commences 
                 if (isValid)
                 {
-
+                    // takes content value of checkboxes and appends as strings
                     var cb = this.grid.Children.OfType<CheckBox>();
                     StringBuilder sb = new StringBuilder();
 
@@ -141,6 +202,7 @@ namespace RegexAcademy.Views
                         }
                     }
 
+                    // new entry 
                     Course newCourse = new Course { CourseId = TbxCourseCode.Text, CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = sb.ToString(), StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
 
                     Globals.dbContext.Courses.Add(newCourse);
@@ -169,8 +231,10 @@ namespace RegexAcademy.Views
             //this.DialogResult = true;
         }
 
+        // just in case, since successful Add should close the form
         public void ResetFields()
         {
+            TbxCourseCode.Text = string.Empty;
             TbxCourseName.Text = string.Empty;
             DpCoursesStartDate.SelectedDate = null;
             DpCoursesEndDate.SelectedDate = null;
@@ -189,6 +253,3 @@ namespace RegexAcademy.Views
 
     }
 }
-// applicable for file export
-//List<CheckBox> CheckBoxes = new List<CheckBox> { CbxCoursesWeekdaysMonday, CbxCoursesWeekdaysTuesday, CbxCoursesWeekdaysWednesday, CbxCoursesWeekdaysThursday, CbxCoursesWeekdaysFriday , CbxCoursesWeekdaysSaturday , CbxCoursesWeekdaysSunday };
-//string weekdays = string.Join(",", CheckBoxes.Where(Checkbox => Checkbox.IsChecked == true).Select(cb => cb.Content));

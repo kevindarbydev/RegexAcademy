@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.RegularExpressions;
 
 namespace RegexAcademy.Models
 {
@@ -18,7 +17,6 @@ namespace RegexAcademy.Models
             StartDate = startDate;
             EndDate = endDate;
             Weekday = weekday;
-            //Weekday = (WeekdayEnum)Enum.Parse(typeof(WeekdayEnum), weekday);
             StartTime = starttime;
             EndTime = endtime;
         }
@@ -41,17 +39,9 @@ namespace RegexAcademy.Models
             }
             set
             {
-                if (value.Length < 3 || value.Length > 30)
-                {
-                    throw new ArgumentException("Course name length must be 3-30 characters long");
-                }
-
-                if (!Regex.IsMatch(value, @"^[a-zA-Z0-9 ]{3,30}$")) // this regex should only allow letters and numbers, and spaces
-                {
-                    throw new ArgumentException("Course name cannot contain special characters. ");
-                }
+                // ensures first character is entered in db as capital letter, then trims leading and trailing whitespace
                 string CapitalizeFirstCharCourseName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
-                _courseName = CapitalizeFirstCharCourseName;
+                _courseName = CapitalizeFirstCharCourseName.Trim();
             }
         }
 
@@ -63,15 +53,6 @@ namespace RegexAcademy.Models
             get { return _startDate; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentException("Please make sure to select a date.");
-                }
-                //!!!has to be within 2 weeks of current actual date
-                if (value.Year < 1900 || value.Year > 2024)
-                {
-                    throw new ArgumentException("Please enter a valid start date.");
-                }
                 _startDate = value;
             }
         }
@@ -85,15 +66,6 @@ namespace RegexAcademy.Models
             get { return _endDate; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentException("Please make sure to select a date.");
-                }
-                //!!!has to be at least one week after start date and cannot be before it
-                if (value.Year < 1900 || value.Year > 2024)
-                {
-                    throw new ArgumentException("Please enter a valid end date.");
-                }
                 _endDate = value;
             }
         }
@@ -120,15 +92,6 @@ namespace RegexAcademy.Models
             get { return _startTime; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentException("Please make sure to select a start time.");
-                }
-                //!!!has to be from 7am to 7pm
-                //if ()
-                //{
-                //    throw new ArgumentException("Please enter a valid start time.");
-                //}
                 _startTime = value;
             }
         }
@@ -141,15 +104,6 @@ namespace RegexAcademy.Models
             get { return _endTime; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentException("Please make sure to select an end time.");
-                }
-                //!!!has to be from 8am to 11pm
-                //if ()
-                //{
-                //    throw new ArgumentException("Please enter a valid end time.");
-                //}
                 _endTime = value;
             }
         }
@@ -161,4 +115,3 @@ namespace RegexAcademy.Models
 
     }
 }
-// missing tostring
