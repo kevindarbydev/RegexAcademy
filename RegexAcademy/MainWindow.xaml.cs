@@ -14,7 +14,6 @@ namespace RegexAcademy
         public MainWindow()
         {
             InitializeComponent();
-
             try
             {
                 Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
@@ -26,11 +25,11 @@ namespace RegexAcademy
                 Environment.Exit(1);
             }
 
-            if (Globals.isLoggedIn == false)
-            {
-                Register RegDlg = new Register();
-                RegDlg.ShowDialog();
-            }
+            //if (Globals.isLoggedIn == false)
+            //{
+            //    Register RegDlg = new Register();
+            //    RegDlg.ShowDialog();
+            //}
         }
 
         private void HbMenuItem_Click(object sender, RoutedEventArgs e)
