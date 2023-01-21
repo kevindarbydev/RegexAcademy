@@ -10,54 +10,67 @@
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800">
-  
+
 
     <Grid>
-        <TextBox
-            Name="TbxSearchBar"
-            HorizontalAlignment="Left"
-            Margin="104,62,0,0"
-            TextWrapping="Wrap"
-            VerticalAlignment="Top"
-            Width="160"
-            Height="39" />
-        <Button
-            Name="BtnSearch"
-            Content="Search"
-            HorizontalAlignment="Left"
-            Margin="28,122,0,0"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="-1.463,1.875"
-            Click="BtnSearch_Click" />
-        <Label
-            Content="Enter name:"
-            HorizontalAlignment="Left"
-            Margin="28,63,0,0"
-            VerticalAlignment="Top"
-            Width="72"
-            Height="38" />
-        <ListView  
-            Name="LvSearchResults"
-            Margin="10,185,442,10">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn
-                        Header="T/S"
-                        Width="90"
-                        DisplayMemberBinding="{Binding DisplayFirstLetter}"/>
-                    <GridViewColumn
-                        Header="First Name"
-                        Width="120"
-                        DisplayMemberBinding="{Binding FirstName}" />
-                    <GridViewColumn
-                        Header="Last Name"
-                        Width="120"
-                        DisplayMemberBinding="{Binding LastName}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="400" />
+            <ColumnDefinition
+                Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <StackPanel
+            Grid.Column="0"
+            Name="SearchContent"
+            Margin="-98,0,98,0">
+            <TextBox
+                x:Name="TbxSearchBar"
+                TextWrapping="Wrap"
+                Width="160"
+                
+                Height="39" />
+            <Label
+                Content="Enter name:"
+                Width="100"
+                Height="42"
+                Margin="-290,-30,0,0"
+                FontSize="16" />
+            <Button
+                x:Name="BtnSearch"
+                Content="Search"
+                HorizontalAlignment="Right"
+                
+                RenderTransformOrigin="-1.463,1.875"
+                Click="BtnSearch_Click" />
 
+            <ListView
+                x:Name="LvSearchResults"
+                Width="346"
+                Height="319">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                            Header="T/S"
+                            Width="90"
+                            DisplayMemberBinding="{Binding DisplayFirstLetter}" />
+                        <GridViewColumn
+                            Header="First Name"
+                            Width="130"
+                            DisplayMemberBinding="{Binding FirstName}" />
+                        <GridViewColumn
+                            Header="Last Name"
+                            Width="130"
+                            DisplayMemberBinding="{Binding LastName}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </StackPanel>
+        <Frame
+            Grid.Column="1"
+            Name="ContentFrame"
+            NavigationUIVisibility="Hidden" />
 
         <!--  <materialDesign:Card Content="To implement: Search box, Graphs, etc."
                              HorizontalAlignment="Left"
