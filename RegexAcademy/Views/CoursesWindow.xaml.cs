@@ -37,8 +37,8 @@ namespace RegexAcademy.Views
 
         private void BtnAssignTeacher_Click(object sender, RoutedEventArgs e)
         {
-            Models.Course selectedTeacher = LvCourses.SelectedItem as Models.Course;
-            AssignTeacher assignDialog = new AssignTeacher(selectedTeacher);
+            Models.Course selectedCourse = LvCourses.SelectedItem as Models.Course;
+            AssignTeacher assignDialog = new AssignTeacher(selectedCourse);
             if(assignDialog.ShowDialog() == true)
             {
                 Globals.dbContext.SaveChanges();
