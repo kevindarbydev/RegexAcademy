@@ -74,7 +74,7 @@ namespace RegexAcademy.Views
 
                 MessageBox.Show(this, "Login Successful", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                this.Hide();    
+                this.Close();    
             }
             catch(ArgumentException ex)
             {

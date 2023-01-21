@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
+using RegexAcademy.Views;
 
 namespace RegexAcademy
 {
@@ -25,11 +26,11 @@ namespace RegexAcademy
                 Environment.Exit(1);
             }
 
-            //if (Globals.isLoggedIn == false)
-            //{
-            //    Register RegDlg = new Register();
-            //    RegDlg.ShowDialog();
-            //}
+            if (Globals.isLoggedIn == false)
+            {
+                Register RegDlg = new Register();
+                RegDlg.ShowDialog();
+            }
         }
 
         private void HbMenuItem_Click(object sender, RoutedEventArgs e)
