@@ -54,6 +54,8 @@
                 Grid.Row="1">
                 <Button
                 Margin="-90,0,0,0"
+                    Click="BtnViewStats_Click"
+                    Name="BtnViewStats"
                 HorizontalAlignment="Center"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -64,38 +66,42 @@
                         Text="View Statistics" />
                 </Button>
             </Grid>
-            <Grid
-                Grid.Column="0"
-                Grid.Row="3">
-                <Button
-                Margin="-90,0,0,0"
-                    Name="BtnSearchRecords"
-                HorizontalAlignment="Center"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                    ToolTip="Search the database for Teachers and Students"
-                    Background="#FF4150A4"
-                    BorderThickness="0"
-                    Click="BtnSearchRecords_Click">
-                    <TextBlock
-                        Text="Search Records" />
-                </Button>
-            </Grid>
+            
             <Grid
                 Grid.Column="0"
                 Grid.Row="2">
                 <Button
+                    Name="BtnOption"
                 Margin="-90,0,0,0"
+                    Click="BtnOption_Click"
                 HorizontalAlignment="Center"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                     ToolTip="Not yet implemented"
                     Background="#FF4150A4"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    >
                     <TextBlock
                         Text="Not impl" />
                 </Button>
             </Grid>
+        <Grid
+            Grid.Column="0"
+            Grid.Row="3">
+            <Button
+                Margin="-90,0,0,0"
+                Name="BtnSearchRecords"
+                HorizontalAlignment="Center"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                ToolTip="Search the database for Teachers and Students"
+                Background="#FF4150A4"
+                BorderThickness="0"
+                Click="BtnSearchRecords_Click">
+                <TextBlock
+                    Text="Search Records" />
+            </Button>
+        </Grid>
         <Frame
             Grid.Column="2"
             Grid.RowSpan="5"

@@ -18,7 +18,34 @@ namespace RegexAcademy.Views
         {
             try
             {
-                ContentForOptionChosen.Source = new Uri("DataAnalyticsWindow.xaml", UriKind.Relative); //IoException, InvalidOperation
+                ContentForOptionChosen.Source = new Uri("DataAnalyticsWindowSearch.xaml", UriKind.Relative); //IoException, InvalidOperation
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message + " ," + ex.GetType().Name);
+            }
+        }
+
+
+
+        private void BtnOption_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Not yet implemented");
+                // ContentForOptionChosen.Source = new Uri("DataAnalyticsWindowStatistics.xaml", UriKind.Relative); //IoException, InvalidOperation
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message + " ," + ex.GetType().Name);
+            }
+        }
+
+        private void BtnViewStats_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ContentForOptionChosen.Source = new Uri("DataAnalyticsWindowStatistics.xaml", UriKind.Relative); //IoException, InvalidOperation
             }
             catch (SystemException ex)
             {

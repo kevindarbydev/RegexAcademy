@@ -139,6 +139,9 @@
     <Compile Include="Views\DataAnalyticsDashboard.xaml.cs">
       <DependentUpon>DataAnalyticsDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DataAnalyticsWindowStatistics.xaml.cs">
+      <DependentUpon>DataAnalyticsWindowStatistics.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -159,8 +162,8 @@
     <Compile Include="RegexAcademyDbContext.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentCourse.cs" />
-    <Compile Include="Views\DataAnalyticsWindow.xaml.cs">
-      <DependentUpon>DataAnalyticsWindow.xaml</DependentUpon>
+    <Compile Include="Views\DataAnalyticsWindowSearch.xaml.cs">
+      <DependentUpon>DataAnalyticsWindowSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DataAnalyticsDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataAnalyticsWindowStatistics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,7 +225,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\DataAnalyticsWindow.xaml">
+    <Page Include="Views\DataAnalyticsWindowSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
