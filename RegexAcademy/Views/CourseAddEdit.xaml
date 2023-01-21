@@ -192,6 +192,13 @@
       VerticalAlignment='Top'
       WithSeconds='False'
       IsInvalidTextAllowed='False' />
-
+    <Button
+      Content="Update"
+      Name="BtnUpdateCourse"
+      Click="BtnUpdateCourse_Click"
+      Width="100"
+      Visibility="Hidden"
+      Background='#a1b569'
+      Margin="226,472,54,61" />
   </Grid>
 </Window>
