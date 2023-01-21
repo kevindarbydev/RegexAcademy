@@ -13,42 +13,43 @@
   Icon="/Assets/Images/book.ico"
   ResizeMode='NoResize'>
 
-    <Window.Background>
-        <LinearGradientBrush
+  <Window.Background>
+    <LinearGradientBrush
       EndPoint="0.5,1"
       StartPoint="0.5,0">
-            <GradientStop
+      <GradientStop
         Color="LightBlue" />
-            <GradientStop
+      <GradientStop
         Color="#FF8A5269"
         Offset="1" />
-            <GradientStop
+      <GradientStop
         Color="#FFAAFF"
         Offset="2" />
-        </LinearGradientBrush>
-    </Window.Background>
-    <Grid x:Name="grid">
-        <TextBox
-            x:Name="TbxCourseCode"
-            HorizontalAlignment="Left"
-            Height="23"
-            Margin="170,36,0,0"
-            TextWrapping="Wrap"
-            VerticalAlignment="Top"
-            Width="260" />
-        <Label
-            Content="Course Code:"
-            HorizontalAlignment="Left"
-            Margin="37,35,0,0"
-            VerticalAlignment="Top"
-            Width="90" />
-        <Label
+    </LinearGradientBrush>
+  </Window.Background>
+  <Grid
+    x:Name="grid">
+    <TextBox
+      x:Name="TbxCourseCode"
+      HorizontalAlignment="Left"
+      Height="23"
+      Margin="170,36,0,0"
+      TextWrapping="Wrap"
+      VerticalAlignment="Top"
+      Width="260" />
+    <Label
+      Content="Course Code:"
+      HorizontalAlignment="Left"
+      Margin="37,35,0,0"
+      VerticalAlignment="Top"
+      Width="90" />
+    <Label
       Content="Course Name:"
       HorizontalAlignment="Left"
       Margin="37,88,0,0"
       VerticalAlignment="Top"
       Width="90" />
-        <TextBox
+    <TextBox
       Name="TbxCourseName"
       HorizontalAlignment="Left"
       Height="23"
@@ -56,23 +57,27 @@
       TextWrapping="Wrap"
       VerticalAlignment="Top"
       Width="260" />
-        <Label
+    <Label
       Content="Start Date:"
       HorizontalAlignment="Left"
       Margin="37,147,0,0"
       VerticalAlignment="Top"
       Width="78" />
-        <DatePicker
+    <DatePicker
       Name="DpCoursesStartDate"
-      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+      DisplayDateStart='2023-01-01'
+      DisplayDateEnd='2025-12-31'
+      materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
       materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="2"
+      materialDesign:CalendarAssist.IsHeaderVisible='False'
       materialDesign:HintAssist.FloatingOffset="0,-22"
       materialDesign:HintAssist.Hint="Pick a date"
       Style="{StaticResource MaterialDesignOutlinedDatePicker}"
       Margin='170,133,54,0'
       VerticalAlignment='Top'
-      Height='51' />
-        <Button
+      Height='51' 
+      />
+    <Button
       Name="BtnCourseDialogSave"
       Click="BtnCourseDialogSave_Click"
       IsDefault="True"
@@ -80,105 +85,112 @@
       Background='#a1b569'
       Margin="226,472,54,61"
       Content='Save'>
-        </Button>
-        <Button
+    </Button>
+    <Button
       IsCancel="True"
       Width="100"
       Background='#a1b569'
       Margin="37,472,243,61"
       Content='Cancel'>
-        </Button>
-        <Label
+    </Button>
+    <Label
       Content="End Date:"
       HorizontalAlignment="Left"
       Margin="37,216,0,0"
       VerticalAlignment="Top"
       Width="78" />
-        <DatePicker
+    <DatePicker
       Name="DpCoursesEndDate"
-      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+      DisplayDateStart='2023-01-08'
+      DisplayDateEnd='2025-12-31'
+      materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
       materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="2"
+      materialDesign:CalendarAssist.IsHeaderVisible='False'
       materialDesign:HintAssist.FloatingOffset="0,-22"
       materialDesign:HintAssist.Hint="Pick a date"
       Style="{StaticResource MaterialDesignOutlinedDatePicker}"
       Margin='170,203,54,0'
       VerticalAlignment='Top'
       Height='50' />
-        <Label
+    <Label
       Content="Weekdays:"
       HorizontalAlignment="Left"
       Margin="37,291,0,0"
       VerticalAlignment="Top"
       Width="78" />
-        <CheckBox
+    <CheckBox
       Name='CbxCoursesWeekdaysMonday'
       IsChecked='False'
       Style="{StaticResource MaterialDesignCheckBox}"
       Margin='170,258,240,433' />
-        <CheckBox
+    <CheckBox
       Name='CbxCoursesWeekdaysTuesday'
       IsChecked='False'
       Style="{StaticResource MaterialDesignCheckBox}"
       Margin='170,280,240,410' />
-        <CheckBox
+    <CheckBox
       Name='CbxCoursesWeekdaysSunday'
       IsChecked='False'
       Style="{StaticResource MaterialDesignCheckBox}"
       Margin='365,280,45,411' />
-        <CheckBox
+    <CheckBox
       Name='CbxCoursesWeekdaysSaturday'
       IsChecked='False'
       Style="{StaticResource MaterialDesignCheckBox}"
       Margin='365,258,45,433' />
-        <CheckBox
+    <CheckBox
       Name='CbxCoursesWeekdaysWednesday'
       IsChecked='False'
       Style="{StaticResource MaterialDesignCheckBox}"
       Margin='170,302,225,389' />
-        <CheckBox
+    <CheckBox
       Name='CbxCoursesWeekdaysThursday'
       IsChecked='False'
       Style="{StaticResource MaterialDesignCheckBox}"
       Margin='245,258,165,433' />
-        <CheckBox
+    <CheckBox
       Name='CbxCoursesWeekdaysFriday'
       IsChecked='False'
       Style="{StaticResource MaterialDesignCheckBox}"
       Margin='245,280,165,410' />
-        <Label
+    <Label
       Content="Start Time:"
       HorizontalAlignment="Left"
       Margin="37,382,0,0"
       VerticalAlignment="Top"
       Width="78" />
-        <materialDesign:TimePicker
-      Name="TpCoursesStartTime"
-      materialDesign:HintAssist.FloatingOffset="0,-23"
-      materialDesign:HintAssist.Hint="Pick a time"
-      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
-      materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="2"
-      Is24Hours="True"
-      Style="{StaticResource MaterialDesignOutlinedTimePicker}"
-      Margin='170,440,54,0'
-      VerticalAlignment='Top'
-      Height='50' />
-        <Label
-      Content="End Time:"
-      HorizontalAlignment="Left"
-      Margin="37,453,0,0"
-      VerticalAlignment="Top"
-      Width="78" />
-        <materialDesign:TimePicker
+    <materialDesign:TimePicker
       Name="TpCoursesEndTime"
       materialDesign:HintAssist.FloatingOffset="0,-23"
       materialDesign:HintAssist.Hint="Pick a time"
       materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
       materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="2"
-      Is24Hours="True"
+      Is24Hours="False"
+      Style="{StaticResource MaterialDesignOutlinedTimePicker}"
+      Margin='170,440,54,0'
+      VerticalAlignment='Top'
+      Height='50'
+      WithSeconds='False'
+      IsInvalidTextAllowed='False' />
+    <Label
+      Content="End Time:"
+      HorizontalAlignment="Left"
+      Margin="37,453,0,0"
+      VerticalAlignment="Top"
+      Width="78" />
+    <materialDesign:TimePicker
+      Name="TpCoursesStartTime"
+      materialDesign:HintAssist.FloatingOffset="0,-23"
+      materialDesign:HintAssist.Hint="Pick a time"
+      materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+      materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="2"
+      Is24Hours="False"
       Style="{StaticResource MaterialDesignOutlinedTimePicker}"
       Margin='170,369,54,0'
       Height='50'
-      VerticalAlignment='Top' />
+      VerticalAlignment='Top'
+      WithSeconds='False'
+      IsInvalidTextAllowed='False' />
 
-    </Grid>
+  </Grid>
 </Window>

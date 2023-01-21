@@ -18,7 +18,7 @@ namespace RegexAcademy.Views
             InitializeComponent();
             try
             {
-                // I should add the other inputs here
+
                 Globals.dbContext = new RegexAcademyDbContext();
                 CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
                 CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
@@ -36,15 +36,58 @@ namespace RegexAcademy.Views
                 Environment.Exit(1);
             }
         }
-        private void BtnCourseDialogSave_Click(object sender, RoutedEventArgs e)
+
+        private void ValidateCourses()
         {
             try
             {
+
+
+                // needed for conditional preventing courses from exceeding 6 hours
+                DateTime courseExceedsTime = TpCoursesStartTime.SelectedTime.Value.AddHours(6.0);
+                // needed for conditional preventing courses from being shorter than 1 hour
+                DateTime courseTimeTooShort = TpCoursesStartTime.SelectedTime.Value.AddHours(1.0);
+
+                // datepickers & timepickers validation
                 if (DpCoursesStartDate.SelectedDate == null || DpCoursesEndDate.SelectedDate == null || TpCoursesStartTime.SelectedTime == null || TpCoursesEndTime.SelectedTime == null)
                 {
                     MessageBox.Show("Please ensure all dates and times are picked.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return;
                 }
+                else if (DpCoursesStartDate.SelectedDate.Equals(DpCoursesEndDate.SelectedDate))
+                {
+                    MessageBox.Show("Start and end dates cannot match", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
+                }
+                else if (TpCoursesStartTime.SelectedTime.Equals(TpCoursesEndTime.SelectedTime))
+                {
+                    MessageBox.Show("Start and end times cannot match", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
+                }
+                else if (DpCoursesEndDate.SelectedDate.Value.Date < DpCoursesStartDate.SelectedDate.Value.Date)
+                {
+                    MessageBox.Show("End date cannot precede the start date.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
+                }
+
+                else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay < TpCoursesStartTime.SelectedTime.Value.TimeOfDay)
+                {
+                    MessageBox.Show("End time cannot precede the start time.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
+                }
+                else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay > courseExceedsTime.TimeOfDay)
+                {
+                    MessageBox.Show("Course duration cannot exceed 6 hours.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
+
+                }
+                else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay < courseTimeTooShort.TimeOfDay)
+                {
+                    MessageBox.Show("Course duration cannot be under an hour", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
+                }
+
+                // checkboxes: if all are empty, throw error 
                 else if (CbxCoursesWeekdaysMonday.IsChecked == false &&
                     CbxCoursesWeekdaysTuesday.IsChecked == false &&
                     CbxCoursesWeekdaysWednesday.IsChecked == false &&
@@ -53,14 +96,35 @@ namespace RegexAcademy.Views
                     CbxCoursesWeekdaysSaturday.IsChecked == false &&
                     CbxCoursesWeekdaysSunday.IsChecked == false)
                 {
-                    MessageBox.Show("Please pick at least one weekday", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                }
-                //else
-                //{
-                //    MessageBox.Show("Error reading inputs", "Internal Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                //    Console.WriteLine("Error reading course inputs - Internal Error");
-                //}
+                    MessageBox.Show("Please pick at least one weekday.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
 
+                    // checkboxes: if all are checked, throw error
+                }
+                else if (CbxCoursesWeekdaysMonday.IsChecked == true &&
+                    CbxCoursesWeekdaysTuesday.IsChecked == true &&
+                    CbxCoursesWeekdaysWednesday.IsChecked == true &&
+                    CbxCoursesWeekdaysThursday.IsChecked == true &&
+                    CbxCoursesWeekdaysFriday.IsChecked == true &&
+                    CbxCoursesWeekdaysSaturday.IsChecked == true &&
+                    CbxCoursesWeekdaysSunday.IsChecked == true)
+                {
+                    MessageBox.Show("Courses cannot take place on every single day of the week.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return;
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Error validating inputs" + ex.Message, "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return;
+            }
+        }
+
+        private void BtnCourseDialogSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ValidateCourses();
 
                 var cb = this.grid.Children.OfType<CheckBox>();
                 StringBuilder sb = new StringBuilder();
@@ -80,7 +144,7 @@ namespace RegexAcademy.Views
 
                 if (results > 0)
                 {
-                    MessageBox.Show(this, "Course added successfully!", "Update success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show(this, "Course added successfully!", "Regex Academy", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     this.DialogResult = true;
                 }
 
@@ -94,7 +158,7 @@ namespace RegexAcademy.Views
             }
             catch (SystemException ex)
             {
-                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
+                MessageBox.Show(this, "Error reading from database (2)\n" + ex.Message, "Database error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
@@ -116,6 +180,9 @@ namespace RegexAcademy.Views
             CbxCoursesWeekdaysSaturday.IsChecked = false;
             CbxCoursesWeekdaysSunday.IsChecked = false;
         }
+
+
+
     }
 }
 // applicable for file export
