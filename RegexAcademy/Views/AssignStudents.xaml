@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:RegexAcademy.Views"
         mc:Ignorable="d" ResizeMode="NoResize"
         Title="AssignStudents" Height="450" Width="950"
-        Icon="../Assets/Images/book.ico">
+        Icon="../Assets/Images/book.ico"
+        WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush
       EndPoint="0.5,1"
