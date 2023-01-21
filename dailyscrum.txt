@@ -135,7 +135,43 @@
 - Implement Data Modeling and Data Export 
 - Implement Search bar
 - Unit Testing
+--------------------------------------------------------------------------------------
+1/21/2023 Kevin
+1. Done/not done since last scrum:
+- All CRUD operations complete
+  on students
+- Input validation on Add/Edit
+2. To do until next Scrum:
+- Try to connect project to cloud DB
+- Help other members with their tasks
 
+1/21/2023 Matthew
+1. Done/not done since last scrum:
+- Implementation of assigning students to courses
+- Implementation of delete courses
+- Assist in implementation of Edit Courses
+- Fixes in registering and logging in users
+2. To do until next Scrum:
+- Add welcome message to the main window
+
+1/21/2023 Chris
+1. Done/not done since last scrum:
+- courses add 90%, course add dialog, many minor fixes
+2. To do until next Scrum:
+- finish up add course, update, delete courses
+- home page
+- reports and data analytics
+3. 3. Need assistance / figure things out:
+-
+
+1/21/2023 Seena
+1. Done/not done since last scrum:
+- Began NUnit testing 
+- Implementation of assigning a teacher to courses
+2. To do until next Scrum:
+- Settle resize and cropping images everywhere in app
+- Saving teacherId and AssignTeacher bug
+- Add more unit tests
 
 
 
