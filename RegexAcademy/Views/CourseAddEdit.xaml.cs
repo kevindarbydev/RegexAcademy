@@ -55,6 +55,7 @@ namespace RegexAcademy.Views
                 BtnUpdateCourse.Visibility = Visibility.Visible;
                 BtnCourseDialogSave.Visibility = Visibility.Hidden;
 
+                // sets weekday enums based on checkbox content
                 CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
                 CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
                 CbxCoursesWeekdaysWednesday.Content = Course.WeekdayEnum.Wednesday;
@@ -73,7 +74,7 @@ namespace RegexAcademy.Views
             }
             if (selectedCourse != null)
             {
-
+                // setting selected course 
                 this.selectedCourse = selectedCourse;
                 TbxCourseCode.Text = selectedCourse.CourseId;
                 TbxCourseName.Text = selectedCourse.CourseName;
@@ -123,12 +124,27 @@ namespace RegexAcademy.Views
                 DateTime courseExceedsTime = TpCoursesStartTime.SelectedTime.Value.AddHours(6.0);
                 DateTime courseTimeTooShort = TpCoursesStartTime.SelectedTime.Value.AddHours(1.0);
 
-                //!! just missing course code validation, confused about code vs id
-                // course code validation
+
+                // course code validation:
+
+                // checks if code is exactly 4 and not null
+                if (TbxCourseCode.Text.Length != 4 || TbxCourseCode.Text == null)
+                {
+                    MessageBox.Show("Course code must be exactly 4 characters.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
+                // checks if code is formatted to two letters followed by two numbers
+                else if (!Regex.IsMatch(TbxCourseCode.Text, @"^[a-zA-Z]{2}[0-9]{2}$"))
+                {
+                    MessageBox.Show("Course code must be two letters and two digits.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    return false;
+                }
+
                 // course name validation:
 
                 // checks that course name and course code begin with same character
-                if (!TbxCourseName.Text.StartsWith(TbxCourseCode.Text.Substring(0, 1)))
+                else if (!TbxCourseName.Text.StartsWith(TbxCourseCode.Text.Substring(0, 1)))
                 {
                     MessageBox.Show("Course name and course code must share the same starting character.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
