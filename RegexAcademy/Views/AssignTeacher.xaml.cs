@@ -39,7 +39,7 @@ namespace RegexAcademy.Views
                 if (selectedCourse.TeacherId != null)
                 {
                     assignedTeacher = Globals.dbContext.Teachers.Where(t => t.Id == selectedCourse.TeacherId).FirstOrDefault();
-                    LblFirstAndLastName.Content = $"First Name: {assignedTeacher.FirstName} Last Name: {assignedTeacher.LastName}";
+                    LblFirstAndLastName.Content = $"Currently Assigned Teacher: \n {assignedTeacher.FirstName} {assignedTeacher.LastName}";
                     ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
                 }
                
@@ -64,16 +64,20 @@ namespace RegexAcademy.Views
 
             if (assignedTeacher == null) { return; }
 
-            LblFirstAndLastName.Content = $"First Name: {assignedTeacher.FirstName} Last Name: {assignedTeacher.LastName}";
+            LblFirstAndLastName.Content = $"Currently Assigned Teacher: \n {assignedTeacher.FirstName} {assignedTeacher.LastName}";
             ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
 
             selectedCourse.TeacherId = assignedTeacher.Id;
-            Globals.dbContext.SaveChanges(); // SystemException
         }
 
         private void BtnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
             
+            //Globals.dbContext.SaveChanges(); // SystemException
+
+            //MessageBox.Show(this, "Teacher has been assigned", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            //this.Close();
         }
 
         private void BtnCancelChanges_Click(object sender, RoutedEventArgs e)
