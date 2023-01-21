@@ -87,7 +87,7 @@ namespace RegexAcademy.Views
                 {
                     CbxCoursesWeekdaysMonday.IsChecked = true;
                 }
-                if (weekday.Contains("Tueday") || weekday.Contains(" Tuesday"))
+                if (weekday.Contains("Tuesday") || weekday.Contains(" Tuesday"))
                 {
                     CbxCoursesWeekdaysTuesday.IsChecked = true;
                 }
@@ -369,15 +369,20 @@ namespace RegexAcademy.Views
                             sb.Append(chk.Content.ToString() + " ");
                         }
                     }
-                    selectedCourse.CourseId = TbxCourseCode.Text;
-                    selectedCourse.CourseName = TbxCourseName.Text;
-                    selectedCourse.StartDate = (DateTime)DpCoursesStartDate.SelectedDate;
-                    selectedCourse.EndDate = (DateTime)DpCoursesEndDate.SelectedDate;
-                    selectedCourse.Weekday = sb.ToString();
-                    selectedCourse.StartTime = (DateTime)TpCoursesStartTime.SelectedTime;
-                    selectedCourse.StartTime = (DateTime)TpCoursesEndTime.SelectedTime;
+                    Course courseToUpdate = Globals.dbContext.Courses.Where(c => c.CourseId == selectedCourse.CourseId).FirstOrDefault();
+
+                    courseToUpdate.CourseId = TbxCourseCode.Text;
+                    courseToUpdate.CourseName = TbxCourseName.Text;
+                    courseToUpdate.StartDate = (DateTime)DpCoursesStartDate.SelectedDate;
+                    courseToUpdate.EndDate = (DateTime)DpCoursesEndDate.SelectedDate;
+                    courseToUpdate.Weekday = sb.ToString();
+                    courseToUpdate.StartTime = (DateTime)TpCoursesStartTime.SelectedTime;
+                    courseToUpdate.StartTime = (DateTime)TpCoursesEndTime.SelectedTime;
 
                     Globals.dbContext.SaveChanges();
+
+                    MessageBox.Show(this, "Course updated successfully!", "Update success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    this.DialogResult = true;
                 }
             }
             catch (ArgumentException ex)
