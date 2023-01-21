@@ -42,7 +42,7 @@ namespace RegexAcademy.Views
                     LblFirstAndLastName.Content = $"Currently Assigned Teacher: \n {assignedTeacher.FirstName} {assignedTeacher.LastName}";
                     ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
                 }
-               
+
             }
             catch (SystemException ex)
             {
@@ -59,46 +59,82 @@ namespace RegexAcademy.Views
 
         private void BtnAddToCourse_Click(object sender, RoutedEventArgs e)
         {
-            assignedTeacher = LvAllTeachers.SelectedItem as Teacher;
-            Globals.dbContext.Courses.Where(t => t.CourseId == selectedCourse.CourseId).FirstOrDefault().TeacherId = assignedTeacher.Id; // setting TeacherId in course entity
+            try
+            {
+                assignedTeacher = LvAllTeachers.SelectedItem as Teacher;
+                Globals.dbContext.Courses.Where(t => t.CourseId == selectedCourse.CourseId).FirstOrDefault().TeacherId = assignedTeacher.Id; // setting TeacherId in course entity
 
-            if (assignedTeacher == null) { return; }
+                if (assignedTeacher == null) { return; }
 
-            LblFirstAndLastName.Content = $"Currently Assigned Teacher: \n {assignedTeacher.FirstName} {assignedTeacher.LastName}";
-            ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
+                LblFirstAndLastName.Content = $"Currently Assigned Teacher: \n {assignedTeacher.FirstName} {assignedTeacher.LastName}";
+                ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
 
-            selectedCourse.TeacherId = assignedTeacher.Id;
-        }
-
-        private void BtnSaveChanges_Click(object sender, RoutedEventArgs e)
-        {
-            
-            //Globals.dbContext.SaveChanges(); // SystemException
-
-            //MessageBox.Show(this, "Teacher has been assigned", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            //this.Close();
-        }
-
-        private void BtnCancelChanges_Click(object sender, RoutedEventArgs e)
-        {
+                selectedCourse.TeacherId = assignedTeacher.Id;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                   MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 
         private void BtnRemoveFromCourse_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Globals.dbContext.Courses.Where(t => t.CourseId == selectedCourse.CourseId).FirstOrDefault().TeacherId = null;
+                LblFirstAndLastName.Content = $"Currently Assigned Teacher: ";
+                ImgProfileImage.Source = null;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                   MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
+        private void BtnSaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Globals.dbContext.SaveChanges(); // SystemException
+
+                MessageBox.Show(this, "Teacher has been updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                this.Close();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                   MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnCancelChanges_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(this, "Are you sure you wish to exit?\n All changes will be lost.", "Exit", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    this.Close();
+                    break;
+                case MessageBoxResult.No:
+                    //e.Cancel = true;
+                    break;
+                case MessageBoxResult.Cancel:
+                    //e.Cancel = true;
+                    break;
+                default:
+                    Console.WriteLine("Internal Error - Window_Closing() has failed");
+                    break;
+            }
         }
 
         private void TbxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-
-
-
-
-
-
     }
 }
