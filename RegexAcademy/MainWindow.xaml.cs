@@ -2,7 +2,6 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
-using RegexAcademy.Views;
 
 namespace RegexAcademy
 {
@@ -50,7 +49,7 @@ namespace RegexAcademy
                     ContentFrame.Source = new Uri("Views/CoursesWindow.xaml", UriKind.Relative);
                     break;
                 case "Data Analytics":
-                    ContentFrame.Source = new Uri("Views/DataAnalyticsWindow.xaml", UriKind.Relative);
+                    ContentFrame.Source = new Uri("Views/DataAnalyticsDashboard.xaml", UriKind.Relative);
                     break;
 
                 default:

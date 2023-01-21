@@ -8,11 +8,11 @@ namespace RegexAcademy.Views
     /// <summary>
     /// Interaction logic for DataAnalyticsWindow.xaml
     /// </summary>
-    public partial class DataAnalyticsWindow : Page
+    public partial class DataAnalyticsWindowSearch : Page
     {
 
         List<object> genericMatched = new List<object>();
-        public DataAnalyticsWindow()
+        public DataAnalyticsWindowSearch()
         {
             InitializeComponent();
         }

@@ -136,6 +136,9 @@
     <Compile Include="Views\CourseAddEdit.xaml.cs">
       <DependentUpon>CourseAddEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DataAnalyticsDashboard.xaml.cs">
+      <DependentUpon>DataAnalyticsDashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CourseAddEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataAnalyticsDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
