@@ -48,9 +48,9 @@
                     <GridViewColumn Header="Email"
                                     Width="130"
                                     DisplayMemberBinding="{Binding Email}" />
-                    <GridViewColumn Header="Availability"
+                    <GridViewColumn Header="Available"
                                     Width="70"
-                                    DisplayMemberBinding="{Binding Availability}" />
+                                    DisplayMemberBinding="{Binding AvailabilityToShow}" />
                     <GridViewColumn Header="Profile Image"
                                     Width="150">
                         <GridViewColumn.CellTemplate>

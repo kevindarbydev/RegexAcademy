@@ -137,6 +137,22 @@ namespace RegexAcademy.Models
                 _availability = value;
             }
         }
+
+        [NotMapped]
+        public string AvailabilityToShow
+        {
+            get
+            {
+                if (Availability == true)
+                {
+                    return "Yes";
+                } else
+                {
+                    return "No";
+                }
+            }
+        }
+
         //helper methods for searching
         [NotMapped]
         public char DisplayFirstLetter => this.GetType().Name[0];
