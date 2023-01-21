@@ -6,24 +6,20 @@
     xmlns:local="clr-namespace:RegexAcademy.Views"
     xmlns:view='clr-namespace:RegexAcademy.Views'
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    x:Class="RegexAcademy.Views.DataAnalyticsWindow"
+    x:Class="RegexAcademy.Views.DataAnalyticsWindowSearch"
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800">
 
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="400" />
-            <ColumnDefinition
-                Width="*" />
-        </Grid.ColumnDefinitions>
+       
 
         <StackPanel
-            Grid.Column="0"
+            
             Name="SearchContent"
-            Margin="-98,0,98,0">
+            Margin="0,0,0,0"
+            >
             <TextBox
                 x:Name="TbxSearchBar"
                 TextWrapping="Wrap"
@@ -39,7 +35,8 @@
             <Button
                 x:Name="BtnSearch"
                 Content="Search"
-                HorizontalAlignment="Right"
+                HorizontalAlignment="Center"
+                Margin="290,-40,0,0"
                 
                 RenderTransformOrigin="-1.463,1.875"
                 Click="BtnSearch_Click" />

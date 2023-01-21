@@ -126,10 +126,14 @@ namespace RegexAcademy.Models
                 _availability = value;
             }
         }
-        //this is to help display Student/Teacher status in search result as duplicate names may occur
+        //helper methods for searching
         [NotMapped]
         public char DisplayFirstLetter => this.GetType().Name[0];
 
+        public string NameConcatenation()
+        {
+            return FirstName + " " + LastName;
+        }
         public override string ToString()
         {
             return $"{FirstName} {LastName} with ID: {Id}";
