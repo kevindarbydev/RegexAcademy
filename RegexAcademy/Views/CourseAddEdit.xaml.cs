@@ -111,50 +111,7 @@ namespace RegexAcademy.Views
                 {
                     CbxCoursesWeekdaysSunday.IsChecked = true;
                 }
-                //if (CbxCoursesWeekdaysMonday.IsChecked == true)
-                //{
-                //    //selectedCourse.Weekday = selectedWeekday.ToString();
-                //    CbxCoursesWeekdaysMonday.Content = selectedCourse.Weekday;
-                //}
-                //else if (CbxCoursesWeekdaysTuesday.IsChecked == true)
-                //{
-                //    selectedCourse.Weekday = selectedWeekday.ToString();
-
-                //}
-                //else if (CbxCoursesWeekdaysWednesday.IsChecked == true)
-                //{
-                //    selectedCourse.Weekday = selectedWeekday.ToString();
-
-                //}
-                //else if (CbxCoursesWeekdaysThursday.IsChecked == true)
-                //{
-                //    selectedCourse.Weekday = selectedWeekday.ToString();
-
-                //}
-                //else if (CbxCoursesWeekdaysFriday.IsChecked == true)
-                //{
-                //    selectedCourse.Weekday = selectedWeekday.ToString();
-
-                //}
-                //else if (CbxCoursesWeekdaysSaturday.IsChecked == true)
-                //{
-                //    selectedCourse.Weekday = selectedWeekday.ToString();
-
-                //}
-                //else if (CbxCoursesWeekdaysSunday.IsChecked == true)
-                //{
-                //    selectedCourse.Weekday = selectedWeekday.ToString();
-
-                //}
-                //else
-                //{
-                //    Console.WriteLine("wtf");
-                //}
-
-
-
-
-                //|| CbxCoursesWeekdaysTuesday != null || CbxCoursesWeekdaysWednesday != null || CbxCoursesWeekdaysThursday != null || CbxCoursesWeekdaysFriday != null || CbxCoursesWeekdaysSaturday != null || CbxCoursesWeekdaysSunday != null ||) { }
+              
             }
         }
 
@@ -167,7 +124,7 @@ namespace RegexAcademy.Views
                 DateTime courseTimeTooShort = TpCoursesStartTime.SelectedTime.Value.AddHours(1.0);
 
                 //!! just missing course code validation, confused about code vs id
-
+                // course code validation
                 // course name validation:
 
                 // checks that course name and course code begin with same character
@@ -377,7 +334,12 @@ namespace RegexAcademy.Views
                     selectedCourse.StartTime = (DateTime)TpCoursesStartTime.SelectedTime;
                     selectedCourse.StartTime = (DateTime)TpCoursesEndTime.SelectedTime;
 
-                    Globals.dbContext.SaveChanges();
+                    int results = Globals.dbContext.SaveChanges(); // ex SystemException
+                    if (results > 0)
+                    {
+                        MessageBox.Show(this, "Course updated successfully!", "Update success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        this.DialogResult = true;
+                    }
                 }
             }
             catch (ArgumentException ex)
