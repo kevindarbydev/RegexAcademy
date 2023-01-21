@@ -11,10 +11,10 @@ namespace RegexAcademy.Views
     /// <summary>
     /// Interaction logic for CourseAdd.xaml
     /// </summary>
-    public partial class CourseAdd : Window
+    public partial class CourseAddEdit : Window
     {
         private Course selectedCourse = null;
-        public CourseAdd()
+        public CourseAddEdit()
         {
             InitializeComponent();
 
@@ -39,7 +39,7 @@ namespace RegexAcademy.Views
             }
         }
         // Constructor for EditCourse Window
-        public CourseAdd(Course selectedCourse)
+        public CourseAddEdit(Course selectedCourse)
         {
             InitializeComponent();
             try
