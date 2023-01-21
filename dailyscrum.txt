@@ -1,11 +1,8 @@
 1/17/2023 Kevin
 1. Done/not done since last scrum:
-- Admin dashboard refactoring
-- Search function implemented
+- initialized git repository and trello board
 2. To do until next Scrum:
-- Write unit tests for Student methods
-- Add the rest of admin features
-  (statistics display and graphs)
+- Set up initial project
 
 
 1/17/2023 Matthew
@@ -141,12 +138,12 @@
 --------------------------------------------------------------------------------------
 1/21/2023 Kevin
 1. Done/not done since last scrum:
-- All CRUD operations complete
-  on students
-- Input validation on Add/Edit
-2. To do until next Scrum:
-- Try to connect project to cloud DB
-- Help other members with their tasks
+- Admin dashboard refactoring
+- Search function implemented
+2. 
+- Write unit tests for Student methods
+- Add the rest of admin features
+  (statistics display and graphs)
 
 1/21/2023 Matthew
 1. Done/not done since last scrum:
@@ -159,11 +156,13 @@
 
 1/21/2023 Chris
 1. Done/not done since last scrum:
-- Full validation of courses, updating courses, moving validation out of setters, minor fixes to XAML(functionality but also look and feel)
+- courses add 90%, course add dialog, many minor fixes
 2. To do until next Scrum:
-- add loading screen to handle delay when accessing a page from menu
-- add context menus/ maybe dropdown menu, ex "File", "Exit", etc
-- work on file export
+- finish up add course, update, delete courses
+- home page
+- reports and data analytics
+3. 3. Need assistance / figure things out:
+-
 
 1/21/2023 Seena
 1. Done/not done since last scrum:
