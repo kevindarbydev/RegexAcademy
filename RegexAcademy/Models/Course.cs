@@ -113,5 +113,9 @@ namespace RegexAcademy.Models
 
         public virtual List<StudentCourse> StudentCourse { get; set; }
 
+        public override string ToString()
+        {
+            return $"{CourseId};{CourseName};{Weekday};{StartDate};{EndDate};{StartTime};{EndTime}";
+        }
     }
 }

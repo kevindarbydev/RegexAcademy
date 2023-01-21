@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using RegexAcademy.Models;
 
 namespace RegexAcademy.Views
 {
@@ -16,7 +17,7 @@ namespace RegexAcademy.Views
             LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
         }
 
-        private void BtnAddCourse_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BtnAddCourse_Click(object sender, RoutedEventArgs e)
         {
             CourseAdd inputDialog = new CourseAdd();
             if (inputDialog.ShowDialog() == true)
@@ -24,10 +25,32 @@ namespace RegexAcademy.Views
                 LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
             }
         }
+ 
+        private void BtnDeleteCourse_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Course selectedCourse = LvCourses.SelectedItem as Course;
+
+                if (selectedCourse == null) { return; }
+
+                var result = MessageBox.Show("Are you sure you want to unregister the following course?\n" + selectedCourse, "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.No) { return; } 
+                Globals.dbContext.Courses.Remove(selectedCourse);
+
+                Globals.dbContext.SaveChanges();
+
+                LvCourses.ItemsSource = Globals.dbContext.Courses.ToList();
+            }
+            catch(SystemException ex)
+            {
+                MessageBox.Show("Error reading from database \n " + ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
         private void BtnAssignStudents_Click(object sender, RoutedEventArgs e)
         {
-            Models.Course selectedCourse = LvCourses.SelectedItem as Models.Course;
+            Course selectedCourse = LvCourses.SelectedItem as Course;
             AssignStudents assignDialog = new AssignStudents(selectedCourse);
             if(assignDialog.ShowDialog() == true)
             {
@@ -37,12 +60,13 @@ namespace RegexAcademy.Views
 
         private void BtnAssignTeacher_Click(object sender, RoutedEventArgs e)
         {
-            Models.Course selectedCourse = LvCourses.SelectedItem as Models.Course;
+            Course selectedCourse = LvCourses.SelectedItem as Course;
             AssignTeacher assignDialog = new AssignTeacher(selectedCourse);
             if(assignDialog.ShowDialog() == true)
             {
                 Globals.dbContext.SaveChanges();
             }
         }
+
     }
 }
