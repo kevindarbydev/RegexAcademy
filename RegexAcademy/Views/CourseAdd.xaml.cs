@@ -13,7 +13,7 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class CourseAdd : Window
     {
-
+        private Course selectedCourse = null;
         public CourseAdd()
         {
             InitializeComponent();
@@ -36,6 +36,37 @@ namespace RegexAcademy.Views
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 // Close();
                 Environment.Exit(1);
+            }
+        }
+        // Constructor for EditCourse Window
+        public CourseAdd(Course selectedCourse)
+        {
+            InitializeComponent();
+            try
+            {
+                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                //BtnEditCourse.Visibility = Visibility.Visible;
+                //BtnAddCourse.Visibility = Visibility.Hidden;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                // Close();
+                Environment.Exit(1);
+            }
+            if (selectedCourse != null)
+            {
+                this.selectedCourse = selectedCourse;
+                TbxCourseCode.Text = selectedCourse.CourseId;
+                TbxCourseName.Text = selectedCourse.CourseName;
+                DpCoursesStartDate.SelectedDate = selectedCourse.StartDate;
+                DpCoursesEndDate.SelectedDate = selectedCourse.EndDate;
+                //weekdays - how to update here?
+                // try to get the selected record to actually check the boxes
+                TpCoursesStartTime.SelectedTime = selectedCourse.StartTime;
+                TpCoursesEndTime.SelectedTime = selectedCourse.EndTime;
+
             }
         }
 
@@ -231,7 +262,7 @@ namespace RegexAcademy.Views
             //this.DialogResult = true;
         }
 
-        // just in case, since successful Add should close the form
+        // just in case, since successful Add or Edit should close the form
         public void ResetFields()
         {
             TbxCourseCode.Text = string.Empty;
