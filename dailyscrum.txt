@@ -1,8 +1,11 @@
 1/17/2023 Kevin
 1. Done/not done since last scrum:
-- initialized git repository and trello board
+- Admin dashboard refactoring
+- Search function implemented
 2. To do until next Scrum:
-- Set up initial project
+- Write unit tests for Student methods
+- Add the rest of admin features
+  (statistics display and graphs)
 
 
 1/17/2023 Matthew
