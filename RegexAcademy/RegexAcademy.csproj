@@ -130,6 +130,9 @@
     <Compile Include="Views\AssignStudents.xaml.cs">
       <DependentUpon>AssignStudents.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AssignTeacher.xaml.cs">
+      <DependentUpon>AssignTeacher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CourseAdd.xaml.cs">
       <DependentUpon>CourseAdd.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
     </Compile>
     <Compile Include="Models\User.cs" />
     <Page Include="Views\AssignStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AssignTeacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

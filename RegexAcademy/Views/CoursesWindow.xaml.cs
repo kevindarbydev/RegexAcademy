@@ -34,5 +34,15 @@ namespace RegexAcademy.Views
                 Globals.dbContext.SaveChanges();
             }
         }
+
+        private void BtnAssignTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            Models.Course selectedTeacher = LvCourses.SelectedItem as Models.Course;
+            AssignTeacher assignDialog = new AssignTeacher(selectedTeacher);
+            if(assignDialog.ShowDialog() == true)
+            {
+                Globals.dbContext.SaveChanges();
+            }
+        }
     }
 }
