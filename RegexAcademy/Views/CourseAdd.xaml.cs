@@ -37,12 +37,10 @@ namespace RegexAcademy.Views
             }
         }
 
-        private void ValidateCourses()
+        private bool ValidateCourses()
         {
             try
             {
-
-
                 // needed for conditional preventing courses from exceeding 6 hours
                 DateTime courseExceedsTime = TpCoursesStartTime.SelectedTime.Value.AddHours(6.0);
                 // needed for conditional preventing courses from being shorter than 1 hour
@@ -52,39 +50,39 @@ namespace RegexAcademy.Views
                 if (DpCoursesStartDate.SelectedDate == null || DpCoursesEndDate.SelectedDate == null || TpCoursesStartTime.SelectedTime == null || TpCoursesEndTime.SelectedTime == null)
                 {
                     MessageBox.Show("Please ensure all dates and times are picked.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
                 }
                 else if (DpCoursesStartDate.SelectedDate.Equals(DpCoursesEndDate.SelectedDate))
                 {
                     MessageBox.Show("Start and end dates cannot match", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
                 }
                 else if (TpCoursesStartTime.SelectedTime.Equals(TpCoursesEndTime.SelectedTime))
                 {
                     MessageBox.Show("Start and end times cannot match", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
                 }
                 else if (DpCoursesEndDate.SelectedDate.Value.Date < DpCoursesStartDate.SelectedDate.Value.Date)
                 {
                     MessageBox.Show("End date cannot precede the start date.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
                 }
 
                 else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay < TpCoursesStartTime.SelectedTime.Value.TimeOfDay)
                 {
                     MessageBox.Show("End time cannot precede the start time.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
                 }
                 else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay > courseExceedsTime.TimeOfDay)
                 {
                     MessageBox.Show("Course duration cannot exceed 6 hours.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
 
                 }
                 else if (TpCoursesEndTime.SelectedTime.Value.TimeOfDay < courseTimeTooShort.TimeOfDay)
                 {
                     MessageBox.Show("Course duration cannot be under an hour", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
                 }
 
                 // checkboxes: if all are empty, throw error 
@@ -97,7 +95,7 @@ namespace RegexAcademy.Views
                     CbxCoursesWeekdaysSunday.IsChecked == false)
                 {
                     MessageBox.Show("Please pick at least one weekday.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
 
                     // checkboxes: if all are checked, throw error
                 }
@@ -110,13 +108,17 @@ namespace RegexAcademy.Views
                     CbxCoursesWeekdaysSunday.IsChecked == true)
                 {
                     MessageBox.Show("Courses cannot take place on every single day of the week.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return;
+                    return false;
+                }
+                else
+                {
+                    return true;
                 }
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show("Error validating inputs" + ex.Message, "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                return;
+                return false;
             }
         }
 
@@ -124,32 +126,34 @@ namespace RegexAcademy.Views
         {
             try
             {
-                ValidateCourses();
-
-                var cb = this.grid.Children.OfType<CheckBox>();
-                StringBuilder sb = new StringBuilder();
-
-                foreach (CheckBox chk in cb)
+                bool isValid = ValidateCourses();
+                if (isValid)
                 {
-                    if (chk.IsChecked == true)
+
+                    var cb = this.grid.Children.OfType<CheckBox>();
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (CheckBox chk in cb)
                     {
-                        sb.Append(chk.Content.ToString() + " ");
+                        if (chk.IsChecked == true)
+                        {
+                            sb.Append(chk.Content.ToString() + " ");
+                        }
                     }
+
+                    Course newCourse = new Course { CourseId = TbxCourseCode.Text, CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = sb.ToString(), StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
+
+                    Globals.dbContext.Courses.Add(newCourse);
+                    int results = Globals.dbContext.SaveChanges();
+
+                    if (results > 0)
+                    {
+                        MessageBox.Show(this, "Course added successfully!", "Regex Academy", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        this.DialogResult = true;
+                    }
+
+                    ResetFields();
                 }
-
-                Course newCourse = new Course { CourseId = TbxCourseCode.Text, CourseName = TbxCourseName.Text, StartDate = (DateTime)DpCoursesStartDate.SelectedDate, EndDate = (DateTime)DpCoursesEndDate.SelectedDate, Weekday = sb.ToString(), StartTime = (DateTime)TpCoursesStartTime.SelectedTime, EndTime = (DateTime)TpCoursesEndTime.SelectedTime };
-
-                Globals.dbContext.Courses.Add(newCourse);
-                int results = Globals.dbContext.SaveChanges();
-
-                if (results > 0)
-                {
-                    MessageBox.Show(this, "Course added successfully!", "Regex Academy", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    this.DialogResult = true;
-                }
-
-
-                ResetFields();
 
             }
             catch (ArgumentException ex)
