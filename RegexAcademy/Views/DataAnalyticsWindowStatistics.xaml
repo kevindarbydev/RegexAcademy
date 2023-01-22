@@ -8,16 +8,54 @@
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Title="DataAnalyticsWindowStatistics">
+    Title="DataAnalyticsWindowStatistics"
+    Loaded="Page_Loaded">
 
     <Grid>
         <Label
             Content="Statistics"
             HorizontalAlignment="Left"
-            Margin="313,72,0,0"
+            Margin="124,18,0,0"
             VerticalAlignment="Top"
-            Height="56"
-            Width="87" />
+            Height="33"
+            Width="86"
+            FontWeight="Bold" />
+
+        <Label
+            Content="Students currently enrolled "
+            HorizontalAlignment="Left"
+            Margin="72,51,0,0"
+            VerticalAlignment="Top"
+            Width="162" />
+        <Label
+            Content="Teachers available "
+            HorizontalAlignment="Left"
+            Margin="72,90,0,0"
+            VerticalAlignment="Top"
+            Width="162" />
+        <Label
+            Content="Courses available "
+            HorizontalAlignment="Left"
+            Margin="72,123,0,0"
+            VerticalAlignment="Top"
+            Width="162" />
+        <Label
+            Name="LblStudentsEnrolled"
+            HorizontalAlignment="Left"
+            Margin="274,51,0,0"
+            VerticalAlignment="Top" />
+        <Label
+            Name="LblTeachersAvailable"
+            HorizontalAlignment="Left"
+            Margin="274,90,0,0"
+            VerticalAlignment="Top" />
+        <Label
+            Name="LblCoursesAvailable"
+            
+            HorizontalAlignment="Left"
+            Margin="274,123,0,0"
+            VerticalAlignment="Top" />
+
 
     </Grid>
 </Page>
