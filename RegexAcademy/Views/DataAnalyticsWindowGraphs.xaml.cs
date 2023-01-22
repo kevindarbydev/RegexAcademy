@@ -36,17 +36,33 @@ namespace RegexAcademy.Views
                 Dictionary<string, int> coursesPerDay = new Dictionary<string, int>();
 
                 //iterate over all courses, if a course is on a unique day then add to dict, else increment count
+                //split each day from Weekday field ("Monday Wednesday")
+                List<string> daysSplit = new List<string>();
                 foreach (var course in Globals.dbContext.Courses.ToList())
                 {
-                    if (coursesPerDay.ContainsKey(course.Weekday))
+                    string[] parts = course.Weekday.Split(' ');
+                    if (parts.Length > 2)
                     {
-                        coursesPerDay[course.Weekday]++;
+
+                        foreach (string day in parts)
+                        {
+                            if (coursesPerDay.ContainsKey(day))
+                            {
+                                coursesPerDay[day]++;
+                            }
+                            else
+                            {
+                                coursesPerDay.Add(day, 1);
+                            }
+                        }
                     }
-                    else
-                    {
-                        coursesPerDay.Add(course.Weekday, 1);
+                    else if (coursesPerDay.ContainsKey(parts[0]))
+                    { // only 1 day
+                        coursesPerDay[parts[0]]++;
                     }
+                    else coursesPerDay.Add(parts[0], 1);
                 }
+
                 coursesPerWeek.Values = new ChartValues<int>(coursesPerDay.Values);
 
                 ChartCoursesPerWeek.AxisX.Add(new Axis
@@ -68,11 +84,11 @@ namespace RegexAcademy.Views
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show("Something went wrong (Courses table): " + ex.Message, "Invalid operation", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Something went wrong (Courses table): " + ex.Message, "Invalid operation", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (SystemException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message, "Unexpected error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Something went wrong: " + ex.Message, "Unexpected error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

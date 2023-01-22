@@ -77,11 +77,11 @@
                 HorizontalAlignment="Center"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                ToolTip="Not yet implemented"
+                ToolTip="View graphical representation of data in the system"
                 Background="#FF4150A4"
                 BorderThickness="0">
                 <TextBlock
-                    Text="Not impl" />
+                    Text="View Graphs" />
             </Button>
         </Grid>
         <Grid
