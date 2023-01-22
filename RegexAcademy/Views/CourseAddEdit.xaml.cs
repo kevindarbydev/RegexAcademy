@@ -151,11 +151,11 @@ namespace RegexAcademy.Views
                 }
 
                 // checks course name length
-                else if (TbxCourseName.Text.Length < 3 || TbxCourseName.Text.Length > 30)
-                {
-                    MessageBox.Show("Course name must be between 3 and 30 characters", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return false;
-                }
+                //else if (TbxCourseName.Text.Length < 3 || TbxCourseName.Text.Length > 30)
+                //{
+                //    MessageBox.Show("Course name must be between 3 and 30 characters", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                //    return false;
+                //}
 
                 // checks for no special chars (whitespace ok)
                 else if (!Regex.IsMatch(TbxCourseName.Text, @"^[a-zA-Z0-9 ]{3,30}$"))
@@ -338,7 +338,7 @@ namespace RegexAcademy.Views
                     {
                         if (chk.IsChecked == true)
                         {
-                            sb.Append(chk.Content.ToString() + " ");
+                            sb.Append(chk.Content.ToString() + ", ");
                         }
                     }
                     Course courseToUpdate = Globals.dbContext.Courses.Where(c => c.CourseId == selectedCourse.CourseId).FirstOrDefault();

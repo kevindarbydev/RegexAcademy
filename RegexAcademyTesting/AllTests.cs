@@ -95,6 +95,15 @@ namespace RegexAcademyTesting
             Assert.Throws<ArgumentException>(() => s.DateOfBirth = DateTime.MinValue);
         }
 
-        // a series of failed test attempts were deleted here
+        [Test]
+        public void IsCourseNameValid_Test()
+        {
+            string test = "";
+            //string test = "En";
+            //string test = "English%";
+            Assert.IsFalse(_course.CourseName == test, "If failed, verify Models/Course.cs");
+        }
+
+
     }
 }

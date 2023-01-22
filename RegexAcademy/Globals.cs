@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using System.Windows.Media.Imaging;
+﻿using System;
+using System.Linq;
 using System.Windows;
-using System;
+using System.Windows.Media.Imaging;
 
 namespace RegexAcademy
 {
@@ -11,7 +11,7 @@ namespace RegexAcademy
 
         public static bool HasSpecialChars(string toBeValidated)
         {
-            return toBeValidated.Any(ch => !char.IsLetterOrDigit(ch)); //iterates through a string and returns true if any char is a special char. placing this in Globals as I expect this will be useful in several places
+            return toBeValidated.Any(ch => !char.IsLetterOrDigit(ch) && !char.IsWhiteSpace(ch)); //iterates through a string and returns true if any char is a special char. placing this in Globals as I expect this will be useful in several places
         }
 
         public static CroppedBitmap CropsImage(BitmapImage profileImage)
@@ -25,12 +25,12 @@ namespace RegexAcademy
                 }
                 catch (SystemException)
                 {
-                    
+
                 }
 
             }
             return null;
-            
+
         }
 
         public static bool isLoggedIn = false;

@@ -40,9 +40,18 @@ namespace RegexAcademy.Models
             }
             set
             {
+                if (value.Length < 3 || value.Length > 30)
+                {
+                    throw new ArgumentException("Course name must be between 3 and 30 characters");
+                }
+                if (Globals.HasSpecialChars(value))
+                {
+                    throw new ArgumentException("Course name cannot contain special characters.");
+                }
+
                 // ensures first character is entered in db as capital letter, then trims leading and trailing whitespace
                 string CapitalizeFirstCharCourseName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
-                _courseName = CapitalizeFirstCharCourseName.Trim();
+                _courseName = CapitalizeFirstCharCourseName;
             }
         }
 
