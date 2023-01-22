@@ -39,7 +39,7 @@ namespace RegexAcademy.Views
                 if (selectedCourse.TeacherId != null)
                 {
                     assignedTeacher = Globals.dbContext.Teachers.Where(t => t.Id == selectedCourse.TeacherId).FirstOrDefault();
-                    LblFirstAndLastName.Content = $"Currently Assigned Teacher: \n {assignedTeacher.FirstName} {assignedTeacher.LastName}";
+                    LblFirstAndLastName.Content = $"Currently Assigned Teacher \n\n           {assignedTeacher.FirstName} {assignedTeacher.LastName}";
                     ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
                 }
 
@@ -62,11 +62,17 @@ namespace RegexAcademy.Views
             try
             {
                 assignedTeacher = LvAllTeachers.SelectedItem as Teacher;
+                if(assignedTeacher.Availability == false)
+                {
+                    MessageBox.Show("Sorry this teacher is unavailable for work!", "Error",
+                   MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
                 Globals.dbContext.Courses.Where(t => t.CourseId == selectedCourse.CourseId).FirstOrDefault().TeacherId = assignedTeacher.Id; // setting TeacherId in course entity
 
                 if (assignedTeacher == null) { return; }
 
-                LblFirstAndLastName.Content = $"Currently Assigned Teacher: \n {assignedTeacher.FirstName} {assignedTeacher.LastName}";
+                LblFirstAndLastName.Content = $"Currently Assigned Teacher \n\n           {assignedTeacher.FirstName} {assignedTeacher.LastName}";
                 ImgProfileImage.Source = assignedTeacher.ProfileImageToShow;
 
                 selectedCourse.TeacherId = assignedTeacher.Id;
@@ -84,8 +90,9 @@ namespace RegexAcademy.Views
             try
             {
                 Globals.dbContext.Courses.Where(t => t.CourseId == selectedCourse.CourseId).FirstOrDefault().TeacherId = null;
-                LblFirstAndLastName.Content = $"Currently Assigned Teacher: ";
+                LblFirstAndLastName.Content = $"Currently Assigned Teacher";
                 ImgProfileImage.Source = null;
+                selectedCourse.TeacherId = null;
             }
             catch (SystemException ex)
             {
@@ -113,6 +120,7 @@ namespace RegexAcademy.Views
 
         private void BtnCancelChanges_Click(object sender, RoutedEventArgs e)
         {
+            selectedCourse.TeacherId = null;
             MessageBoxResult result = MessageBox.Show(this, "Are you sure you wish to exit?\n All changes will be lost.", "Exit", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
 
             switch (result)
