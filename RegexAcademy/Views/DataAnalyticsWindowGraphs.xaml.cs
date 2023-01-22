@@ -92,5 +92,10 @@ namespace RegexAcademy.Views
             }
 
         }
+
+        private void BtnNextGraph_Click(object sender, RoutedEventArgs e)
+        {
+            ChartCoursesPerWeek.Series.Clear();
+        }
     }
 }
