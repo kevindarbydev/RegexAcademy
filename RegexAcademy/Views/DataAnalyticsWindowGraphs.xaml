@@ -9,12 +9,13 @@
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Title="DataAnalyticsWindowGraphs">
+    Title="DataAnalyticsWindowGraphs"
+    Loaded="Page_Loaded">
 
     <Grid>
         <lvc:CartesianChart
-            Series="{Binding Series}"
-            Margin="161,95,161,59">
+            Name="ChartCoursesPerWeek"
+            Margin="66,98,36,56">
         </lvc:CartesianChart>
         <Label
             Content="Header Explaining the graph"
