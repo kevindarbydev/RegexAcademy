@@ -116,7 +116,7 @@ namespace RegexAcademy.Models
 
         public override string ToString()
         {
-            return $"{CourseId};{CourseName};{Weekday};{StartDate};{EndDate};{StartTime};{EndTime}";
+            return $"Course ID: {CourseId};Course Name: {CourseName};Day(s) of Week: {Weekday};Start Date: {StartDate};End Date: {EndDate};Start Time: {StartTime};End Time: {EndTime}; Taught by: {TeacherId}";
         }
     }
 }

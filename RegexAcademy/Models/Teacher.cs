@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -146,10 +147,9 @@ namespace RegexAcademy.Models
         }
         public override string ToString()
         {
-            return $"{FirstName} {LastName} with ID: {Id}";
+            return $"Teacher ID: {Id};First Name: {FirstName};Last Name: {LastName};Email: {Email};Availability: {Availability}";
         }
 
         public virtual List<Course> Courses { get; set; }
-
     }
 }

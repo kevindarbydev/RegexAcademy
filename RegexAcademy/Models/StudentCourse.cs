@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace RegexAcademy.Models
 {
@@ -24,5 +25,9 @@ namespace RegexAcademy.Models
         [ForeignKey(nameof(StudentId))]
         public virtual Student Student { get; set; }
 
+        public override string ToString()
+        {
+            return $"Course ID: {CourseId};Student ID: {StudentId}";
+        }
     }
 }

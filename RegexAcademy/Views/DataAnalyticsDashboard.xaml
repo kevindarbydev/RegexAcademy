@@ -105,8 +105,17 @@
             Grid.Column="2"
             Grid.RowSpan="5"
             Name="ContentForOptionChosen" />
-
-
+        <Button 
+            Name="BtnExportToFile"
+            Content="Export All Data to File" 
+            HorizontalAlignment="Left" 
+            Grid.Row="4" 
+            VerticalAlignment="Center" 
+            Width="179"  
+            Background="#FF4150A4" 
+            BorderThickness="0" 
+            Style="{StaticResource MaterialDesignRaisedLightButton}" Click="BtnExportToFile_Click"/>
+        
     </Grid>
 
 </Page>
