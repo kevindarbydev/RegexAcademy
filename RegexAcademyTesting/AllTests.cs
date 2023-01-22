@@ -1,4 +1,6 @@
+using RegexAcademy;
 using RegexAcademy.Models;
+using RegexAcademy.Views;
 
 namespace RegexAcademyTesting
 {
@@ -29,7 +31,6 @@ namespace RegexAcademyTesting
             _course = new Course();
         }
 
-
         // USERS
         [Test]
         public void User_Password_RegexValidation_Works()
@@ -40,10 +41,19 @@ namespace RegexAcademyTesting
 
             // ACT
             passwordIsValid = User.isPasswordValid(_user.Password, out string error);
-
+            
 
             // ASSERT
             Assert.IsFalse(passwordIsValid);
+        }
+
+        [Test]
+        public void Testing_HasSpecialCharacters()
+        {
+            _user.Username = "sdfafs---++*";
+           
+            bool yes = Globals.HasSpecialChars(_user.Username);
+            Assert.IsTrue(yes);
         }
 
 
