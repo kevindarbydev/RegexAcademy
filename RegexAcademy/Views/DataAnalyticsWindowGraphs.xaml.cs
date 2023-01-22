@@ -17,7 +17,7 @@ namespace RegexAcademy.Views
         public DataAnalyticsWindowGraphs()
         {
             InitializeComponent();
-
+            //create 12(hours)x5(days) grid
         }
 
         private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -30,6 +30,7 @@ namespace RegexAcademy.Views
                     Values = new ChartValues<int>()
                 };
                 ChartCoursesPerWeek.Series = new SeriesCollection { coursesPerWeek };
+                //TODO: exclude " "
                 //ChartCoursesPerWeek.Series.Add(coursesPerWeek);
 
                 //hold the num of courses per day in dict
@@ -46,6 +47,7 @@ namespace RegexAcademy.Views
 
                         foreach (string day in parts)
                         {
+                            if (day == " " || day == "") continue;
                             if (coursesPerDay.ContainsKey(day))
                             {
                                 coursesPerDay[day]++;
@@ -96,6 +98,7 @@ namespace RegexAcademy.Views
         private void BtnNextGraph_Click(object sender, RoutedEventArgs e)
         {
             ChartCoursesPerWeek.Series.Clear();
+            LblGraphHeader.Content = null;
         }
     }
 }
