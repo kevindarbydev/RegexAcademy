@@ -95,17 +95,15 @@
                 Click="BtnExportToFile_Click"
                 Margin="0,4,0,0" />
         <Button x:Name="BtnExportToFileCSV"
-                Content="Export All Data as CSV"
+                Content="Export All Students as CSV"
                 HorizontalAlignment="Left"
                 Grid.Row="4"
                 VerticalAlignment="Top"
-                Width="179"
+                Width="210"
                 Background="#FF4150A4"
                 BorderThickness="0"
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                 Click="BtnExportToFileCSV_Click"
                 Margin="0,46,0,0" />
-
     </Grid>
-
 </Page>

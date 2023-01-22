@@ -123,14 +123,40 @@ namespace RegexAcademy.Views
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                List<Student> students = Globals.dbContext.Students.ToList();
                 
+                    List<Student> students = Globals.dbContext.Students.ToList();
+                    List<Teacher> teachers = Globals.dbContext.Teachers.ToList();
+                    List<Course> courses = Globals.dbContext.Courses.ToList();
+                    List<StudentCourse> studentCourses = Globals.dbContext.StudentCourses.ToList();
 
-                using (var writer = new StreamWriter(saveFileDialog.FileName))
-                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-                {
-                    csv.WriteRecords(students);
-                }
+                    // unfortunately this doesn't work 
+                    // List<object> allRecords = new List<object>();
+                    
+                    //foreach (Student s in students)
+                    //{
+                    //    allRecords.Add(s);
+                    //}
+                    //foreach (Teacher t in teachers)
+                    //{
+                    //    allRecords.Add(t);
+                    //}
+                    //foreach (Course c in courses)
+                    //{
+                    //    allRecords.Add(c);
+                    //}
+                    //foreach (StudentCourse sc in studentCourses)
+                    //{
+                    //    allRecords.Add(sc);
+                    //}
+
+                    using (var writer = new StreamWriter(saveFileDialog.FileName))
+                    using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                    {
+                        csv.WriteRecords(students);
+                    }
+                
+               
+                
             }
             
         }
