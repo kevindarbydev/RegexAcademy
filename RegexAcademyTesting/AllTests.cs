@@ -4,15 +4,6 @@ using RegexAcademy.Models;
 namespace RegexAcademyTesting
 {
 
-
-    // ----------------------------------------------------
-    // tests are difficult in WPF: you can't write them for methods in the code behind, only models.
-    // ...so what that means is we can only test the few methods we have.
-    // I have seen that it's possible to test if button clicks work and other WPF elements, so I'll look into that.
-    // I have also read that seprating into a true MVVM pattern aids in testing somehow, but I'm not getting why/how it's any different than our setup.
-    // How we were taught was to put the logic in xaml.cs code-behind, not to throw it all in the class/model/object files. 
-    // Unfortunately, we may have to migrate validation + other methods into those files in order to meet the minimum 10 unit test threshold.
-    //------------------------------------------------------
     [TestFixture]
     public class Tests
     {
@@ -38,11 +29,8 @@ namespace RegexAcademyTesting
             _user.Password = "password123";
             bool passwordIsValid;
 
-            // ACT
             passwordIsValid = User.isPasswordValid(_user.Password, out string error);
 
-
-            // ASSERT
             Assert.IsFalse(passwordIsValid);
         }
 
@@ -78,19 +66,18 @@ namespace RegexAcademyTesting
         [Test]
         public void TestFirstNameArgumentExcep()
         {
-
             Assert.Throws<ArgumentException>(() => _student.FirstName = "Ba rry");
         }
+
         [Test]
         public void TestLastNameArgumentExcep()
         {
-
             Assert.Throws<ArgumentException>(() => _student.LastName = "Ter!rry");
         }
+
         [Test]
         public void TestDobArgumentExcep()
         {
-
             Assert.Throws<ArgumentException>(() => _student.DateOfBirth = DateTime.MaxValue);
             Assert.Throws<ArgumentException>(() => _student.DateOfBirth = DateTime.MinValue);
         }

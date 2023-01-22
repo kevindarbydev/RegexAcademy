@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace RegexAcademy.Models
 {
@@ -44,7 +45,7 @@ namespace RegexAcademy.Models
                 {
                     throw new ArgumentException("Course name must be between 3 and 30 characters");
                 }
-                if (Globals.HasSpecialChars(value))
+                if (!Regex.IsMatch(value, @"^[a-zA-Z0-9 ]{3,30}$"))
                 {
                     throw new ArgumentException("Course name cannot contain special characters.");
                 }

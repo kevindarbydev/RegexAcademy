@@ -116,6 +116,7 @@ namespace RegexAcademy.Views
             }
         }
 
+        // this is additional validation not found in setters (Course.cs)
         private bool ValidateCourses()
         {
             try
@@ -147,20 +148,6 @@ namespace RegexAcademy.Views
                 else if (!TbxCourseName.Text.StartsWith(TbxCourseCode.Text.Substring(0, 1)))
                 {
                     MessageBox.Show("Course name and course code must share the same starting character.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return false;
-                }
-
-                // checks course name length
-                //else if (TbxCourseName.Text.Length < 3 || TbxCourseName.Text.Length > 30)
-                //{
-                //    MessageBox.Show("Course name must be between 3 and 30 characters", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                //    return false;
-                //}
-
-                // checks for no special chars (whitespace ok)
-                else if (!Regex.IsMatch(TbxCourseName.Text, @"^[a-zA-Z0-9 ]{3,30}$"))
-                {
-                    MessageBox.Show("Course name must not contain special characters", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
                 }
 
