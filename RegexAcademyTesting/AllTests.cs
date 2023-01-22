@@ -1,6 +1,5 @@
 using RegexAcademy;
 using RegexAcademy.Models;
-using RegexAcademy.Views;
 
 namespace RegexAcademyTesting
 {
@@ -41,7 +40,7 @@ namespace RegexAcademyTesting
 
             // ACT
             passwordIsValid = User.isPasswordValid(_user.Password, out string error);
-            
+
 
             // ASSERT
             Assert.IsFalse(passwordIsValid);
@@ -51,7 +50,7 @@ namespace RegexAcademyTesting
         public void Testing_HasSpecialCharacters()
         {
             _user.Username = "sdfafs---++*";
-           
+
             bool yes = Globals.HasSpecialChars(_user.Username);
             Assert.IsTrue(yes);
         }
@@ -72,6 +71,28 @@ namespace RegexAcademyTesting
             _user.Username = "*Admin*";
             var result = User.isUsernameValid(_user.Username, out string error);
             Assert.IsFalse(result, "If failed, verify Regex in Models/User.cs");
+        }
+
+        //Students
+
+        [Test]
+        public void TestFirstNameArgumentExcep()
+        {
+            Student s = new Student();
+            Assert.Throws<ArgumentException>(() => s.FirstName = "Ba rry");
+        }
+        [Test]
+        public void TestLastNameArgumentExcep()
+        {
+            Student s = new Student();
+            Assert.Throws<ArgumentException>(() => s.LastName = "Ter!rry");
+        }
+        [Test]
+        public void TestDobArgumentExcep()
+        {
+            Student s = new Student();
+            Assert.Throws<ArgumentException>(() => s.DateOfBirth = DateTime.MaxValue);
+            Assert.Throws<ArgumentException>(() => s.DateOfBirth = DateTime.MinValue);
         }
 
         // a series of failed test attempts were deleted here

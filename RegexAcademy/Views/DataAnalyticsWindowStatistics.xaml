@@ -15,46 +15,61 @@
         <Label
             Content="Statistics"
             HorizontalAlignment="Left"
-            Margin="124,18,0,0"
+            Margin="98,21,0,0"
             VerticalAlignment="Top"
             Height="33"
             Width="86"
+            FontSize="18"
             FontWeight="Bold" />
 
         <Label
             Content="Students currently enrolled "
             HorizontalAlignment="Left"
-            Margin="72,51,0,0"
+            Margin="30,59,0,0"
             VerticalAlignment="Top"
-            Width="162" />
+            Width="248"
+            FontSize="16"
+            Height="44" />
         <Label
             Content="Teachers available "
             HorizontalAlignment="Left"
-            Margin="72,90,0,0"
+            Margin="30,117,0,0"
             VerticalAlignment="Top"
-            Width="162" />
+            Width="248"
+            FontSize="16"
+            Height="44" />
         <Label
             Content="Courses available "
             HorizontalAlignment="Left"
-            Margin="72,123,0,0"
+            Margin="30,166,0,0"
             VerticalAlignment="Top"
-            Width="162" />
+            Width="248"
+            FontSize="16"
+            Height="44" />
         <Label
             Name="LblStudentsEnrolled"
             HorizontalAlignment="Left"
-            Margin="274,51,0,0"
-            VerticalAlignment="Top" />
+            Margin="278,59,0,0"
+            VerticalAlignment="Top"
+            Height="38"
+            FontSize="16"
+            Width="41" />
         <Label
             Name="LblTeachersAvailable"
             HorizontalAlignment="Left"
-            Margin="274,90,0,0"
-            VerticalAlignment="Top" />
+            Margin="278,120,0,0"
+            VerticalAlignment="Top"
+            Height="38"
+            FontSize="16"
+            Width="41" />
         <Label
             Name="LblCoursesAvailable"
-            
             HorizontalAlignment="Left"
-            Margin="274,123,0,0"
-            VerticalAlignment="Top" />
+            Margin="278,166,0,0"
+            VerticalAlignment="Top"
+            Height="38"
+            FontSize="16"
+            Width="41" />
 
 
     </Grid>
