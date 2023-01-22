@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using RegexAcademy.Models;
 using System.Text;
 using System.IO;
+using CsvHelper;
+using System.Globalization;
 
 namespace RegexAcademy.Views
 {
@@ -64,7 +66,7 @@ namespace RegexAcademy.Views
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*|Data Files (*.data)|*.data";
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*|Data Files (*.data)|*.data|CSV (*.csv)|*.csv"; //just testing if exporting as csv works here --> not really --> each line is exported to a single cell
 
             if(saveFileDialog.ShowDialog() == true)
             {
@@ -111,6 +113,26 @@ namespace RegexAcademy.Views
                    File.WriteAllText(saveFileDialog.FileName, sb.ToString());
             }
 
+        }
+
+        private void BtnExportToFileCSV_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "CSV (*.csv)|*.csv";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                List<Student> students = Globals.dbContext.Students.ToList();
+                
+
+                using (var writer = new StreamWriter(saveFileDialog.FileName))
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(students);
+                }
+            }
+            
         }
     }
 }
