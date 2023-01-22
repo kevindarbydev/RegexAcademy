@@ -67,13 +67,13 @@ namespace RegexAcademy.Views
             {
                 if (DpAddStudent.SelectedDate == null)
                 {
-                    MessageBox.Show("Please select a date from the date picker before continuing.");
+                    MessageBox.Show("Please select a date from the date picker before continuing.", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
                 Models.Student newStudent = new Models.Student { FirstName = TbxFirstName.Text, LastName = TbxLastName.Text, DateOfBirth = (DateTime)DpAddStudent.SelectedDate };
                 Globals.dbContext.Students.Add(newStudent);
                 Globals.dbContext.SaveChanges();
-                MessageBox.Show(this, "Student saved successfully!", "Student added", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show(this, "Student saved successfully!", "Student added", MessageBoxButton.OK, MessageBoxImage.None);
                 ResetFields();
 
             }

@@ -14,24 +14,24 @@ namespace RegexAcademy.Views
     /// </summary>
     public partial class DataAnalyticsWindowGraphs : Page
     {
+
+        public SeriesCollection graphData { get; set; }
         public DataAnalyticsWindowGraphs()
         {
             InitializeComponent();
-            //create 12(hours)x5(days) grid
         }
 
-        private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
                 ColumnSeries coursesPerWeek = new ColumnSeries
                 {
-                    Title = "Courses per day",
+                    Title = "Courses Per Day",
                     Values = new ChartValues<int>()
                 };
-                ChartCoursesPerWeek.Series = new SeriesCollection { coursesPerWeek };
-                //TODO: exclude " "
-                //ChartCoursesPerWeek.Series.Add(coursesPerWeek);
+                graphData = new SeriesCollection { coursesPerWeek };
+                ChartCoursesPerWeek.Series = graphData;
 
                 //hold the num of courses per day in dict
                 Dictionary<string, int> coursesPerDay = new Dictionary<string, int>();
@@ -79,26 +79,154 @@ namespace RegexAcademy.Views
                     MinValue = 0,
                 });
 
-                coursesPerWeek.Fill = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                coursesPerWeek.Fill = new SolidColorBrush(Color.FromRgb(55, 55, 254));
                 coursesPerWeek.StrokeThickness = 2;
-                ChartCoursesPerWeek.LegendLocation = LegendLocation.Right;
 
             }
             catch (ArgumentException ex)
             {
-                System.Windows.MessageBox.Show("Something went wrong (Courses table): " + ex.Message, "Invalid operation", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Something went wrong (Courses table): " + ex.Message, "Invalid operation", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (SystemException ex)
             {
-                System.Windows.MessageBox.Show("Something went wrong: " + ex.Message, "Unexpected error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Something went wrong: " + ex.Message, "Unexpected error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
 
         private void BtnNextGraph_Click(object sender, RoutedEventArgs e)
         {
-            ChartCoursesPerWeek.Series.Clear();
-            LblGraphHeader.Content = null;
+            try
+            {
+                ChartCoursesPerWeek.Series.Clear();
+                ColumnSeries studentsPerClass = new ColumnSeries
+                {
+                    Title = "Students Per Class",
+                    Values = new ChartValues<int>()
+                };
+                LblGraphHeader.Content = "Students per class";
+                graphData = new SeriesCollection { studentsPerClass };
+                ChartCoursesPerWeek.Series = graphData;
+
+                var countOfStudents = (from sc in Globals.dbContext.StudentCourses
+                                       join c in Globals.dbContext.Courses on sc.CourseId equals c.CourseId
+                                       group sc by c.CourseName into g
+                                       select new { CourseName = g.Key, count = g.Count() }).ToList();
+                ChartCoursesPerWeek.AxisX.Remove(ChartCoursesPerWeek.AxisX[0]);
+                ChartCoursesPerWeek.AxisY.Remove(ChartCoursesPerWeek.AxisY[0]);
+                ChartCoursesPerWeek.AxisX.Add(new Axis
+                {
+                    Title = "Course",
+                });
+
+                ChartCoursesPerWeek.AxisY.Add(new Axis
+                {
+                    Title = "Number of students",
+                    MinValue = 0,
+                });
+                //string x = "";
+                //foreach (var item in countOfStudents)
+                //{
+                //    x += item.ToString();
+                //}
+                //MessageBox.Show(x);
+                foreach (var item in countOfStudents)
+                {
+                    var column = new ColumnSeries
+                    {
+                        Title = item.CourseName,
+                        Values = new ChartValues<int> { item.count }
+                    };
+                    graphData.Add(column);
+                }
+                BtnNextGraph.Visibility = Visibility.Hidden;
+                BtnLastGraph.Visibility = Visibility.Visible;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex.Message, "Unexpected error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
+        }
+
+        private void BtnLastGraph_Click(object sender, RoutedEventArgs e)
+        {//code duplication, would improve if more time
+            try
+            {
+                //clear previous data
+                ChartCoursesPerWeek.Series.Clear();
+                ChartCoursesPerWeek.AxisX.Remove(ChartCoursesPerWeek.AxisX[0]);
+                ChartCoursesPerWeek.AxisY.Remove(ChartCoursesPerWeek.AxisY[0]);
+                LblGraphHeader.Content = "Courses per day";
+                ColumnSeries coursesPerWeek = new ColumnSeries
+                {
+                    Title = "Courses Per Day",
+                    Values = new ChartValues<int>()
+                };
+                graphData = new SeriesCollection { coursesPerWeek };
+                ChartCoursesPerWeek.Series = graphData;
+
+                //hold the num of courses per day in dict
+                Dictionary<string, int> coursesPerDay = new Dictionary<string, int>();
+
+                //iterate over all courses, if a course is on a unique day then add to dict, else increment count
+                //split each day from Weekday field ("Monday Wednesday")
+                List<string> daysSplit = new List<string>();
+                foreach (var course in Globals.dbContext.Courses.ToList())
+                {
+                    string[] parts = course.Weekday.Split(' ');
+                    if (parts.Length > 2)
+                    {
+
+                        foreach (string day in parts)
+                        {
+                            if (day == " " || day == "") continue;
+                            if (coursesPerDay.ContainsKey(day))
+                            {
+                                coursesPerDay[day]++;
+                            }
+                            else
+                            {
+                                coursesPerDay.Add(day, 1);
+                            }
+                        }
+                    }
+                    else if (coursesPerDay.ContainsKey(parts[0]))
+                    { // only 1 day
+                        coursesPerDay[parts[0]]++;
+                    }
+                    else coursesPerDay.Add(parts[0], 1);
+                }
+
+                coursesPerWeek.Values = new ChartValues<int>(coursesPerDay.Values);
+
+                ChartCoursesPerWeek.AxisX.Add(new Axis
+                {
+                    Title = "Days of the Week",
+                    Labels = new List<string>(coursesPerDay.Keys)
+                });
+
+                ChartCoursesPerWeek.AxisY.Add(new Axis
+                {
+                    Title = "Number of courses",
+                    MinValue = 0,
+                });
+
+                coursesPerWeek.Fill = new SolidColorBrush(Color.FromRgb(55, 55, 254));
+                coursesPerWeek.StrokeThickness = 2;
+                BtnNextGraph.Visibility = Visibility.Visible;
+                BtnLastGraph.Visibility = Visibility.Hidden;
+
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Something went wrong (Courses table): " + ex.Message, "Invalid operation", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex.Message, "Unexpected error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

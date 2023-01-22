@@ -29,7 +29,8 @@
                 Name="BtnNextGraph"
                 FontFamily="Marlett"
                 FontSize="20"
-                Content="5"
+                Background="#FF4150A4"
+                Content="5"                
                 HorizontalAlignment="Right"
                 RenderTransformOrigin="0.5, 0.5"
                 ToolTip="View next graph"
@@ -38,6 +39,23 @@
                 <Button.RenderTransform>
                     <RotateTransform
                         Angle="90" />
+                </Button.RenderTransform>
+            </Button>
+            <Button
+                Name="BtnLastGraph"
+                FontFamily="Marlett"
+                FontSize="20"
+                Background="#FF4150A4"
+                Content="5"
+                Visibility="Hidden"
+                HorizontalAlignment="Right"
+                RenderTransformOrigin="0.5, 0.5"
+                ToolTip="View previous graph"
+                Margin="30,-55,100,22"
+                Click="BtnLastGraph_Click">
+                <Button.RenderTransform>
+                    <RotateTransform
+                        Angle="270" />
                 </Button.RenderTransform>
             </Button>
             <lvc:CartesianChart

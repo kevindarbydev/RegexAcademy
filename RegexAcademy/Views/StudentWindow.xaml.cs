@@ -52,7 +52,7 @@ namespace RegexAcademy.Views
             }
             catch (Exception ex) when (ex is InvalidOperationException || ex is SystemException)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message + "..." + ex.GetType());
+                MessageBox.Show($"Something went wrong: {ex.Message} ({ex.GetType().Name})", "Operation failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -70,11 +70,11 @@ namespace RegexAcademy.Views
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                MessageBox.Show($"Something went wrong: {ex.Message} ({ex.GetType().Name})", "Operation failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (NullReferenceException ex)
             {
-                MessageBox.Show("(NRE) Something went wrong: " + ex.Message);
+                MessageBox.Show($"Something went wrong: {ex.Message} ({ex.GetType().Name})", "Operation failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -86,7 +86,7 @@ namespace RegexAcademy.Views
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                MessageBox.Show($"Something went wrong: {ex.Message} ({ex.GetType().Name})", "Operation failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -98,7 +98,7 @@ namespace RegexAcademy.Views
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                MessageBox.Show($"Something went wrong: {ex.Message} ({ex.GetType().Name})", "Operation failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -110,7 +110,7 @@ namespace RegexAcademy.Views
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                MessageBox.Show($"Something went wrong: {ex.Message} ({ex.GetType().Name})", "Operation failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -122,7 +122,7 @@ namespace RegexAcademy.Views
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                MessageBox.Show($"Something went wrong: {ex.Message} ({ex.GetType().Name})", "Operation failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
