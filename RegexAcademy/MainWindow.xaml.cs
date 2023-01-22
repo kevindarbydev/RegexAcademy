@@ -16,7 +16,7 @@ namespace RegexAcademy
             ContentFrame.Source = new Uri("Views/Home.xaml", UriKind.Relative);
             try
             {
-                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                Globals.dbContext = new RegexAcademyDbContext();
             }
             catch (SystemException ex)
             {
@@ -24,6 +24,8 @@ namespace RegexAcademy
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(1);
             }
+
+            // to switch register/login on off
 
             //if (Globals.isLoggedIn == false)
             //{
@@ -39,9 +41,7 @@ namespace RegexAcademy
             switch (hmi.Text)
             {
                 case "Students":
-                    //ContentFrame.Content = new TextBlock { Text = "Button 1 clicked" };
                     ContentFrame.Source = new Uri("Views/StudentWindow.xaml", UriKind.Relative);
-
                     break;
                 case "Teachers":
                     ContentFrame.Source = new Uri("Views/TeacherWindow.xaml", UriKind.Relative);
@@ -59,8 +59,8 @@ namespace RegexAcademy
             }
         }
 
-        // removed hook so that it's not annoying during development.
-        // to re-enable, add following line to MainWindow.xaml in <Window> element:
+        
+        // to enable, add following line to MainWindow.xaml in <Window> element:
         // Closing='Window_Closing'
         private void Window_Closing(object sender, CancelEventArgs e)
         {
