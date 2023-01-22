@@ -5,7 +5,7 @@ using System;
 
 namespace RegexAcademy
 {
-    internal class Globals
+    public class Globals
     {
         public static RegexAcademyDbContext dbContext;
 
