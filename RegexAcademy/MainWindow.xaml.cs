@@ -13,6 +13,7 @@ namespace RegexAcademy
         public MainWindow()
         {
             InitializeComponent();
+            ContentFrame.Source = new Uri("Views/Home.xaml", UriKind.Relative);
             try
             {
                 Globals.dbContext = new RegexAcademyDbContext(); // Exceptions

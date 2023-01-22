@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows.Media.Imaging;
 using System.Windows;
+using System;
 
 namespace RegexAcademy
 {
@@ -17,8 +18,16 @@ namespace RegexAcademy
         {
             if (profileImage.PixelHeight > 400 || profileImage.PixelWidth > 400)
             {
-                var croppedProfileImage = new CroppedBitmap(profileImage, new Int32Rect(60, 60, 120, 120));
-                return croppedProfileImage;
+                try
+                {
+                    var croppedProfileImage = new CroppedBitmap(profileImage, new Int32Rect(125, 125, 250, 250));
+                    return croppedProfileImage;
+                }
+                catch (SystemException)
+                {
+                    
+                }
+
             }
             return null;
             
