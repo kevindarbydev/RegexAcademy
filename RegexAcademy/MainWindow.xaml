@@ -15,35 +15,35 @@
   ResizeMode="NoResize"
   Icon="Assets/Images/book.ico"
   >
-  <Window.Background>
-    <LinearGradientBrush
+    <Window.Background>
+        <LinearGradientBrush
       EndPoint="0.5,1"
       StartPoint="0.5,0">
-      <GradientStop
+            <GradientStop
         Color="LightBlue" />
-      <GradientStop
+            <GradientStop
         Color="#FF8A5269"
         Offset="1" />
-      <GradientStop
+            <GradientStop
         Color="#FFAAFF"
         Offset="2" />
-    </LinearGradientBrush>
-  </Window.Background>
+        </LinearGradientBrush>
+    </Window.Background>
 
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
         Width="200" />
-      <ColumnDefinition
+            <ColumnDefinition
         Width="*" />
-    </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
 
-    <StackPanel
+        <StackPanel
       Name="SpLeftButtons"
       Grid.Column="0"
       Orientation="Vertical">
 
-      <HamburgerMenu:HamburgerMenu
+            <HamburgerMenu:HamburgerMenu
         Background='LightSlateGray'
         MenuIconColor="White"
         MenuItemForeground="White"
@@ -51,29 +51,30 @@
         Height='434'
         Cursor='Hand'>
 
-        <HamburgerMenu:HamburgerMenuItem
+                <HamburgerMenu:HamburgerMenuItem
           Text="Students"
+          IsSelected="False"
           MouseDoubleClick='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/student-hbmenu-icon.png"
           ToolTip='Students'
           SelectionIndicatorColor='#b6995c' />
 
-        <HamburgerMenu:HamburgerMenuItem
+                <HamburgerMenu:HamburgerMenuItem
           Text="Teachers"
           MouseDoubleClick='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/apple-hbmenu-icon.png"
           SelectionIndicatorColor='#489d88'
           ToolTip='Teachers' />
-        <HamburgerMenu:HamburgerMenuItem
+                <HamburgerMenu:HamburgerMenuItem
           Text="Courses"
           MouseDoubleClick='HbMenuItem_Click'
           Height='90'
           Icon="Assets/Images/courses-hbmenu-icon.png"
           SelectionIndicatorColor='#a4c1d6'
           ToolTip='Courses' />
-        <HamburgerMenu:HamburgerMenuItem
+                <HamburgerMenu:HamburgerMenuItem
           Text="Data Analytics"
           MouseDoubleClick='HbMenuItem_Click'
           Height='90'
@@ -81,12 +82,12 @@
           SelectionIndicatorColor='#335965'
           ToolTip='Student Courses' />
 
-      </HamburgerMenu:HamburgerMenu>
+            </HamburgerMenu:HamburgerMenu>
 
-    </StackPanel>
-    <Frame
+        </StackPanel>
+        <Frame
       Grid.Column="1"
       Name="ContentFrame"
       NavigationUIVisibility="Hidden" />
-  </Grid>
+    </Grid>
 </Window>
