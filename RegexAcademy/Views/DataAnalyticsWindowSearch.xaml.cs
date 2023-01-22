@@ -21,6 +21,7 @@ namespace RegexAcademy.Views
 
         private void BtnSearch_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            //no longer using, will delete soon
             try
             {
                 //TODO:
@@ -52,5 +53,30 @@ namespace RegexAcademy.Views
                 MessageBox.Show("Error: " + ex.GetType().Name);
             }
         }
+
+        private void TbxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                //properly resets list
+                if (TbxSearchBar.Text == "")
+                {
+                    LvSearchResults.ItemsSource = null;
+                    return;
+                }
+
+                List<Student> studentsMatched = Globals.dbContext.Students.Where(s => s.FirstName.StartsWith(TbxSearchBar.Text)).ToList();
+
+                genericMatched.Clear();
+                genericMatched.AddRange(studentsMatched);
+
+                LvSearchResults.ItemsSource = genericMatched;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.GetType().Name);
+            }
+        }
+
     }
 }

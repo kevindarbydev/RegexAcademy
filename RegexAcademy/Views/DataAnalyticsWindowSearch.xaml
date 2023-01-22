@@ -24,6 +24,7 @@
                 x:Name="TbxSearchBar"
                 TextWrapping="Wrap"
                 Width="160"
+                TextChanged="TbxSearchBar_TextChanged"
                 
                 Height="39" />
             <Label
@@ -32,14 +33,14 @@
                 Height="42"
                 Margin="-290,-30,0,0"
                 FontSize="16" />
-            <Button
+             <!-- <Button
                 x:Name="BtnSearch"
                 Content="Search"
                 HorizontalAlignment="Center"
                 Margin="290,-40,0,0"
                 
                 RenderTransformOrigin="-1.463,1.875"
-                Click="BtnSearch_Click" />
+                Click="BtnSearch_Click" /> -->
 
             <ListView
                 x:Name="LvSearchResults"
