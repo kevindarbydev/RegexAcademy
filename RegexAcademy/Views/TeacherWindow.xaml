@@ -85,7 +85,7 @@
                 VerticalAlignment="Top"
                 IsEnabled="{Binding SelectedItems.Count, ElementName=LvTeachers}"
                 ToolTip="Edit selected Teacher(s)"
-                materialDesign:RippleAssist.Feedback="Yellow"
+                materialDesign:RippleAssist.Feedback="Green"
                 Background='#a1b569'
                 BorderBrush='Black'
                 Cursor='Hand'

@@ -80,7 +80,7 @@
           Height='90'
           Icon="Assets/Images/studentcourses-hbmenu-icon.png"
           SelectionIndicatorColor='#335965'
-          ToolTip='Student Courses' />
+          ToolTip='Data Analytics' />
 
             </HamburgerMenu:HamburgerMenu>
 

@@ -73,7 +73,7 @@
       VerticalAlignment="Top"
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"
       ToolTip="Edit selected Course(s)"
-      materialDesign:RippleAssist.Feedback="Yellow"
+      materialDesign:RippleAssist.Feedback="Green"
       Background='#a1b569'
       BorderBrush='Black'
       Cursor='Hand' />
@@ -85,6 +85,7 @@
       Margin="579,12,0,0"
       VerticalAlignment="Top"
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"
+      ToolTip="Assign Students to selected Course"
       Click="BtnAssignStudents_Click" />
     <Button
       Content="Delete Course"
@@ -105,7 +106,7 @@
       Margin="424,12,0,0"
       VerticalAlignment="Top"
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"
-      Click="BtnAssignTeacher_Click" />
-
+      Click="BtnAssignTeacher_Click"
+      ToolTip="Assign a Teacher to selected Course" />
   </Grid>
 </Page>
