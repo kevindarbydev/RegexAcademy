@@ -15,23 +15,15 @@ namespace RegexAcademy.Views
     {
         private Course selectedCourse = null;
 
-
+        // Constructor for AddCourse Window
         public CourseAddEdit()
         {
             InitializeComponent();
 
             try
             {
-
-                // sets the content of checkboxes
                 Globals.dbContext = new RegexAcademyDbContext();
-                CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
-                CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
-                CbxCoursesWeekdaysWednesday.Content = Course.WeekdayEnum.Wednesday;
-                CbxCoursesWeekdaysThursday.Content = Course.WeekdayEnum.Thursday;
-                CbxCoursesWeekdaysFriday.Content = Course.WeekdayEnum.Friday;
-                CbxCoursesWeekdaysSaturday.Content = Course.WeekdayEnum.Saturday;
-                CbxCoursesWeekdaysSunday.Content = Course.WeekdayEnum.Sunday;
+                SetEnumCheckboxes();
 
             }
             catch (SystemException ex)
@@ -55,14 +47,8 @@ namespace RegexAcademy.Views
                 BtnUpdateCourse.Visibility = Visibility.Visible;
                 BtnCourseDialogSave.Visibility = Visibility.Hidden;
 
-                // sets weekday enums based on checkbox content
-                CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
-                CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
-                CbxCoursesWeekdaysWednesday.Content = Course.WeekdayEnum.Wednesday;
-                CbxCoursesWeekdaysThursday.Content = Course.WeekdayEnum.Thursday;
-                CbxCoursesWeekdaysFriday.Content = Course.WeekdayEnum.Friday;
-                CbxCoursesWeekdaysSaturday.Content = Course.WeekdayEnum.Saturday;
-                CbxCoursesWeekdaysSunday.Content = Course.WeekdayEnum.Sunday;
+                // re-sets weekday enums based on checkbox content
+                SetEnumCheckboxes();
 
             }
             catch (SystemException ex)
@@ -114,6 +100,18 @@ namespace RegexAcademy.Views
                 }
 
             }
+        }
+
+        // sets the content of checkboxes based on enums
+        public void SetEnumCheckboxes()
+        {
+            CbxCoursesWeekdaysMonday.Content = Course.WeekdayEnum.Monday;
+            CbxCoursesWeekdaysTuesday.Content = Course.WeekdayEnum.Tuesday;
+            CbxCoursesWeekdaysWednesday.Content = Course.WeekdayEnum.Wednesday;
+            CbxCoursesWeekdaysThursday.Content = Course.WeekdayEnum.Thursday;
+            CbxCoursesWeekdaysFriday.Content = Course.WeekdayEnum.Friday;
+            CbxCoursesWeekdaysSaturday.Content = Course.WeekdayEnum.Saturday;
+            CbxCoursesWeekdaysSunday.Content = Course.WeekdayEnum.Sunday;
         }
 
         // this is additional validation not found in setters (Course.cs)
