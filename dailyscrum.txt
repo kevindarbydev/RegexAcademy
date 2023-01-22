@@ -172,6 +172,37 @@
 - Saving teacherId and AssignTeacher bug
 - Add more unit tests
 
+--------------------------------------------------------------------------------------
+1/22/2023 Kevin
+1. Done/not done since last scrum:
+- implemented admin graph display
+- implemented statistics panel/tab 
+- general debugging
+
+1/22/2023 Matthew
+1. Done/not done since last scrum:
+- Implemented Home Page for when user's first enter the application
+- Implemented Export to file method 
+
+1/22/2023 Chris
+1. Done/not done since last scrum:
+- general UI fixes + enhancements, 
+- added times to LvCourses 
+- started unit tests
+2. Still working on:
+- unit tests
+- possible loading widget
+
+1/22/2023 Seena
+1. Done/not done since last scrum:
+- Settle resize and cropping images everywhere in app
+- Saving teacherId and AssignTeacher bug
+2. Still working on:
+- Extra if time: export Csv library
+- General app debugging and stress test
+- Finish ppt
+- Add more unit tests
+
 
 
 
