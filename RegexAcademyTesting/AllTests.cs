@@ -78,21 +78,21 @@ namespace RegexAcademyTesting
         [Test]
         public void TestFirstNameArgumentExcep()
         {
-            Student s = new Student();
-            Assert.Throws<ArgumentException>(() => s.FirstName = "Ba rry");
+
+            Assert.Throws<ArgumentException>(() => _student.FirstName = "Ba rry");
         }
         [Test]
         public void TestLastNameArgumentExcep()
         {
-            Student s = new Student();
-            Assert.Throws<ArgumentException>(() => s.LastName = "Ter!rry");
+
+            Assert.Throws<ArgumentException>(() => _student.LastName = "Ter!rry");
         }
         [Test]
         public void TestDobArgumentExcep()
         {
-            Student s = new Student();
-            Assert.Throws<ArgumentException>(() => s.DateOfBirth = DateTime.MaxValue);
-            Assert.Throws<ArgumentException>(() => s.DateOfBirth = DateTime.MinValue);
+
+            Assert.Throws<ArgumentException>(() => _student.DateOfBirth = DateTime.MaxValue);
+            Assert.Throws<ArgumentException>(() => _student.DateOfBirth = DateTime.MinValue);
         }
 
         [Test]
