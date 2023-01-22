@@ -27,7 +27,7 @@
                                 <TextBlock Text="{TemplateBinding Content}"
                                            Padding="5"
                                            Width="{TemplateBinding Width}"
-                                           TextAlignment="Left" />
+                                           TextAlignment="Center" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -46,7 +46,7 @@
                                     Width="100"
                                     DisplayMemberBinding="{Binding LastName}" />
                     <GridViewColumn Header="Email"
-                                    Width="130"
+                                    Width="200"
                                     DisplayMemberBinding="{Binding Email}" />
                     <GridViewColumn Header="Available"
                                     Width="70"

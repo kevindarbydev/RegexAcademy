@@ -119,24 +119,7 @@ namespace RegexAcademy.Models
             }
         }
 
-        private bool _availability;
-
-        public bool Availability
-        {
-            get
-            {
-                return _availability;
-            }
-            set
-            {
-                //FIXME: not sure if this is necessary since availability can be false
-                //if (value == false)
-                //{
-                //    throw new ArgumentException("Sorry, this teacher is unavailable");
-                //}
-                _availability = value;
-            }
-        }
+        public bool Availability { get; set; }
 
         [NotMapped]
         public string AvailabilityToShow

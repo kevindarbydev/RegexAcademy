@@ -108,7 +108,7 @@
                 Width="100"
                 Visibility="Hidden"
                 Background='#a1b569'
-                Margin="314,415,136,237" />
+                Margin="292,393,58,175" />
         <Button IsCancel="True"
                 Content="Cancel"
                 Width="100"

@@ -191,9 +191,6 @@ namespace RegexAcademy.Views
             if (op.ShowDialog() == true)
             {
                 imagePath = op.FileName;
-                //FIXME: image cropping is not really working well
-                //var profileImage = new BitmapImage(new Uri(op.FileName)); 
-                //ImgProfileImage.Source = new CroppedBitmap(profileImage, new Int32Rect(120, 120, 240, 240));
 
                 var profileImage = new BitmapImage(new Uri(op.FileName));
                 var croppedProfileImage = Globals.CropsImage(profileImage);
