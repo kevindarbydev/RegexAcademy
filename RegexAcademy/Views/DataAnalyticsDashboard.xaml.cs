@@ -32,8 +32,9 @@ namespace RegexAcademy.Views
         {
             try
             {
-                MessageBox.Show("Not yet implemented");
-                // ContentForOptionChosen.Source = new Uri("DataAnalyticsWindowStatistics.xaml", UriKind.Relative); //IoException, InvalidOperation
+                //chart to display start/end dates, or num of courses per day
+                // MessageBox.Show("Not yet implemented");
+                ContentForOptionChosen.Source = new Uri("DataAnalyticsWindowGraphs.xaml", UriKind.Relative); //IoException, InvalidOperation
             }
             catch (SystemException ex)
             {
