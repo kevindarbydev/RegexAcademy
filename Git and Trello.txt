@@ -1,0 +1,5 @@
+Project Title: Regex Academy
+Team Members: Matthew Reda, Seena Sabet-Kassouf, Christopher Perrault and Kevin Darby
+Trello URL: https://trello.com/b/mwsYWib8/regex-academy
+GitHub URL: https://github.com/kevindarbydev/RegexAcademy		
+	** Invite has been sent to senditaway@hotmail.com. Please accept to view the code**
