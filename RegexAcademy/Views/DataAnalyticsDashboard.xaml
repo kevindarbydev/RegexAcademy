@@ -85,7 +85,7 @@
                Grid.RowSpan="6"
                Name="ContentForOptionChosen" />
         <Button Name="BtnExportToFile"
-                Content="Export All Data to File"
+                Content="Export All Data to PDF"
                 HorizontalAlignment="Left"
                 Grid.Row="4"
                 VerticalAlignment="Center"

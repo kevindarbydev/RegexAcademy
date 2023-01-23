@@ -17,6 +17,7 @@
     <PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
     <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="Syncfusion.Pdf.Wpf" Version="20.4.0.44" />
   </ItemGroup>
 
   <ItemGroup>

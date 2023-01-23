@@ -140,7 +140,7 @@ namespace RegexAcademy.Models
 
         public override string ToString()
         {
-            return $"Course ID: {CourseId};Course Name: {CourseName};Day(s) of Week: {Weekday};Start Date: {StartDate};End Date: {EndDate};Start Time: {StartTime};End Time: {EndTime}; Taught by: {TeacherId}";
+            return $"Course ID: {CourseId};Course Name: {CourseName};Day(s) of Week: {Weekday};Start Date: {StartDate.Year}/{StartDate.Month}/{StartDate.Day};End Date: {EndDate.Year}/{EndDate.Month}/{EndDate.Day};Start Time: {StartTime.TimeOfDay};End Time: {EndTime.TimeOfDay}; Taught by(ID): {TeacherId}";
         }
     }
 }
