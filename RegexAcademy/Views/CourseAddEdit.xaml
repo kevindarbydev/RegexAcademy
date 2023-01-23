@@ -29,9 +29,9 @@
     </LinearGradientBrush>
   </Window.Background>
   <Grid
-    x:Name="grid">
+    Name="grid">
     <TextBox
-      x:Name="TbxCourseCode"
+      Name="TbxCourseCode"
       HorizontalAlignment="Left"
       Height="23"
       Margin="170,36,0,0"

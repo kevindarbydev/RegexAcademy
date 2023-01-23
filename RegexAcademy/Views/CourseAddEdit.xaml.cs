@@ -46,8 +46,11 @@ namespace RegexAcademy.Views
 
                 BtnUpdateCourse.Visibility = Visibility.Visible;
                 BtnCourseDialogSave.Visibility = Visibility.Hidden;
+                // modifying PK course code disallowed
+                TbxCourseCode.IsReadOnly = true;
+                TbxCourseCode.ToolTip = "You cannot modify Course Code. Please add another Course with correct information.";
 
-                // re-sets weekday enums based on checkbox content
+                // resets weekday enums based on checkbox content
                 SetEnumCheckboxes();
 
             }
