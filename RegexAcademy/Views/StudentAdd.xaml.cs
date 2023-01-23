@@ -44,7 +44,7 @@ namespace RegexAcademy.Views
             {
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-                // Close();
+               
                 Environment.Exit(1);
             }
             if (currentlySelected != null)

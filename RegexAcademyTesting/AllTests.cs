@@ -107,7 +107,7 @@ namespace RegexAcademyTesting
         {
             var yearOutOfRange = new DateTime(2027 - 8 - 24);
 
-            Assert.That(_course.StartDate == yearOutOfRange, Is.False, "If failed, verify Models/Course.cs. Range for years is 2023-2025");
+            Assert.That(_course.EndDate == yearOutOfRange, Is.False, "If failed, verify Models/Course.cs. Range for years is 2023-2025");
         }
 
 

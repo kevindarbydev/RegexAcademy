@@ -25,7 +25,7 @@ namespace RegexAcademy
                 Environment.Exit(1);
             }
 
-            // to switch register/login on off
+            // to switch register/login on/off
 
             //if (Globals.isLoggedIn == false)
             //{
