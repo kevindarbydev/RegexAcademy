@@ -94,6 +94,7 @@
                 BorderThickness="0"
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                 Click="BtnExportToFile_Click"
+                ToolTip='Export data to .txt file'
                 Margin="10,0,0,0" />
         <Button x:Name="BtnExportToFileCSV"
                 Content="Export All Students as CSV"
@@ -103,6 +104,7 @@
                 Width="210"
                 Background="#FF4150A4"
                 BorderThickness="0"
+                ToolTip='Export to .csv file'
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                 Click="BtnExportToFileCSV_Click"
                 Margin="10,0,0,0" />
