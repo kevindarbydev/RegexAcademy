@@ -20,7 +20,6 @@ namespace RegexAcademyTesting
             _teacher = new Teacher();
             _student = new Student();
             _course = new Course();
-
         }
 
         // USERS

@@ -9,8 +9,7 @@
   xmlns:view='clr-namespace:RegexAcademy.Views'
   mc:Ignorable="d"
   d:DesignHeight="450"
-  d:DesignWidth="1000"
-  >
+  d:DesignWidth="1000">
 
   <Grid
     Margin='0,0,-440,-50'>
@@ -21,7 +20,7 @@
         <GridView>
           <GridViewColumn
             Header="Code"
-            Width="95"           
+            Width="95"
             DisplayMemberBinding="{Binding CourseId}" />
           <GridViewColumn
             Header="Name"
@@ -59,7 +58,7 @@
       VerticalAlignment="Top"
       ToolTip="Add a new Course"
       materialDesign:RippleAssist.Feedback="Yellow"
-      Background='#a1b569'
+      Background='#546E7A'
       BorderBrush='Black'
       Cursor='Hand'
       Visibility='Visible'
@@ -74,7 +73,7 @@
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"
       ToolTip="Edit selected Course(s)"
       materialDesign:RippleAssist.Feedback="Green"
-      Background='#a1b569'
+      Background='#546E7A'
       BorderBrush='Black'
       Cursor='Hand' />
 
@@ -95,7 +94,7 @@
       VerticalAlignment="Top"
       materialDesign:RippleAssist.Feedback="Red"
       ToolTip="Delete selected Courses(s)"
-      Background='#a1b569'
+      Background='#546E7A'
       BorderBrush='Black'
       Cursor='Hand'
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"

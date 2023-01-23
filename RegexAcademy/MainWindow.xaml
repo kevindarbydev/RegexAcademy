@@ -13,6 +13,7 @@
   Height="450"
   Width="1000"
   ResizeMode="NoResize"
+  
   Icon="Assets/Images/book.ico"
   >
     <Window.Background>

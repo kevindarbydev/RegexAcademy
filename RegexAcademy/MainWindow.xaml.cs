@@ -59,7 +59,7 @@ namespace RegexAcademy
             }
         }
 
-        
+
         // to enable, add following line to MainWindow.xaml in <Window> element:
         // Closing='Window_Closing'
         private void Window_Closing(object sender, CancelEventArgs e)
