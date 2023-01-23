@@ -1,94 +1,79 @@
-﻿<Window
-  x:Class="RegexAcademy.MainWindow"
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:local="clr-namespace:RegexAcademy"
-  xmlns:views='clr-namespace:RegexAcademy.Views'
-  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-  xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
-  mc:Ignorable="d"
-  Title="Regex Academy"
-  Height="450"
-  Width="1000"
-  ResizeMode="NoResize"
-  
-  Icon="Assets/Images/book.ico"
-  >
+﻿<Window x:Class="RegexAcademy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegexAcademy"
+        xmlns:views='clr-namespace:RegexAcademy.Views'
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
+        mc:Ignorable="d"
+        Title="Regex Academy"
+        Height="450"
+        Width="1000"
+        ResizeMode="NoResize"
+        Closing="Window_Closing"
+        Icon="Assets/Images/book.ico">
     <Window.Background>
-        <LinearGradientBrush
-      EndPoint="0.5,1"
-      StartPoint="0.5,0">
-            <GradientStop
-        Color="LightBlue" />
-            <GradientStop
-        Color="#FF8A5269"
-        Offset="1" />
-            <GradientStop
-        Color="#FFAAFF"
-        Offset="2" />
+        <LinearGradientBrush EndPoint="0.5,1"
+                             StartPoint="0.5,0">
+            <GradientStop Color="LightBlue" />
+            <GradientStop Color="#FF8A5269"
+                          Offset="1" />
+            <GradientStop Color="#FFAAFF"
+                          Offset="2" />
         </LinearGradientBrush>
     </Window.Background>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition
-        Width="200" />
-            <ColumnDefinition
-        Width="*" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel
-      Name="SpLeftButtons"
-      Grid.Column="0"
-      Orientation="Vertical">
+        <StackPanel Name="SpLeftButtons"
+                    Grid.Column="0"
+                    Orientation="Vertical">
 
-            <HamburgerMenu:HamburgerMenu
-        Background='LightSlateGray'
-        MenuIconColor="White"
-        MenuItemForeground="White"
-        HorizontalAlignment="Left"
-        Height='434'
-        Cursor='Hand'>
+            <HamburgerMenu:HamburgerMenu Background='LightSlateGray'
+                                         MenuIconColor="White"
+                                         MenuItemForeground="White"
+                                         HorizontalAlignment="Left"
+                                         Height='434'
+                                         Cursor='Hand'>
 
-                <HamburgerMenu:HamburgerMenuItem
-          Text="Students"
-          IsSelected="False"
-          MouseDoubleClick='HbMenuItem_Click'
-          Height='90'
-          Icon="Assets/Images/student-hbmenu-icon.png"
-          ToolTip='Students'
-          SelectionIndicatorColor='#b6995c' />
+                <HamburgerMenu:HamburgerMenuItem Text="Students"
+                                                 IsSelected="False"
+                                                 MouseDoubleClick='HbMenuItem_Click'
+                                                 Height='90'
+                                                 Icon="Assets/Images/student-hbmenu-icon.png"
+                                                 ToolTip='Students'
+                                                 SelectionIndicatorColor='#b6995c' />
 
-                <HamburgerMenu:HamburgerMenuItem
-          Text="Teachers"
-          MouseDoubleClick='HbMenuItem_Click'
-          Height='90'
-          Icon="Assets/Images/apple-hbmenu-icon.png"
-          SelectionIndicatorColor='#489d88'
-          ToolTip='Teachers' />
-                <HamburgerMenu:HamburgerMenuItem
-          Text="Courses"
-          MouseDoubleClick='HbMenuItem_Click'
-          Height='90'
-          Icon="Assets/Images/courses-hbmenu-icon.png"
-          SelectionIndicatorColor='#a4c1d6'
-          ToolTip='Courses' />
-                <HamburgerMenu:HamburgerMenuItem
-          Text="Data Analytics"
-          MouseDoubleClick='HbMenuItem_Click'
-          Height='90'
-          Icon="Assets/Images/studentcourses-hbmenu-icon.png"
-          SelectionIndicatorColor='#335965'
-          ToolTip='Data Analytics' />
+                <HamburgerMenu:HamburgerMenuItem Text="Teachers"
+                                                 MouseDoubleClick='HbMenuItem_Click'
+                                                 Height='90'
+                                                 Icon="Assets/Images/apple-hbmenu-icon.png"
+                                                 SelectionIndicatorColor='#489d88'
+                                                 ToolTip='Teachers' />
+                <HamburgerMenu:HamburgerMenuItem Text="Courses"
+                                                 MouseDoubleClick='HbMenuItem_Click'
+                                                 Height='90'
+                                                 Icon="Assets/Images/courses-hbmenu-icon.png"
+                                                 SelectionIndicatorColor='#a4c1d6'
+                                                 ToolTip='Courses' />
+                <HamburgerMenu:HamburgerMenuItem Text="Data Analytics"
+                                                 MouseDoubleClick='HbMenuItem_Click'
+                                                 Height='90'
+                                                 Icon="Assets/Images/studentcourses-hbmenu-icon.png"
+                                                 SelectionIndicatorColor='#335965'
+                                                 ToolTip='Data Analytics' />
 
             </HamburgerMenu:HamburgerMenu>
 
         </StackPanel>
-        <Frame
-      Grid.Column="1"
-      Name="ContentFrame"
-      NavigationUIVisibility="Hidden" />
+        <Frame Grid.Column="1"
+               Name="ContentFrame"
+               NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>
