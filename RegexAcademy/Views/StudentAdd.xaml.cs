@@ -36,7 +36,7 @@ namespace RegexAcademy.Views
             InitializeComponent();
             try
             {
-                Globals.dbContext = new RegexAcademyDbContext(); // Exceptions
+                Globals.dbContext = new RegexAcademyDbContext(); // systemEx, DBExcep
                 BtnUpdateStudent.Visibility = Visibility.Visible;
                 BtnSaveStudent.Visibility = Visibility.Hidden;
             }
@@ -70,7 +70,7 @@ namespace RegexAcademy.Views
                     MessageBox.Show("Please select a date from the date picker before continuing.", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-                Models.Student newStudent = new Models.Student { FirstName = TbxFirstName.Text, LastName = TbxLastName.Text, DateOfBirth = (DateTime)DpAddStudent.SelectedDate };
+                Models.Student newStudent = new Models.Student { FirstName = TbxFirstName.Text, LastName = TbxLastName.Text, DateOfBirth = (DateTime)DpAddStudent.SelectedDate }; // argumentExcep
                 Globals.dbContext.Students.Add(newStudent);
                 Globals.dbContext.SaveChanges();
                 MessageBox.Show(this, "Student saved successfully!", "Student added", MessageBoxButton.OK, MessageBoxImage.None);
