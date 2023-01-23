@@ -91,6 +91,13 @@ namespace RegexAcademy.Views
 
             if (selectedStudents == null) { return; }
 
+            if(studentsInCourse.Count == 20)
+            {
+                MessageBox.Show(this, "Maximum student capacity for the course reached.", "Assignment Error",
+                   MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             foreach (Student student in selectedStudents)
             {
                 allStudents.Remove(student);
