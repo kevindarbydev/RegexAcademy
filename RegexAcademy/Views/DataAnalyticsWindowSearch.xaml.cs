@@ -19,40 +19,6 @@ namespace RegexAcademy.Views
             InitializeComponent();
         }
 
-        private void BtnSearch_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            //no longer using, will delete soon
-            try
-            {
-                //TODO:
-                //get list to refresh went search is pressed again
-                //LvSearchResults.ItemsSource = null;
-                if (TbxSearchBar.Text == "") return;
-                string searchString = TbxSearchBar.Text;
-
-
-                //iterate through Students and Teachers                
-                List<Student> studentsMatched = Globals.dbContext.Students.Where(s => s.FirstName.Contains(searchString)).ToList();
-                List<Teacher> teachersMatched = Globals.dbContext.Teachers.Where(t => t.FirstName.Contains(searchString)).ToList();
-
-                studentsMatched.AddRange(Globals.dbContext.Students.Where(s => s.LastName.Contains(searchString)).ToList());
-                teachersMatched.AddRange(Globals.dbContext.Teachers.Where(t => t.LastName.Contains(searchString)).ToList());
-
-                //TODO: implement below
-                //studentsMatched.AddRange(Globals.dbContext.Students.Where(s => s.NameConcatenation().Contains(searchString)).ToList());
-                //teachersMatched.AddRange(Globals.dbContext.Teachers.Where(t => t.NameConcatenation().Contains(searchString)).ToList());
-
-                genericMatched.Clear(); //clear previous results
-                genericMatched.AddRange(teachersMatched);
-                genericMatched.AddRange(studentsMatched);
-
-                LvSearchResults.ItemsSource = genericMatched;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.GetType().Name);
-            }
-        }
 
         private void TbxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {

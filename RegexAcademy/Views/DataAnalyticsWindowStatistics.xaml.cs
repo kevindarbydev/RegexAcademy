@@ -17,15 +17,22 @@ namespace RegexAcademy.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var countStudents = Globals.dbContext.Students.Count();
+                var countTeachers = Globals.dbContext.Teachers.Where(t => t.Availability == true).Count();
+                //checking for courses that are ongoing
+                var countCourses = Globals.dbContext.Courses.Where(c => (c.StartDate <= DateTime.Today && c.EndDate >= DateTime.Today)).Count();
 
-            var countStudents = Globals.dbContext.Students.Count();
-            var countTeachers = Globals.dbContext.Teachers.Where(t => t.Availability == true).Count();
-            //checking for courses that are ongoing
-            var countCourses = Globals.dbContext.Courses.Where(c => (c.StartDate <= DateTime.Today && c.EndDate >= DateTime.Today)).Count();
-            // MessageBox.Show($"here {countStudents}, avail: {countTeachers} found courses: {countCourses}");
-            LblStudentsEnrolled.Content = countStudents;
-            LblTeachersAvailable.Content = countTeachers;
-            LblCoursesAvailable.Content = countCourses;
+
+                LblStudentsEnrolled.Content = countStudents;
+                LblTeachersAvailable.Content = countTeachers;
+                LblCoursesAvailable.Content = countCourses;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show($"This should never occur : {ex.Message}, type: {ex.GetType().Name}");
+            }
         }
     }
 }
