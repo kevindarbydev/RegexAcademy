@@ -18,13 +18,14 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80" />
+            <RowDefinition Height="70" />
 
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
 
-            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
         <Label Grid.Column="0"
                Content="Select a feature"
@@ -39,10 +40,10 @@
 
         <Grid Grid.Column="0"
               Grid.Row="1">
-            <Button Margin="-90,0,0,0"
+            <Button Margin="10,19,0,19"
                     Click="BtnViewStats_Click"
                     Name="BtnViewStats"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Left"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                     ToolTip="View statistics regarding student enrollment, teacher and course status, etc."
@@ -55,9 +56,9 @@
         <Grid Grid.Column="0"
               Grid.Row="2">
             <Button Name="BtnOption"
-                    Margin="-90,0,0,0"
+                    Margin="10,19,0,19"
                     Click="BtnOption_Click"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Left"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                     ToolTip="View graphical representation of data in the system"
@@ -68,9 +69,9 @@
         </Grid>
         <Grid Grid.Column="0"
               Grid.Row="3">
-            <Button Margin="-90,0,0,0"
+            <Button Margin="10,19,0,19"
                     Name="BtnSearchRecords"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Left"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                     ToolTip="Search the database for Teachers and Students"
@@ -81,29 +82,29 @@
             </Button>
         </Grid>
         <Frame Grid.Column="2"
-               Grid.RowSpan="5"
+               Grid.RowSpan="6"
                Name="ContentForOptionChosen" />
         <Button Name="BtnExportToFile"
                 Content="Export All Data to File"
                 HorizontalAlignment="Left"
                 Grid.Row="4"
-                VerticalAlignment="Top"
+                VerticalAlignment="Center"
                 Width="179"
                 Background="#FF4150A4"
                 BorderThickness="0"
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                 Click="BtnExportToFile_Click"
-                Margin="0,4,0,0" />
+                Margin="10,0,0,0" />
         <Button x:Name="BtnExportToFileCSV"
                 Content="Export All Students as CSV"
                 HorizontalAlignment="Left"
-                Grid.Row="4"
-                VerticalAlignment="Top"
+                Grid.Row="5"
+                VerticalAlignment="Center"
                 Width="210"
                 Background="#FF4150A4"
                 BorderThickness="0"
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                 Click="BtnExportToFileCSV_Click"
-                Margin="0,46,0,0" />
+                Margin="10,0,0,0" />
     </Grid>
 </Page>
