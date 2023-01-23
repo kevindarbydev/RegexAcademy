@@ -39,7 +39,7 @@ namespace RegexAcademy.Views
 
                 if (selectedCourse == null) { return; }
 
-                var result = MessageBox.Show("Are you sure you want to unregister \n" + selectedCourse.CourseId + "- " + selectedCourse.CourseName + "?", "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var result = MessageBox.Show("Are you sure you want to unregister \n" + selectedCourse.CourseId + " - " + selectedCourse.CourseName + "?", "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.No) { return; }
                 Globals.dbContext.Courses.Remove(selectedCourse);
 

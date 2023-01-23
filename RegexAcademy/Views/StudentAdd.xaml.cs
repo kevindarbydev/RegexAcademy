@@ -44,7 +44,7 @@ namespace RegexAcademy.Views
             {
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-               
+
                 Environment.Exit(1);
             }
             if (currentlySelected != null)
@@ -79,7 +79,7 @@ namespace RegexAcademy.Views
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(this, "Bad data received:\n" + ex.Message, "Invalid input",
+                MessageBox.Show(this, "Error validating inputs\n" + ex.Message, "Invalid input",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception ex) when (ex is SystemException || ex is InvalidOperationException)

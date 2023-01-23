@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegexAcademy.Views"
         mc:Ignorable="d" ResizeMode="NoResize"
-        Title="AssignStudents" Height="450" Width="950"
+        Title="Assign Students" Height="450" Width="950"
         Icon="../Assets/Images/book.ico"
         WindowStartupLocation="CenterScreen">
     <Window.Background>

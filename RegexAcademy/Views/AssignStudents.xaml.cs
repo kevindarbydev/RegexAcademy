@@ -1,19 +1,9 @@
 ﻿using RegexAcademy.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace RegexAcademy.Views
 {
@@ -39,7 +29,7 @@ namespace RegexAcademy.Views
 
                 var studentCourseList = Globals.dbContext.StudentCourses.Where(sc => sc.CourseId == selectedCourse.CourseId).ToList();
 
-                foreach(StudentCourse studentCourse in studentCourseList)
+                foreach (StudentCourse studentCourse in studentCourseList)
                 {
                     Student student = Globals.dbContext.Students.Find(studentCourse.StudentId);
                     studentsInCourse.Add(student);
@@ -51,7 +41,7 @@ namespace RegexAcademy.Views
                 LvStudentsInCourse.ItemsSource = studentsInCourse;
 
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
@@ -86,10 +76,11 @@ namespace RegexAcademy.Views
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 this.Close();
             }
-            if(selectedCourse != null )
+            if (selectedCourse != null)
             {
+
                 this.selectedCourse = selectedCourse;
-                LblCourseCode.Content = selectedCourse.CourseId;
+                LblCourseCode.Content = $"{selectedCourse.CourseId} > {selectedCourse.CourseName}";
                 LblStudentsInCourse.Content = $"Students in Course {selectedCourse.CourseId}:";
             }
         }
@@ -98,9 +89,9 @@ namespace RegexAcademy.Views
         {
             List<Student> selectedStudents = LvAllStudents.SelectedItems.Cast<Student>().ToList();
 
-            if(selectedStudents == null) { return; }
+            if (selectedStudents == null) { return; }
 
-            foreach(Student student in selectedStudents)
+            foreach (Student student in selectedStudents)
             {
                 allStudents.Remove(student);
                 studentsInCourse.Add(student);
@@ -114,9 +105,9 @@ namespace RegexAcademy.Views
         {
             List<Student> selectedStudents = LvStudentsInCourse.SelectedItems.Cast<Student>().ToList();
 
-            if(selectedStudents == null ) { return; }
+            if (selectedStudents == null) { return; }
 
-            foreach(Student student in selectedStudents)
+            foreach (Student student in selectedStudents)
             {
                 studentsInCourse.Remove(student);
                 allStudents.Add(student);
@@ -138,8 +129,8 @@ namespace RegexAcademy.Views
                 foreach (Student student in students)
                 {
                     StudentCourse foundStudentCourse = studentCourseList.Find(sc => sc.StudentId == student.Id);
-                    
-                    if(foundStudentCourse != null)
+
+                    if (foundStudentCourse != null)
                     {
                         studentCourseList.Remove(foundStudentCourse);
                         continue;
@@ -152,28 +143,28 @@ namespace RegexAcademy.Views
                     }
                 }
 
-                foreach(StudentCourse sc in studentCourseList)
+                foreach (StudentCourse sc in studentCourseList)
                 {
                     Student foundStudent = students.Find(s => s.Id == sc.Id);
 
-                    if(foundStudent != null) 
+                    if (foundStudent != null)
                     {
                         continue;
                     }
 
-                    if(foundStudent == null)
+                    if (foundStudent == null)
                     {
                         Globals.dbContext.StudentCourses.Remove(sc);
                     }
                 }
-               
+
                 Globals.dbContext.SaveChanges(); // SystemException
 
                 MessageBox.Show(this, "Student assignments have been saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 this.Close();
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
                    MessageBoxButton.OK, MessageBoxImage.Error);
@@ -203,7 +194,7 @@ namespace RegexAcademy.Views
 
         private void TbxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(TbxSearchBar.Text == "")
+            if (TbxSearchBar.Text == "")
             {
                 LvAllStudents.ItemsSource = allStudents;
                 return;

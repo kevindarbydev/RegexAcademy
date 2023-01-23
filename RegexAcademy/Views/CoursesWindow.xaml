@@ -71,7 +71,7 @@
       Margin="145,12,0,0"
       VerticalAlignment="Top"
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvCourses}"
-      ToolTip="Edit selected Course(s)"
+      ToolTip="Edit selected Course"
       materialDesign:RippleAssist.Feedback="Green"
       Background='#546E7A'
       BorderBrush='Black'
@@ -93,7 +93,7 @@
       Margin="275,12,0,0"
       VerticalAlignment="Top"
       materialDesign:RippleAssist.Feedback="Red"
-      ToolTip="Delete selected Courses(s)"
+      ToolTip="Delete selected Courses"
       Background='#546E7A'
       BorderBrush='Black'
       Cursor='Hand'

@@ -2,16 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace RegexAcademy.Views
 {
@@ -53,7 +44,7 @@ namespace RegexAcademy.Views
             if (selectedCourse != null)
             {
                 this.selectedCourse = selectedCourse;
-                LblCourseCode.Content = selectedCourse.CourseId;
+                LblCourseCode.Content = $"{selectedCourse.CourseId} > {selectedCourse.CourseName}";
             }
         }
 
@@ -62,9 +53,9 @@ namespace RegexAcademy.Views
             try
             {
                 assignedTeacher = LvAllTeachers.SelectedItem as Teacher;
-                if(assignedTeacher.Availability == false)
+                if (assignedTeacher.Availability == false)
                 {
-                    MessageBox.Show("Sorry this teacher is unavailable for work!", "Error",
+                    MessageBox.Show("Sorry, this teacher is unavailable for work!", "Error",
                    MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
@@ -140,9 +131,6 @@ namespace RegexAcademy.Views
             }
         }
 
-        private void TbxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
     }
 }

@@ -99,7 +99,7 @@ namespace RegexAcademy.Models
 
                 if (value.Length > 50 || value.Length < 6)
                 {
-                    throw new ArgumentException("Email length must 6-50 characters long");
+                    throw new ArgumentException("Email length must 6-50 characters long.");
                 }
                 if (!Regex.IsMatch(value, @"^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$"))
                 {

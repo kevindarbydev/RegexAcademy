@@ -321,7 +321,7 @@ namespace RegexAcademy.Views
                     {
                         if (chk.IsChecked == true)
                         {
-                            sb.Append(chk.Content.ToString() + ", ");
+                            sb.Append(chk.Content.ToString() + " ");
                         }
                     }
                     Course courseToUpdate = Globals.dbContext.Courses.Where(c => c.CourseId == selectedCourse.CourseId).FirstOrDefault();
