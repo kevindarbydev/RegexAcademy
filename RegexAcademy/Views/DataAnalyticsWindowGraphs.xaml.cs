@@ -123,7 +123,7 @@ namespace RegexAcademy.Views
                 var countOfStudents = (from sc in Globals.dbContext.StudentCourses
                                        join c in Globals.dbContext.Courses on sc.CourseId equals c.CourseId
                                        group sc by c.CourseName into g
-                                       select new { CourseName = g.Key, count = g.Count() }).ToList();
+                                       select new { CourseName = g.Key, count = g.Count() }).ToList(); //NullRefExcep
 
 
 
@@ -181,7 +181,7 @@ namespace RegexAcademy.Views
                 List<string> daysSplit = new List<string>();
                 foreach (var course in Globals.dbContext.Courses.ToList())
                 {
-                    string[] parts = course.Weekday.Split(' ');
+                    string[] parts = course.Weekday.Split(' '); //InvalidOperationException
                     if (parts.Length > 2)
                     {
 
