@@ -115,6 +115,8 @@ namespace RegexAcademy.Views
         }
 
         // this is additional validation not found in setters (Course.cs)
+        // reasons:  - These checks are comparisons between unset values or better as grouped
+        //           - courseID/code is PK, adding validation to setter disallowed
         private bool ValidateCourses()
         {
             try
@@ -163,13 +165,6 @@ namespace RegexAcademy.Views
                 else if (DpCoursesEndDate.SelectedDate.Value.Date < DpCoursesStartDate.SelectedDate.Value.Date)
                 {
                     MessageBox.Show("End date cannot precede the start date.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                    return false;
-                }
-
-                // checks if user brute-forced dates beyond date ranges set in CourseAdd.xaml DatePicker properties
-                else if (DpCoursesStartDate.SelectedDate.Value.Year < 2023 || DpCoursesStartDate.SelectedDate.Value.Year > 2025 || DpCoursesEndDate.SelectedDate.Value.Year < 2023 || DpCoursesEndDate.SelectedDate.Value.Year > 2025)
-                {
-                    MessageBox.Show("Dates must fall between 2023-01-01 and 2025-12-31.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     return false;
                 }
 

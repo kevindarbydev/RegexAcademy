@@ -55,7 +55,12 @@ namespace RegexAcademy.Models
                 _courseName = CapitalizeFirstCharCourseName;
             }
         }
-
+        // checks if user brute-forced dates beyond date ranges set in CourseAdd.xaml DatePicker properties
+        //else if (DpCoursesStartDate.SelectedDate.Value.Year< 2023 || DpCoursesStartDate.SelectedDate.Value.Year> 2025 || DpCoursesEndDate.SelectedDate.Value.Year< 2023 || DpCoursesEndDate.SelectedDate.Value.Year> 2025)
+        //{
+        //    MessageBox.Show("Dates must fall between 2023-01-01 and 2025-12-31.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+        //    return false;
+        //}
         private DateTime _startDate;
         [Required]
         [DataType(DataType.DateTime)]
@@ -64,6 +69,11 @@ namespace RegexAcademy.Models
             get { return _startDate; }
             set
             {
+                //checks if user brute - forced dates beyond date ranges set in CourseAdd.xaml DatePicker properties
+                if (value.Year < 2023 || value.Year > 2025)
+                {
+                    throw new ArgumentException("Dates must fall between 2023-01-01 and 2025-12-31.");
+                }
                 _startDate = value;
             }
         }
@@ -76,7 +86,11 @@ namespace RegexAcademy.Models
         {
             get { return _endDate; }
             set
-            {
+            {   //checks if user brute - forced dates beyond date ranges set in CourseAdd.xaml DatePicker properties
+                if (value.Year < 2023 || value.Year > 2025)
+                {
+                    throw new ArgumentException("Dates must fall between 2023-01-01 and 2025-12-31.");
+                }
                 _endDate = value;
             }
         }

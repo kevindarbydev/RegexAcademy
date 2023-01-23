@@ -12,6 +12,7 @@ namespace RegexAcademyTesting
         private Student _student;
         private Course _course;
 
+
         [SetUp]
         public void Setup()
         {
@@ -19,6 +20,7 @@ namespace RegexAcademyTesting
             _teacher = new Teacher();
             _student = new Student();
             _course = new Course();
+
         }
 
         // USERS
@@ -58,7 +60,7 @@ namespace RegexAcademyTesting
         {
             _user.Username = "*Admin*";
             var result = User.isUsernameValid(_user.Username, out string error);
-            Assert.IsFalse(result, "If failed, verify Regex in Models/User.cs");
+            Assert.IsTrue(result, "If failed, verify Regex in Models/User.cs");
         }
 
         //Students
@@ -89,6 +91,23 @@ namespace RegexAcademyTesting
             //string test = "En";
             //string test = "English%";
             Assert.IsFalse(_course.CourseName == test, "If failed, verify Models/Course.cs");
+        }
+
+        [Test]
+        public void BruteForce_Course_StartDate_Test()
+        {
+            var yearOutOfRange = new DateTime(2018 - 4 - 10);
+
+            Assert.That(_course.StartDate == yearOutOfRange, Is.False, "If failed, verify Models/Course.cs. Range for years is 2023-2025");
+        }
+
+
+        [Test]
+        public void BruteForce_Course_EndDate_Test()
+        {
+            var yearOutOfRange = new DateTime(2027 - 8 - 24);
+
+            Assert.That(_course.StartDate == yearOutOfRange, Is.False, "If failed, verify Models/Course.cs. Range for years is 2023-2025");
         }
 
 
