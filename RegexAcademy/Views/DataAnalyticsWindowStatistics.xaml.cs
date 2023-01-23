@@ -21,7 +21,7 @@ namespace RegexAcademy.Views
             {
                 var countStudents = Globals.dbContext.Students.Count();
                 var countTeachers = Globals.dbContext.Teachers.Where(t => t.Availability == true).Count();
-                //checking for courses that are ongoing
+                //checking for courses that are ongoing, HAVE started but HAVE NOT ended
                 var countCourses = Globals.dbContext.Courses.Where(c => (c.StartDate <= DateTime.Today && c.EndDate >= DateTime.Today)).Count();
 
 

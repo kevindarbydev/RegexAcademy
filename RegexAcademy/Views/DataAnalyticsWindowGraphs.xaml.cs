@@ -36,17 +36,25 @@ namespace RegexAcademy.Views
                 //hold the num of courses per day in dict
                 Dictionary<string, int> coursesPerDay = new Dictionary<string, int>();
 
-                //iterate over all courses, if a course is on a unique day then add to dict, else increment count
-                //split each day from Weekday field ("Monday Wednesday")
+                //iterate over all courses, if a course is on a unique day then add to dict, else increment count             
                 List<string> daysSplit = new List<string>();
                 foreach (var course in Globals.dbContext.Courses.ToList())
                 {
+                    //split each day from Weekday field ("Monday Wednesday" -> "Monday", "Wednesday")
                     string[] parts = course.Weekday.Split(' ');
                     if (parts.Length > 2)
                     {
-
+                        //Weekday string suddenly began including commas, so the below code is a workaround for that
                         foreach (string day in parts)
                         {
+                            for (int i = 0; i < day.Length; i++)
+                            {
+                                char current = day[i];
+                                if (current == ',')
+                                {
+                                    continue;
+                                }
+                            }
                             if (day == " " || day == "") continue;
                             if (coursesPerDay.ContainsKey(day))
                             {
@@ -98,7 +106,10 @@ namespace RegexAcademy.Views
         {
             try
             {
+                //clear previous data and change header/axes data
                 ChartCoursesPerWeek.Series.Clear();
+                ChartCoursesPerWeek.AxisX.Remove(ChartCoursesPerWeek.AxisX[0]);
+                ChartCoursesPerWeek.AxisY.Remove(ChartCoursesPerWeek.AxisY[0]);
                 ColumnSeries studentsPerClass = new ColumnSeries
                 {
                     Title = "Students Per Class",
@@ -108,12 +119,14 @@ namespace RegexAcademy.Views
                 graphData = new SeriesCollection { studentsPerClass };
                 ChartCoursesPerWeek.Series = graphData;
 
+
                 var countOfStudents = (from sc in Globals.dbContext.StudentCourses
                                        join c in Globals.dbContext.Courses on sc.CourseId equals c.CourseId
                                        group sc by c.CourseName into g
                                        select new { CourseName = g.Key, count = g.Count() }).ToList();
-                ChartCoursesPerWeek.AxisX.Remove(ChartCoursesPerWeek.AxisX[0]);
-                ChartCoursesPerWeek.AxisY.Remove(ChartCoursesPerWeek.AxisY[0]);
+
+
+
                 ChartCoursesPerWeek.AxisX.Add(new Axis
                 {
                     Title = "Course",
@@ -124,12 +137,7 @@ namespace RegexAcademy.Views
                     Title = "Number of students",
                     MinValue = 0,
                 });
-                //string x = "";
-                //foreach (var item in countOfStudents)
-                //{
-                //    x += item.ToString();
-                //}
-                //MessageBox.Show(x);
+
                 foreach (var item in countOfStudents)
                 {
                     var column = new ColumnSeries
@@ -146,8 +154,6 @@ namespace RegexAcademy.Views
             {
                 MessageBox.Show("Something went wrong: " + ex.Message, "Unexpected error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
         }
 
         private void BtnLastGraph_Click(object sender, RoutedEventArgs e)

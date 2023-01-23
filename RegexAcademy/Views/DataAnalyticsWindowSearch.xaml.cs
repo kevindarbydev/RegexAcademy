@@ -38,9 +38,9 @@ namespace RegexAcademy.Views
 
                 LvSearchResults.ItemsSource = genericMatched;
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
-                MessageBox.Show(ex.Message + ex.GetType().Name);
+                MessageBox.Show($"Something went wrong: {ex.Message}, {ex.GetType().Name}");
             }
         }
 

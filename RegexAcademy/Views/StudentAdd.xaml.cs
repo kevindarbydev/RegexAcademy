@@ -87,21 +87,6 @@ namespace RegexAcademy.Views
                 MessageBox.Show(this, "Error saving to DB\n" + ex.Message, "Saving failed",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            //if (TbxFirstName.Text == "")
-            //{
-            //    LblFirstNameError.Content = "Error on first name";
-            //}
-            //if (TbxLastName.Text == "")
-            //{
-            //    LblLastNameError.Content = "Error on last name";
-            //}
-            //if (DpAddStudent.SelectedDate == null)
-            //{
-            //    LblDobError.Content = "Error on dob";
-            //}
-
-            //MessageBox.Show("here");
         }
 
         private void ResetFields()
@@ -117,7 +102,7 @@ namespace RegexAcademy.Views
             {
                 if (currentlySelected == null) return;
                 string updateMsg = $"Original: {currentlySelected}\n-------------\nUpdated: ";
-                Models.Student toBeUpdated = Globals.dbContext.Students.Where(s => s.Id == currentlySelected.Id).FirstOrDefault();
+                Models.Student toBeUpdated = Globals.dbContext.Students.Where(s => s.Id == currentlySelected.Id).FirstOrDefault(); //argNull
                 toBeUpdated.FirstName = TbxFirstName.Text;
                 toBeUpdated.LastName = TbxLastName.Text;
                 toBeUpdated.DateOfBirth = (DateTime)DpAddStudent.SelectedDate;
@@ -126,9 +111,14 @@ namespace RegexAcademy.Views
                 MessageBox.Show(this, updateMsg, "Update success",
                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show(this, "Error saving to DB\n" + ex.Message, "Update failed",
+                   MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Something went wrong: " + ex.Message, "Fatal error",
                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
 

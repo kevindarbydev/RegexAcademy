@@ -1,14 +1,14 @@
-﻿using Microsoft.Win32;
+﻿using CsvHelper;
+using Microsoft.Win32;
+using RegexAcademy.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using RegexAcademy.Models;
-using System.Text;
-using System.IO;
-using CsvHelper;
-using System.Globalization;
 
 namespace RegexAcademy.Views
 {
@@ -40,8 +40,6 @@ namespace RegexAcademy.Views
         {
             try
             {
-                //chart to display start/end dates, or num of courses per day
-                // MessageBox.Show("Not yet implemented");
                 ContentForOptionChosen.Source = new Uri("DataAnalyticsWindowGraphs.xaml", UriKind.Relative); //IoException, InvalidOperation
             }
             catch (SystemException ex)
@@ -68,7 +66,7 @@ namespace RegexAcademy.Views
 
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*|Data Files (*.data)|*.data|CSV (*.csv)|*.csv"; //just testing if exporting as csv works here --> not really --> each line is exported to a single cell
 
-            if(saveFileDialog.ShowDialog() == true)
+            if (saveFileDialog.ShowDialog() == true)
             {
                 List<Student> students = Globals.dbContext.Students.ToList();
                 List<Teacher> teachers = Globals.dbContext.Teachers.ToList();
@@ -110,7 +108,7 @@ namespace RegexAcademy.Views
                 {
                     sb.AppendLine(studentCourse.ToString());
                 }
-                   File.WriteAllText(saveFileDialog.FileName, sb.ToString());
+                File.WriteAllText(saveFileDialog.FileName, sb.ToString());
             }
 
         }
@@ -123,42 +121,42 @@ namespace RegexAcademy.Views
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                
-                    List<Student> students = Globals.dbContext.Students.ToList();
-                    List<Teacher> teachers = Globals.dbContext.Teachers.ToList();
-                    List<Course> courses = Globals.dbContext.Courses.ToList();
-                    List<StudentCourse> studentCourses = Globals.dbContext.StudentCourses.ToList();
 
-                    // unfortunately this doesn't work 
-                    // List<object> allRecords = new List<object>();
-                    
-                    //foreach (Student s in students)
-                    //{
-                    //    allRecords.Add(s);
-                    //}
-                    //foreach (Teacher t in teachers)
-                    //{
-                    //    allRecords.Add(t);
-                    //}
-                    //foreach (Course c in courses)
-                    //{
-                    //    allRecords.Add(c);
-                    //}
-                    //foreach (StudentCourse sc in studentCourses)
-                    //{
-                    //    allRecords.Add(sc);
-                    //}
+                List<Student> students = Globals.dbContext.Students.ToList();
+                List<Teacher> teachers = Globals.dbContext.Teachers.ToList();
+                List<Course> courses = Globals.dbContext.Courses.ToList();
+                List<StudentCourse> studentCourses = Globals.dbContext.StudentCourses.ToList();
 
-                    using (var writer = new StreamWriter(saveFileDialog.FileName))
-                    using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-                    {
-                        csv.WriteRecords(students);
-                    }
-                
-               
-                
+                // unfortunately this doesn't work 
+                // List<object> allRecords = new List<object>();
+
+                //foreach (Student s in students)
+                //{
+                //    allRecords.Add(s);
+                //}
+                //foreach (Teacher t in teachers)
+                //{
+                //    allRecords.Add(t);
+                //}
+                //foreach (Course c in courses)
+                //{
+                //    allRecords.Add(c);
+                //}
+                //foreach (StudentCourse sc in studentCourses)
+                //{
+                //    allRecords.Add(sc);
+                //}
+
+                using (var writer = new StreamWriter(saveFileDialog.FileName))
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(students);
+                }
+
+
+
             }
-            
+
         }
     }
 }
