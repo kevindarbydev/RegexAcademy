@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
-using System.Windows;
+using System.Text.RegularExpressions;
 using System.Windows.Media.Imaging;
 
 namespace RegexAcademy.Models
@@ -42,6 +41,16 @@ namespace RegexAcademy.Models
                 {
                     throw new ArgumentException("First name length must be 2-50 characters long");
                 }
+                if (Globals.HasSpecialChars(value))
+                {
+                    throw new ArgumentException("First name cannot contain special characters.");
+                }
+                if (!Regex.IsMatch(value, @"^[^0-9]+$"))
+                {
+                    throw new ArgumentException("First name cannot contain numbers");
+                }
+                string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
+                _firstName = CapitalizeName;
                 _firstName = value;
             }
         }
@@ -62,6 +71,16 @@ namespace RegexAcademy.Models
                 {
                     throw new ArgumentException("Last name length must be 2-50 characters long");
                 }
+                if (Globals.HasSpecialChars(value))
+                {
+                    throw new ArgumentException("Last name cannot contain special characters.");
+                }
+                if (!Regex.IsMatch(value, @"^[^0-9]+$"))
+                {
+                    throw new ArgumentException("Last name cannot contain numbers");
+                }
+                string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower()); //capitalize first letter, could be redundant
+                _lastName = CapitalizeName;
                 _lastName = value;
             }
         }
@@ -77,10 +96,14 @@ namespace RegexAcademy.Models
             }
             set
             {
-                //FIXME: add email format validation with REGEX
-                if (value.Length > 50)
+
+                if (value.Length > 50 || value.Length < 6)
                 {
-                    throw new ArgumentException("Email length must be at most 50 characters long");
+                    throw new ArgumentException("Email length must 6-50 characters long");
+                }
+                if (!Regex.IsMatch(value, @"^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$"))
+                {
+                    throw new ArgumentException("Must be email format.");
                 }
                 _email = value;
             }
@@ -116,7 +139,7 @@ namespace RegexAcademy.Models
                 {
                     return image;
                 }
-                
+
             }
         }
 
@@ -130,7 +153,8 @@ namespace RegexAcademy.Models
                 if (Availability == true)
                 {
                     return "Yes";
-                } else
+                }
+                else
                 {
                     return "No";
                 }

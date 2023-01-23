@@ -43,7 +43,7 @@ namespace RegexAcademy.Models
                 }
                 if (!Regex.IsMatch(value, @"^[^0-9]+$"))
                 {
-                    throw new ArgumentException("Last name cannot contain numbers");
+                    throw new ArgumentException("First name cannot contain numbers");
                 }
                 string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
                 _firstName = CapitalizeName;
@@ -68,7 +68,7 @@ namespace RegexAcademy.Models
                 }
                 if (Globals.HasSpecialChars(value))
                 {
-                    throw new ArgumentException("Last name cannot contain special chars.");
+                    throw new ArgumentException("Last name cannot contain special characters.");
                 }
                 if (!Regex.IsMatch(value, @"^[^0-9]+$"))
                 {
