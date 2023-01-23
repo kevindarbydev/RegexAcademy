@@ -79,7 +79,7 @@
       Margin="145,12,0,0"
       VerticalAlignment="Top"
       IsEnabled="{Binding SelectedItems.Count, ElementName=LvStudents}"
-      ToolTip="Edit selected Student(s)"
+      ToolTip="Edit selected Student"
       materialDesign:RippleAssist.Feedback="Green"
       Background='#546E7A'
       BorderBrush='Black'
@@ -92,7 +92,7 @@
       Margin="275,12,0,0"
       VerticalAlignment="Top"
       materialDesign:RippleAssist.Feedback="Red"
-      ToolTip="Delete selected Student(s)"
+      ToolTip="Delete selected Student"
       Background='#546E7A'
       BorderBrush='Black'
       Cursor='Hand'

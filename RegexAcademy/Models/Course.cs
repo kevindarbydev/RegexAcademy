@@ -64,6 +64,11 @@ namespace RegexAcademy.Models
             get { return _startDate; }
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentException("Please select a date.");
+                }
+
                 //checks if user brute-forced dates beyond date ranges set in CourseAdd.xaml DatePicker properties
                 if (value.Year < 2023 || value.Year > 2025)
                 {

@@ -68,7 +68,7 @@
     <DatePicker
       Name="DpAddStudent"
       Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-      DisplayDateStart='1970-01-01'
+      DisplayDateStart='1950-01-01'
       DisplayDateEnd='2020-01-01'
       materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
       materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="2"

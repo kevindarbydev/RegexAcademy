@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace RegexAcademy.Models
 {
@@ -38,7 +39,11 @@ namespace RegexAcademy.Models
                 }
                 if (Globals.HasSpecialChars(value))
                 {
-                    throw new ArgumentException("First name cannot contain special chars.");
+                    throw new ArgumentException("First name cannot contain special characters.");
+                }
+                if (!Regex.IsMatch(value, @"^[^0-9]+$"))
+                {
+                    throw new ArgumentException("Last name cannot contain numbers");
                 }
                 string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower());
                 _firstName = CapitalizeName;
@@ -65,6 +70,10 @@ namespace RegexAcademy.Models
                 {
                     throw new ArgumentException("Last name cannot contain special chars.");
                 }
+                if (!Regex.IsMatch(value, @"^[^0-9]+$"))
+                {
+                    throw new ArgumentException("Last name cannot contain numbers");
+                }
                 string CapitalizeName = string.Concat(value[0].ToString().ToUpper(), value.Substring(1).ToLower()); //capitalize first letter, could be redundant
                 _lastName = CapitalizeName;
             }
@@ -83,7 +92,8 @@ namespace RegexAcademy.Models
                 {
                     throw new ArgumentException("Please make sure to select a date.");
                 }
-                if (value.Year < 1900 || value.Year > 2023)
+                // also accounts for manual entry beyond datepicker constraints
+                if (value.Year < 1950 || value.Year > 2023)
                 {
                     throw new ArgumentException("Please enter a valid date of birth.");
                 }

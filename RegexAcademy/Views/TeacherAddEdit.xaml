@@ -61,7 +61,7 @@
                  Text=""
                  VerticalAlignment="Top"
                  Width="125" />
-        <Label Content="Availability:"
+        <Label Content="Available:"
                HorizontalAlignment="Left"
                Margin="103,160,0,0"
                VerticalAlignment="Top"
